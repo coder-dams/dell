@@ -1,6 +1,6 @@
 #include <iostream>
 
 int main() {
-    std::cout << "hamzalemsnap!";
+    std::cout << "Projet Lotus";
     return 0;
 }
