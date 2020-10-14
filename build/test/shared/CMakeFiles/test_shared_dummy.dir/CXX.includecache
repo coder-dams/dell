@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alexandre/Documents/dell/src/shared/state/Exemple.h
+
+/home/alexandre/Documents/dell/test/shared/test_shared_dummy.cpp
+boost/test/unit_test.hpp
+-
+../../src/shared/state/Exemple.h
+/home/alexandre/Documents/dell/src/shared/state/Exemple.h
+
