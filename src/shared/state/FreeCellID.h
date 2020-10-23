@@ -1,0 +1,5 @@
+enum FreeCellID {
+  GRASS,
+  DIRT
+};
+

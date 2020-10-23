@@ -1,0 +1,5 @@
+enum MobTypeID {
+  DRAGON,
+  SKELETON
+};
+
