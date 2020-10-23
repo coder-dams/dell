@@ -2,5 +2,25 @@
 #ifndef __STATE__H
 #define __STATE__H
 
-#include "state/Exemple.h"
+#include "state/Stats.h"
+#include "state/Spells.h"
+#include "state/Position.h"
+#include "state/Element.h"
+#include "state/MobTypeID.h"
+#include "state/TypeID.h"
+#include "state/CharacterStatusID.h"
+#include "state/Character.h"
+#include "state/IObserver.h"
+#include "state/Observable.h"
+#include "state/Cursor.h"
+#include "state/MapCell.h"
+#include "state/State.h"
+#include "state/StateFightAction.h"
+#include "state/Fight.h"
+#include "state/StateWanderAction.h"
+#include "state/Wander.h"
+#include "state/FreeCellID.h"
+#include "state/FreeCell.h"
+#include "state/ObstacleCellID.h"
+#include "state/ObstacleCell.h"
 #endif
