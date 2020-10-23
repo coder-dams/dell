@@ -6,8 +6,8 @@
 namespace state {
 
   enum StateWanderAction {
-    IDLE     = 1,
-    MOVING     = 2,
+    W_IDLE     = 1,
+    W_MOVING     = 2,
     LAUNCHING     = 3
   };
 

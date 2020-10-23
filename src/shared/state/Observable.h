@@ -16,11 +16,12 @@ namespace state {
   class Observable {
     // Attributes
   private:
-    std::vector observers;
+    std::vector<IObserver*> observers;
     // Operations
   public:
     void registerObserver (IObserver o);
     void notifyObservers ();
+    void unregisterObserver (IObserver o);
     // Setters and Getters
   };
 

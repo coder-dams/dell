@@ -2,6 +2,11 @@
 #ifndef STATE__POSITION__H
 #define STATE__POSITION__H
 
+#include <array>
+
+namespace state {
+  class Position;
+}
 
 namespace state {
 
@@ -18,8 +23,8 @@ namespace state {
     int getY ();
     void setX (int nX);
     void setY (int nY);
-    distance ();
-    nearPositions ();
+    int distance (Position& position1, Position& position2);
+    std::array<std::array<int,30>,30> nearPositions (int x, int y);
     // Setters and Getters
   };
 

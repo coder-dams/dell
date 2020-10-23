@@ -2,7 +2,6 @@
 #ifndef STATE__CURSOR__H
 #define STATE__CURSOR__H
 
-#include <vector>
 
 namespace state {
   class Position;
@@ -17,7 +16,7 @@ namespace state {
   class Cursor : public state::Element {
     // Operations
   public:
-    Cursor (int x = 0, int y = 0, std::vector MapCell);
+    Cursor (int x = 0, int y = 0);
     bool isMapCell ();
     void move (Position& destination);
     // Setters and Getters

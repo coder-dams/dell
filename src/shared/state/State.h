@@ -2,18 +2,20 @@
 #ifndef STATE__STATE__H
 #define STATE__STATE__H
 
+#include <array>
+#include <vector>
 
 namespace state {
-  class Observable;
-  class Cursor;
-  class MapCell;
   class Character;
+  class Cursor;
+  class Observable;
+  class MapCell;
 }
 
-#include "Observable.h"
-#include "Cursor.h"
-#include "MapCell.h"
 #include "Character.h"
+#include "Cursor.h"
+#include "Observable.h"
+#include "MapCell.h"
 
 namespace state {
 
@@ -21,18 +23,17 @@ namespace state {
   class State : public state::Observable {
     // Associations
     // Attributes
-  public:
-    std:vector map;
-     players;
-    ActiveAction action;
-     Cursor;
+  private:
+    std::array<std::array<int,30>,30> map;
+    std::vector<Character> Characters;
+    Cursor cursor;
     // Operations
   public:
     State ();
-    getCharacters ();
+    std::vector<Character&> getCharacters ();
     void initializeCharacters ();
     void initializeMapCell ();
-    getAction ();
+    Cursor& getCursor ();
     // Setters and Getters
   };
 

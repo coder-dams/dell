@@ -3,13 +3,13 @@
 #define STATE__TYPEID__H
 
 
-#include "MobTypeID.h"
-
 namespace state {
 
   enum TypeID {
-    PLAYER     = 1,
-    MOB
+    PLAYER     = 0,
+    SKELETON     = 1,
+    BOWMAN     = 2,
+    SORCERER     = 3
   };
 
 };

@@ -15,7 +15,7 @@ namespace state {
   class MapCell : public state::Element {
     // Operations
   public:
-    int isOccupied ();
+    bool isOccupied ();
     // Setters and Getters
   };
 

@@ -19,7 +19,6 @@ namespace state {
   public:
     std::string name;
     Position position;
-     tileCode     = int;
     // Operations
   public:
     Element ();

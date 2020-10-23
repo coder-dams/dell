@@ -10,11 +10,10 @@ namespace state {
 }
 
 #include "Stats.h"
+#include "TypeID.h"
+#include "CharacterStatusID.h"
 #include "Spells.h"
 #include "Element.h"
-#include "TypeID.h"
-#include "MobTypeID.h"
-#include "CharacterStatusID.h"
 
 namespace state {
 
@@ -23,29 +22,26 @@ namespace state {
     // Associations
     // Attributes
   protected:
-     typeID;
     Stats stats;
-    playerTypeID typeID;
-    playerStatusID status;
+    TypeID typeID;
+    CharacterStatusID status;
     Spells spells;
-     characterID;
+    int characterID;
     // Operations
   public:
     Stats& getStats ();
     Spells& getSpells ();
-    PlayerTypeID getType ();
-    LevelUp ();
+    TypeID getType ();
+    void LevelUp ();
     // Setters and Getters
-    const & getTypeID() const;
-    void setTypeID(const & typeID);
     void setStats(const Stats& stats);
-    const playerTypeID& getTypeID() const;
-    void setTypeID(const playerTypeID& typeID);
-    const playerStatusID& getStatus() const;
-    void setStatus(const playerStatusID& status);
+    TypeID getTypeID() const;
+    void setTypeID(TypeID typeID);
+    CharacterStatusID getStatus() const;
+    void setStatus(CharacterStatusID status);
     void setSpells(const Spells& spells);
-    const & getCharacterID() const;
-    void setCharacterID(const & characterID);
+    int getCharacterID() const;
+    void setCharacterID(int characterID);
   };
 
 };

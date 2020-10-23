@@ -6,8 +6,8 @@
 namespace state {
 
   enum StateFightAction {
-    IDLE     = 1,
-    MOVING     = 2,
+    F_IDLE     = 1,
+    F_MOVING     = 2,
     ATTACKING     = 3
   };
 
