@@ -22,11 +22,11 @@ namespace state {
     int getMovPoints ();
     int getExperience ();
     int getLevel ();
-    void setHealth ();
-    void setActPoints  ();
-    void setMovPoints ();
-    void setExperience ();
-    void setLevel ();
+    void setHealth (int nHealth);
+    void setActPoints  (int nAct);
+    void setMovPoints (int nMov);
+    void setExperience (int nExp);
+    void setLevel (int nLev);
     // Setters and Getters
   };
 

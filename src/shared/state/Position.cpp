@@ -4,31 +4,40 @@
 #include <sstream>
 #include <memory>
 #include <vector>
+#include <array>
 
-namespace state {
-
-
-Position::Position(int x, int y){
+using namespace std;
+using namespace state;
+    Position::Position(int x, int y)
+{
 	this->x=x;
 	this->y=y;
 }
 
-int Position::getX(){
+int Position::getX()
+{
     return this->x;
 }
 
-int Position::getY(){
+int Position::getY()
+{
     return this->y;
 }
 
-void Position::setX (int nX) {
-    this->x = nX;
+void Position::setX(int nX)
+{
+    this->x = newX;
+}
+
+void Position::setY(int nY)
+{
+    this->y = newY;
 }
 
 
-void Position::setY (int nY) {
-    this->y = nY;
+int Position::distance(Position& other)
+{
+	return abs(position1.getX() - position2.getX()) + abs(position1.getY() - position2.getY());
 }
-
-}
+    // Setters and Getters
 
