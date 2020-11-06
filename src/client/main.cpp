@@ -10,6 +10,8 @@ void testSFML() {
 // Fin test SFML
 
 #include <state.h>
+#include <render.h>
+#include <TMap.h>
 
 using namespace std;
 using namespace state;
@@ -17,8 +19,7 @@ using namespace state;
 int main(int argc,char* argv[])
 {
     
+    cout << argv[1] << endl;
 
-    cout << "Bonjour tout le monde!" << endl;
-
-    return 0;
+    return TMap();
 }
