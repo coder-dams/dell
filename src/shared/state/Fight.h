@@ -25,8 +25,8 @@ namespace state {
   public:
     int getTurn ();
     int getEnd ();
-    void setTurn ();
-    void setEnd ();
+    void setTurn (int newTurn);
+    void setEnd (bool res);
     int getFightAction (StateFightAction state);
     // Setters and Getters
   };
