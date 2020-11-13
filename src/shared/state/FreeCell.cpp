@@ -1,4 +1,5 @@
 #include "FreeCellID.h"
+#include "FreeCell.h"
 #include "MapCell.h"
 #include <fstream>
 #include <iostream>
@@ -12,16 +13,16 @@ using namespace state;
 
 FreeCell::FreeCell (FreeCellID id)
 {
-    this->typeID id;
+    this->typeID = id;
 }
 
 FreeCellID FreeCell::getFreeCell()
 {
-    return this->FreeCellID;
+    return this->typeID;
 }
 
-void setTypeID(FreeCellID typeID)
+void FreeCell::setTypeID(FreeCellID typeID)
 {
-	this->typeID = newTypeID;
+	this->typeID = typeID;
 }
 

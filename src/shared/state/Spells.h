@@ -3,17 +3,23 @@
 #define STATE__SPELLS__H
 
 
+#include "SpellID.h"
+#include "DamageID.h"
+#include "RangeID.h"
+#include "CostID.h"
+
 namespace state {
 
   /// class Spells - 
   class Spells {
+    // Associations
     // Attributes
   private:
     /// 	
-    int  ID;
-    int Damage;
-    int Range;
-    int Cost;
+    SpellID ID;
+    DamageID Damage;
+    RangeID Range;
+    CostID Cost;
     // Operations
   public:
     int getID ();

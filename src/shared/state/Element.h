@@ -23,7 +23,7 @@ namespace state {
   public:
     Element ();
     bool isMapCell ();
-    Position& getPosition ();
+    Position getPosition ();
     // Setters and Getters
   };
 

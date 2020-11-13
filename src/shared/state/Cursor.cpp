@@ -9,8 +9,6 @@ using namespace std;
 using namespace state;
 
 
-    // Operations
-  public:
     Cursor::Cursor(int x, int y)
 {
     this->position.setX(x);

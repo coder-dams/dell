@@ -45,7 +45,7 @@ int TMap()
 
     // on crée la tilemap avec le niveau précédemment défini
     TileMap map;
-    if (!map.load("res/snow-expansion.png", sf::Vector2u(16, 16),level, 30, 30))
+    if (!map.load("/dell/res/snow-expansion.png", sf::Vector2u(16, 16),level, 30, 30))
     return -1;
  
 

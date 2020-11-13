@@ -1,4 +1,5 @@
 #include "StateWanderAction.h"
+#include "Wander.h"
 #include "State.h"
 #include <fstream>
 #include <iostream>

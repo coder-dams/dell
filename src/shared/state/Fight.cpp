@@ -1,5 +1,6 @@
 #include "StateFightAction.h"
 #include "State.h"
+#include "Fight.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -13,12 +14,12 @@ using namespace state;
 
 int Fight::getTurn()
 {
-    return turn;
+    return this->turn;
 }
 
-bool Fight::getEnd()
+int Fight::getEnd()
 {
-    return end;
+    return this->end;
 }
 
 void Fight::setTurn(int newTurn)

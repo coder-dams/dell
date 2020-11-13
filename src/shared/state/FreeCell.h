@@ -22,9 +22,9 @@ namespace state {
   public:
     FreeCell (FreeCellID id);
     FreeCellID getFreeCell ();
+    void setTypeID (FreeCellID typeID);
     // Setters and Getters
     FreeCellID getTypeID() const;
-    void setTypeID(FreeCellID typeID);
   };
 
 };

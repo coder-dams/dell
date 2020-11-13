@@ -1,4 +1,5 @@
 #include "ObstacleCellID.h"
+#include "ObstacleCell.h"
 #include "MapCell.h"
 #include <fstream>
 #include <iostream>
@@ -11,12 +12,12 @@ using namespace std;
 using namespace state;
 
 
-ObstacleMapCell::ObstacleMapCell(ObstacleMapCellID id)
+ObstacleCell::ObstacleCell(ObstacleCellID id)
 {
     this->typeID = id;
 }
 
-ObstacleMapCellID ObstacleMapCell::getObstacleMapCellID()
+ObstacleCellID ObstacleCell::getObstacleCellID()
 {
     return this->typeID;
 }

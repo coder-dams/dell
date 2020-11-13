@@ -8,6 +8,7 @@
 
 using namespace std;
 using namespace state;
+
     Position::Position(int x, int y)
 {
 	this->x=x;
@@ -26,16 +27,16 @@ int Position::getY()
 
 void Position::setX(int nX)
 {
-    this->x = newX;
+    this->x = nX;
 }
 
 void Position::setY(int nY)
 {
-    this->y = newY;
+    this->y = nY;
 }
 
 
-int Position::distance(Position& other)
+int Position::distance(Position& position1, Position& position2)
 {
 	return abs(position1.getX() - position2.getX()) + abs(position1.getY() - position2.getY());
 }

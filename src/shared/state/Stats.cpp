@@ -32,7 +32,7 @@ using namespace state;
 
 void Stats::setHealth(int nHealth)
 {
-    this->health = newHealth;
+    this->health = nHealth;
 }
     void Stats::setActPoints  (int nAct)
 {

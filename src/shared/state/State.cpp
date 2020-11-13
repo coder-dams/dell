@@ -4,8 +4,6 @@
 #include <sstream>
 #include <memory>
 #include <vector>
-#include "SpaceMapCell.h"
-#include "ObstacleMapCell.h"
 #include <map>
 
 using namespace std;
@@ -18,21 +16,21 @@ State::State()
     this->cursor = c;
 }
 
-std::vector<Character&> getCharacters ()
-{
-    vector<unique_ptr<Character>> &refCharacters = characters;
-    return refCharacters;
-}
+//std::vector<Character&> getCharacters ()
+//{
+//    vector<unique_ptr<Character>> &refCharacters = characters;
+//    return refCharacters;
+//}
 
 
 
-    Cursor &State::getCursor()
-{
-    Cursor &refCursor = cursor;
-    return refCursor;
-}
+  //  Cursor &State::getCursor()
+//{
+//    Cursor &refCursor = cursor;
+//    return refCursor;
+//}
 
 
-void initializeCharacters ();
+//void initializeCharacters ();
 
-void initializeMapCell ();
+//void initializeMapCell ();

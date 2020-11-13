@@ -24,9 +24,9 @@ TypeID Character::getType ()
 	return typeID;
 }
 
-void Character::LevelUp ()
-{
-	Stats::setLevel(Stats::getLevel()+1);
-}
+//void Character::LevelUp ()
+//{
+//	Stats::setLevel(Stats::getLevel()+1);
+//}
 
 

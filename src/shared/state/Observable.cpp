@@ -5,9 +5,9 @@
 using namespace state;
 using namespace std;
 
-void Observable::registerObserver (IObserver* o)
-{
-	observers.push_back(o);
-}
+//void Observable::registerObserver (IObserver* o)
+//{
+//	observers.push_back(o);
+//}
 
 
