@@ -30,6 +30,10 @@ int main(int argc,char* argv[])
         {
 	return TMap();
 	}
+	else if (strcmp(argv[1], "engine") == 0)
+        {
+	return 0;
+	}
 	else
 	{
 	    cout << "Usage : ./client hello or ./client render" << endl;
