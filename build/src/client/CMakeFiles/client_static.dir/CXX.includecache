@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/client/TMap.h
+SFML/Graphics.hpp
+-
+iostream
+-
+fstream
+-
+string
+-
+sstream
+-
+vector
+-
+
+/home/abdoulaye/Documents/dell/src/client/client/Exemple.cpp
+Exemple.h
+/home/abdoulaye/Documents/dell/src/client/client/Exemple.h
+
+/home/abdoulaye/Documents/dell/src/client/client/Exemple.h
+
+/home/abdoulaye/Documents/dell/src/client/render/TMap.cpp
+TMap.h
+/home/abdoulaye/Documents/dell/src/client/render/TMap.h
+
