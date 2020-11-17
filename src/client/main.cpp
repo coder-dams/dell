@@ -30,5 +30,9 @@ int main(int argc,char* argv[])
         {
 	return TMap();
 	}
+	else
+	{
+	    cout << "Usage : ./client hello or ./client render" << endl;
+	}
     }
 }
