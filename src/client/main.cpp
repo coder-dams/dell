@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <string.h>
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
 
@@ -15,11 +15,28 @@ void testSFML() {
 
 using namespace std;
 using namespace state;
+using namespace render;
 
 int main(int argc,char* argv[])
 {
     
-    cout << argv[1] << endl;
-
-    return TMap();
+    if (argc > 1)
+    {
+        if (strcmp(argv[1], "hello") == 0)
+        {
+            cout << "Bonjour " << ((argv[2]) ? argv[2] : "tout le monde") << endl;
+        }
+        else if (strcmp(argv[1], "render") == 0)
+        {
+	return TMap();
+	}
+	else if (strcmp(argv[1], "engine") == 0)
+        {
+	return 0;
+	}
+	else
+	{
+	    cout << "Usage : ./client hello or ./client render" << endl;
+	}
+    }
 }
