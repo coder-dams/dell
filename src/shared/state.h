@@ -14,8 +14,6 @@
 #include "state/Element.h"
 #include "state/Character.h"
 #include "state/Cursor.h"
-#include "state/IObserver.h"
-#include "state/Observable.h"
 #include "state/MapCell.h"
 #include "state/State.h"
 #include "state/StateFightAction.h"
@@ -26,4 +24,6 @@
 #include "state/FreeCell.h"
 #include "state/ObstacleCellID.h"
 #include "state/ObstacleCell.h"
+#include "state/Observable.h"
+#include "state/IObserver.h"
 #endif

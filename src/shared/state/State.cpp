@@ -10,7 +10,7 @@ using namespace std;
 using namespace state;
 
 
-State::State()
+State::State(std::string mode)
 {
     Cursor c{0, 0};
     this->cursor = c;

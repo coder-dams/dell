@@ -2,10 +2,13 @@
 #ifndef STATE__CHARACTER__H
 #define STATE__CHARACTER__H
 
+#include <string>
+#include <vector>
 
 namespace state {
   class Stats;
   class Spells;
+  class State;
   class Element;
 }
 
@@ -29,16 +32,22 @@ namespace state {
     int characterID;
     // Operations
   public:
+    Character (TypeID id, std::string name, int PosX, int PosY, int p_tileCode = 0);
     Stats& getStats ();
     Spells& getSpells ();
     TypeID getType ();
     void LevelUp ();
+    void setStatus (CharacterStatusID newStatus);
+    CharacterStatusID getStatus ();
+    /// vérification de dans laquelle le joueur veut bouger, autre méthode vérif avec un bool
+    /// @param state		(???) 
+    std::vector<Position> verifMovingPosition (state::State& state);
+    std::vector<int> verifAttackPosition (state::State& state);
+    bool isMapCell ();
     // Setters and Getters
     void setStats(const Stats& stats);
     TypeID getTypeID() const;
     void setTypeID(TypeID typeID);
-    CharacterStatusID getStatus() const;
-    void setStatus(CharacterStatusID status);
     void setSpells(const Spells& spells);
     int getCharacterID() const;
     void setCharacterID(int characterID);

@@ -2,38 +2,43 @@
 #ifndef STATE__STATE__H
 #define STATE__STATE__H
 
+#include <string>
 #include <array>
 #include <vector>
+#include <memory>
 
 namespace state {
   class Character;
   class Cursor;
-  class Observable;
   class MapCell;
 }
 
 #include "Character.h"
 #include "Cursor.h"
-#include "Observable.h"
 #include "MapCell.h"
 
 namespace state {
 
   /// class State - 
-  class State : public state::Observable {
+  class State {
     // Associations
     // Attributes
+  public:
+    std::string mode;
   private:
+    /// on utilisera le type std::vector<std::vector<std::unique_ptr<MapCell>>>
     std::array<std::array<int,30>,30> map;
     std::vector<Character> Characters;
     Cursor cursor;
     // Operations
   public:
-    State ();
-    std::vector<Character&> getCharacters ();
-    void initializeCharacters ();
+    State (std::string mode);
+    std::vector<std::unique_ptr<Character>>& getCharacters ();
     void initializeMapCell ();
-    Cursor& getCursor ();
+    Cursor & getCursor ();
+    std::array<std::array<int,30>,30>& getMap ();
+    void initializeCharacters ();
+    void initializeMapCell (std::string mapRessource);
     // Setters and Getters
   };
 

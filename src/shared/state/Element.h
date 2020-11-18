@@ -19,11 +19,18 @@ namespace state {
   public:
     std::string name;
     Position position;
+    /// On va pas forcément l'utiliser, mais on le garde au cas où
+    int tileCode;
     // Operations
   public:
     Element ();
     bool isMapCell ();
     Position getPosition ();
+    /// Le getter et setterde tile pas forcément utile mais on les garde quand meme au cas où
+    int getTileCode ();
+    /// Le getter et setterde tile pas forcément utile mais on les garde quand meme au cas où
+    /// @param eltTileCode		(???) 
+    void setTileCode (int eltTileCode);
     // Setters and Getters
   };
 
