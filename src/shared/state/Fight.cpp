@@ -12,9 +12,9 @@ using namespace state;
 
     // Operations
 
-int Fight::getTurn()
+int Fight::getCurrentTurn()
 {
-    return this->turn;
+    return this->currentTurn;
 }
 
 int Fight::getEnd()
@@ -22,9 +22,9 @@ int Fight::getEnd()
     return this->end;
 }
 
-void Fight::setTurn(int newTurn)
+void Fight::setCurrentTurn(int newTurn)
 {
-    this->turn = newTurn;
+    this->currentTurn = newTurn;
 }
 
 void Fight::setEnd(bool res)
@@ -32,8 +32,8 @@ void Fight::setEnd(bool res)
     this->end = res;
 }
 
-int Fight::getFightAction (StateFightAction state) 
+StateFightAction Fight::getFightAction () 
 {
-	return state;
+	return this->currentFightAction;
 }
 

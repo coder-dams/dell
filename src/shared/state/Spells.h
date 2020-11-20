@@ -22,6 +22,12 @@ namespace state {
     CostID Cost;
     // Operations
   public:
+    /// Normal pas de setteur, mais on fait lautre méthode ou instanciait les damage, ... manuellement on aurait eu besoin des setteurs comme pour les stats 
+    /// @param id		(???) 
+    /// @param damage		(???) 
+    /// @param cost		(???) 
+    /// @param range		(???) 
+    Spells (SpellID id, DamageID damage, CostID cost, RangeID range);
     int getID ();
     int getDamage ();
     int getCost ();

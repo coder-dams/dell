@@ -12,7 +12,7 @@ namespace state {
 
 namespace state {
 
-  /// class Wander - 
+  /// class Wander - On peut ajouter un attribut wandering de type bool qui va nous permettre de quitter le mode Wander, même s'il existe déjà le LAUNCHING = 3 de StateWanderAction
   class Wander : public state::State {
     // Associations
     // Operations

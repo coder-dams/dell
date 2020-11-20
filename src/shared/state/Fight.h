@@ -17,17 +17,19 @@ namespace state {
     // Associations
     // Attributes
   public:
-    int turn     = 0;
+    int currentTurn     = 0;
     bool end;
     bool win;
-    bool loose;
+    StateFightAction currentFightAction;
     // Operations
   public:
-    int getTurn ();
+    int getCurrentTurn ();
     int getEnd ();
-    void setTurn (int newTurn);
+    void setCurrentTurn (int newTurn);
     void setEnd (bool res);
-    int getFightAction (StateFightAction state);
+    StateFightAction getFightAction ();
+    void setFightAction (StateFightAction newStateFightAction);
+    void setWin (bool sbwon);
     // Setters and Getters
   };
 
