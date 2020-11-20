@@ -14,7 +14,7 @@ Stats& Character::getStats ()
 	return stats;
 }
 
-Spells& Character::getSpells ()
+std::vector<Spells> Character::getSpells ()
 {
 	return spells;
 }

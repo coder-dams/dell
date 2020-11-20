@@ -6,9 +6,9 @@
 namespace state {
 
   enum DamageID {
-    PUNCH_DMG     = 3,
-    THROW_DMG     = 2,
-    IGNITE_DMG     = 1
+    PUNCH_DMG     = 30,
+    THROW_DMG     = 20,
+    IGNITE_DMG     = 25
   };
 
 };

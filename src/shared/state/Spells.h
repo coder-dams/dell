@@ -32,6 +32,10 @@ namespace state {
     int getDamage ();
     int getCost ();
     int getRange ();
+    void setDamage (DamageID spellDmg);
+    void setID (SpellID spellID);
+    void setCost (CostID spellCost);
+    void setRange (RangeID spellRange);
     // Setters and Getters
   };
 
