@@ -8,7 +8,7 @@ namespace state {
   /// class Stats - 
   class Stats {
     // Attributes
-  private:
+  public:
     int health;
     int actPoints;
     int movPoints;

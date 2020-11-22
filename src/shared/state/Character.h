@@ -29,7 +29,6 @@ namespace state {
     TypeID typeID;
     CharacterStatusID status;
     std::vector<Spells> spells;
-    int characterID;
     // Operations
   public:
     Character (TypeID id, std::string name, int PosX, int PosY, int p_tileCode, std::vector<Spells> mySpells);
@@ -49,8 +48,6 @@ namespace state {
     TypeID getTypeID() const;
     void setTypeID(TypeID typeID);
     void setSpells(const std::vector<Spells>& spells);
-    int getCharacterID() const;
-    void setCharacterID(int characterID);
   };
 
 };
