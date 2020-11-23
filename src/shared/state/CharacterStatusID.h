@@ -6,11 +6,11 @@
 namespace state {
 
   enum CharacterStatusID {
-    PLAYING     = 1,
+    FIGHTING     = 1,
     WAITING     = 2,
-    DEATH     = 3,
+    DEAD     = 3,
     WIN     = 4,
-    WANDER     = 5
+    WANDERING     = 5
   };
 
 };

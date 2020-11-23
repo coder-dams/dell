@@ -6,7 +6,7 @@
 namespace state {
 
   enum CostID {
-    PUNCH_C     = 0,
+    PUNCH_C     = 3,
     THROW_C     = 1,
     IGNITE_C     = 2
   };

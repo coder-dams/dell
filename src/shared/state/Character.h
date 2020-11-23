@@ -2,8 +2,8 @@
 #ifndef STATE__CHARACTER__H
 #define STATE__CHARACTER__H
 
-#include <string>
 #include <vector>
+#include <string>
 
 namespace state {
   class Stats;
@@ -28,13 +28,12 @@ namespace state {
     Stats stats;
     TypeID typeID;
     CharacterStatusID status;
-    Spells spells;
-    int characterID;
+    std::vector<Spells> spells;
     // Operations
   public:
-    Character (TypeID id, std::string name, int PosX, int PosY, int p_tileCode = 0);
+    Character (TypeID id, std::string name, int PosX, int PosY, int p_tileCode, std::vector<Spells> mySpells);
     Stats& getStats ();
-    Spells& getSpells ();
+    std::vector<Spells> getSpells ();
     TypeID getType ();
     void LevelUp ();
     void setStatus (CharacterStatusID newStatus);
@@ -48,9 +47,7 @@ namespace state {
     void setStats(const Stats& stats);
     TypeID getTypeID() const;
     void setTypeID(TypeID typeID);
-    void setSpells(const Spells& spells);
-    int getCharacterID() const;
-    void setCharacterID(int characterID);
+    void setSpells(const std::vector<Spells>& spells);
   };
 
 };
