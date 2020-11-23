@@ -95,9 +95,9 @@ position.setY(PosY);
 
 }
 
-std::vector<Position> Character::verifMovingPosition (state::State& state) {
+//std::vector<Position> Character::verifMovingPosition (state::State& state) {
 
-}
-std::vector<int> Character::verifAttackPosition (state::State& state) {
+//}
+//std::vector<int> Character::verifAttackPosition (state::State& state) {
 	
-}
+//}

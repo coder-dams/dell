@@ -9,7 +9,14 @@
 using namespace std;
 using namespace state;
 
-    Position::Position(int x, int y)
+Position::Position()
+{
+	this->x=0;
+	this->y=0;
+}
+
+
+Position::Position(int x, int y)
 {
 	this->x=x;
 	this->y=y;
@@ -40,5 +47,5 @@ int Position::distance(Position& position1, Position& position2)
 {
 	return abs(position1.getX() - position2.getX()) + abs(position1.getY() - position2.getY());
 }
-    // Setters and Getters
+
 
