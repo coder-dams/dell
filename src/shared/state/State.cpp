@@ -16,21 +16,30 @@ State::State(std::string mode)
     this->cursor = c;
 }
 
-//std::vector<Character&> getCharacters ()
-//{
-//    vector<unique_ptr<Character>> &refCharacters = characters;
-//    return refCharacters;
-//}
+std::vector<std::unique_ptr<Character>> &State::getCharacters()
+{
+    vector<unique_ptr<Character>> &charac = characters;
+    return charac;
+}
 
 
 
-  //  Cursor &State::getCursor()
-//{
-//    Cursor &refCursor = cursor;
-//    return refCursor;
-//}
+  Cursor &State::getCursor()
+{
+    Cursor &refCursor = cursor;
+    return refCursor;
+}
 
 
-//void initializeCharacters ();
+void State::initializeCharacters (){
 
-//void initializeMapCell ();
+	Spells Spell1;
+	std::unique_ptr<Character> Char1(new Character(BOWMAN, "bow", 15, 15,1,Spell1 	));
+	characters.push_back(move(Char1));
+	Spells Spell2;
+	std::unique_ptr<Character> Char2(new Character(PLAYER, "pla", 15, 14,1,Spell2 	));
+	characters.push_back(move(Char2));
+   	cout << "Characters created\n";
+}
+
+

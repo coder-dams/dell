@@ -15,9 +15,9 @@ Stats& Character::getStats ()
 	return stats;
 }
 
-std::vector<Spells> Character::getSpells ()
+Spells Character::getSpells ()
 {
-	return spells;
+	return spellSet;
 }
 
 TypeID Character::getType ()
@@ -45,9 +45,9 @@ bool Character::isMapCell()
 }
 
 
-Character::Character (TypeID id, std::string name, int PosX, int PosY, int p_tileCode, std::vector<Spells> mySpells) {
+Character::Character (TypeID id, std::string name, int PosX, int PosY, int p_tileCode, Spells SpellSet) {
 
-spells = mySpells;
+spellSet = SpellSet;
 tileCode = p_tileCode;
 typeID = id;
 status = WANDERING;
@@ -57,11 +57,12 @@ position.setY(PosY);
 
 	if (id == PLAYER)
 		{
-			stats.setHealth(150);
-			stats.setMovPoints(30);
-			stats.setActPoints(15);
-			stats.setExperience(0);
-			stats.setLevel(1);
+		stats.setHealth(150);
+		stats.setMovPoints(30);
+		stats.setActPoints(15);
+		stats.setExperience(0);
+		stats.setLevel(1);
+		spellSet.SetSpell(PUNCH);
 		}
 
     else if (id == BOWMAN)
@@ -70,7 +71,8 @@ position.setY(PosY);
         stats.setMovPoints(30);
         stats.setActPoints(15);
         stats.setExperience(0);
-		stats.setLevel(1);
+	stats.setLevel(1);
+	spellSet.SetSpell(THROW);
     }
 	else if (id == SORCERER)
     {
@@ -78,7 +80,8 @@ position.setY(PosY);
         stats.setMovPoints(30);
         stats.setActPoints(15);
         stats.setExperience(0);
-		stats.setLevel(1);
+	stats.setLevel(1);
+	spellSet.SetSpell(IGNITE);
     }
 	else if (id == SKELETON)
     {
@@ -86,7 +89,8 @@ position.setY(PosY);
         stats.setMovPoints(30);
         stats.setActPoints(15);
         stats.setExperience(0);
-		stats.setLevel(1);
+	stats.setLevel(1);
+	spellSet.SetSpell(PUNCH);
     }
 
 }
