@@ -5,12 +5,17 @@ using namespace engine;
 using namespace state;
 using namespace std;
 
-SelectCharacterCommand (state::Character& selectedCharacter)
+SelectCharacterCommand::SelectCharacterCommand (state::Character &pselectedCharacter): selectedCharacter(pselectedCharacter)
 {
-
+	return;
 }
 
-void SelectCharacterCommand::execute(state:state::State&)
-{
 
+
+void SelectCharacterCommand::execute(state::State &state)
+{
+	return;
 }
+
+
+

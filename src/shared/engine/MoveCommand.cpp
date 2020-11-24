@@ -5,12 +5,12 @@ using namespace engine;
 using namespace state;
 using namespace std;
 
-MoveCommand (state::Character& mainCharacter, state::Position& positionTarget)
+MoveCommand::MoveCommand(state::Character &mainCharacter, state::Position &positionTarget) : mainCharacter(mainCharacter), positionTarget(positionTarget)
 {
-
+	
 }
 
-void MoveCommand::execute(state::State& state)
+void MoveCommand::execute(state::State &state)
 {
-
+	return;
 }
