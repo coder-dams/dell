@@ -1,8 +1,12 @@
 #include "Command.h"
 using namespace engine;
 
-CommandID Command::getCommandID(){
-	return id;
+CommandTypeId Command::getCommandTypeId(){
+	return commandTypeId;
 }
 
+
+void Command::execute(state::State& state){
+	return;
+}
 
