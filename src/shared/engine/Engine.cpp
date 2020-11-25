@@ -6,10 +6,7 @@ using namespace state;
 using namespace std;
 using namespace engine;
 
-Engine()
-{
 
-}
 
 state::State &Engine::getState()
 {
