@@ -3,27 +3,35 @@
 #define RENDER__LOADLAYER__H
 
 #include <SFML/Graphics.hpp>
+#include <string>
 
 namespace sf {
+  class VertexArray;
   class Texture;
 };
 namespace state {
   class State;
+};
+namespace sf {
+  class Transformable;
+  class Drawable;
 }
 
 
 namespace render {
 
   /// class LoadLayer - 
-  class LoadLayer {
+  class LoadLayer : public sf::Transformable, public sf::Drawable {
     // Attributes
-  public:
+  private:
     sf::VertexArray quads;
     sf::Texture texture;
+    sf::Texture m_tileset;
+    sf::VertexArray m_vertices;
     // Operations
   public:
-    bool loadTextures (state::State& state, sf::Texture& textureTileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
-    void draw (sf::RenderTarget& target, sf::RenderStates states);
+    bool loadTextures (state::State& state, const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
+    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
     bool loadCharacters (state::State& state, sf::Texture& textureTileset, sf::Vector2u tileSize, unsigned int width, unsigned int height);
     // Setters and Getters
   };

@@ -20,7 +20,7 @@ namespace render {
   public:
     TileID id;
     /// 			
-    std::string ressourceFile;
+    std::string resourceFile;
     sf::Texture textureTileset;
     int cellWidth;
     int cellHeight;

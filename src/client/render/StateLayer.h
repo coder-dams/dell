@@ -7,6 +7,9 @@
 #include <memory>
 #include <string>
 
+namespace sf {
+  class RenderWindow;
+};
 namespace state {
   class State;
 };
@@ -25,13 +28,13 @@ namespace render {
   class StateLayer {
     // Associations
     // Attributes
-  public:
+  protected:
     sf::Font font;
     sf::RenderWindow& window;
     std::vector<std::unique_ptr<LoadLayer>> layer;
     // Operations
   public:
-    void initLayer (state::State& state);
+    void initLayer (state::State& state, const int* level);
     StateLayer (state::State& state, sf::RenderWindow& window, std::string env);
     std::vector<std::unique_ptr<Tile>>& getTile ();
     std::vector<std::unique_ptr<LoadLayer>>& getLayer ();
@@ -39,6 +42,11 @@ namespace render {
     void draw (sf::RenderWindow& window);
     bool showText ();
     // Setters and Getters
+    const sf::Font& getFont() const;
+    void setFont(const sf::Font& font);
+    sf::RenderWindow& getWindow() const;
+    void setWindow(const sf::RenderWindow&& window);
+    void setLayer(const std::vector<std::unique_ptr<LoadLayer>>& layer);
   };
 
 };
