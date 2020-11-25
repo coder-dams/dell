@@ -119,7 +119,7 @@ add_subdirectory(rapport)
 
 # Unit tests
 # Set BUILD_TESTING to OFF in CMakeCache to disable tests
-set(BUILD_TESTING OFF CACHE BOOL
+set(BUILD_TESTING ON CACHE BOOL
   "Set BUILD_TESTING to OFF to disable tests")
 if(BUILD_TESTING)
   # Include tests scripts
