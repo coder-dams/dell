@@ -14,6 +14,11 @@ SelectCharacterCommand::SelectCharacterCommand (state::Character &pselectedChara
 
 void SelectCharacterCommand::execute(state::State &state)
 {
+/* 	for( auto & charac : state.getCharacters()){
+        if(fight.getCurrentTurn() == charac->getPlayerOwner())
+            charac->setStatus(AVAILABLE);
+    }
+    target.setStatus(SELECTED); */
 	return;
 }
 
