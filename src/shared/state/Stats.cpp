@@ -36,18 +36,18 @@ void Stats::setHealth(int nHealth)
 }
     void Stats::setActPoints  (int nAct)
 {
-    this->health = nAct;
+    this->actPoints = nAct;
 }
     void Stats::setMovPoints (int nMov)
 {
-    this->health = nMov;
+    this->movPoints = nMov;
 }
     void Stats::setExperience (int nExp)
 {
-    this->health = nExp;
+    this->experience = nExp;
 }
     void Stats::setLevel (int nLev)
 {
-    this->health = nLev;
+    this->level = nLev;
 }
 

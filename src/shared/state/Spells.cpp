@@ -9,7 +9,8 @@
 using namespace std;
 using namespace state; 
 
-
+// Les setters pas forcément nécessaires, vu que toutes les config dont on a besoin sont dans setSpell
+//On peut les enlever
 Spells::Spells (){
  		this->Damage = THROW_DMG;
  		this->Cost = THROW_C;
@@ -24,12 +25,12 @@ void Spells::SetSpell (SpellID id){
 		 this->Cost = PUNCH_C;
  		this->Range = PUNCH_R;
  } 
-	else if (id==PUNCH) {
+	else if (id==IGNITE) {
 		 this->Damage = IGNITE_DMG;
  		 this->Cost = IGNITE_C;
 		 this->Range = IGNITE_R;
  } 
-	else if (id==PUNCH) {
+	else if (id==THROW) { //On peut enlever la partie throw car les caractéristique du Spell sont initialement celles de THROW
  		this->Damage = THROW_DMG;
  		this->Cost = THROW_C;
  		this->Range = THROW_R;
@@ -37,20 +38,24 @@ void Spells::SetSpell (SpellID id){
  }
 
 
-int Spells::getID ()
+SpellID Spells::getID ()
 {
 	return this->ID;
 }
-int Spells::getDamage ()
+DamageID Spells::getDamage ()
 {
 	return this->Damage;
 }
-int Spells::getCost ()
+CostID Spells::getCost ()
 {
 	return this->Cost;
 }
-int Spells::getRange ()
+RangeID Spells::getRange ()
 {
 	return this->Range;
+}
+
+void Spells::setID (SpellID spellID) {
+	this->ID = spellID;
 }
 
