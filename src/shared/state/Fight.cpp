@@ -37,3 +37,12 @@ StateFightAction Fight::getFightAction ()
 	return this->currentFightAction;
 }
 
+void Fight::setFightAction (StateFightAction newStateFightAction) 
+{
+	 this->currentFightAction=newStateFightAction;
+}
+
+void Fight::setWin(bool sbwon)
+{
+    this->win = sbwon;
+}

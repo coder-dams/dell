@@ -20,6 +20,7 @@ Spells Character::getSpells ()
 	return spellSet;
 }
 
+
 TypeID Character::getType ()
 {
 	return typeID;
@@ -71,8 +72,8 @@ position.setY(PosY);
         stats.setMovPoints(30);
         stats.setActPoints(15);
         stats.setExperience(0);
-	stats.setLevel(1);
-	spellSet.SetSpell(THROW);
+		stats.setLevel(1);
+		spellSet.SetSpell(THROW);
     }
 	else if (id == SORCERER)
     {
@@ -80,8 +81,8 @@ position.setY(PosY);
         stats.setMovPoints(30);
         stats.setActPoints(15);
         stats.setExperience(0);
-	stats.setLevel(1);
-	spellSet.SetSpell(IGNITE);
+		stats.setLevel(1);
+		spellSet.SetSpell(IGNITE);
     }
 	else if (id == SKELETON)
     {
@@ -89,8 +90,8 @@ position.setY(PosY);
         stats.setMovPoints(30);
         stats.setActPoints(15);
         stats.setExperience(0);
-	stats.setLevel(1);
-	spellSet.SetSpell(PUNCH);
+		stats.setLevel(1);
+		spellSet.SetSpell(PUNCH);
     }
 
 }
@@ -98,6 +99,7 @@ position.setY(PosY);
 //std::vector<Position> Character::verifMovingPosition (state::State& state) {
 
 //}
+
 //std::vector<int> Character::verifAttackPosition (state::State& state) {
 	
 //}

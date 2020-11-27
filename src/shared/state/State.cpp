@@ -10,10 +10,11 @@ using namespace std;
 using namespace state;
 
 
-State::State(std::string mode)
+State::State(std::string newMode)
 {
-    Cursor c{0, 0};
+    Cursor c{15, 15};
     this->cursor = c;
+    this->mode=newMode;
 }
 
 std::vector<std::unique_ptr<Character>> &State::getCharacters()
