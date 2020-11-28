@@ -12,7 +12,7 @@ using namespace state;
 /* La différence majeure entre un attribut d'une classe et les arguments dans son constructeur de base est que 
 les attributs seront à reutiliser dans d'autres méthodes que le contructeur  */
 
-Stats& Character::getStats ()
+Stats Character::getStats ()
 {
 	return this->stats;
 }
