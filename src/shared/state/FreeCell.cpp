@@ -11,9 +11,12 @@ using namespace std;
 using namespace state;
 
 
-FreeCell::FreeCell (FreeCellID id)
+FreeCell::FreeCell (FreeCellID id, int PosX, int PosY)
 {
     this->typeID = id;
+    position.setX(PosX);
+    position.setY(PosY);
+
 }
 
 FreeCellID FreeCell::getFreeCell()

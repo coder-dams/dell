@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_CASE(TestStats)
 
 
     BOOST_CHECK_EQUAL(myStats.getHealth(), 100);
-    BOOST_CHECK_EQUAL(myStats.getLevel(), 10); // on purpose, expecting false from compiler
+    BOOST_CHECK_EQUAL(myStats.getLevel(), 3); // on purpose, expecting false from compiler
     BOOST_CHECK_LE(myStats.getActPoints(), 32); // Less than equal
     BOOST_CHECK_GT(myStats.getMovPoints(), 11); // Greater than equl
     BOOST_CHECK_EQUAL(myStats.getExperience(), 75);

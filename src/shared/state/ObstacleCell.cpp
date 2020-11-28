@@ -12,9 +12,12 @@ using namespace std;
 using namespace state;
 
 
-ObstacleCell::ObstacleCell(ObstacleCellID id)
+ObstacleCell::ObstacleCell(ObstacleCellID id, int PosX, int PosY)
 {
     this->typeID = id;
+    position.setX(PosX);
+    position.setY(PosY);
+
 }
 
 ObstacleCellID ObstacleCell::getObstacleCellID()

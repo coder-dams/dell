@@ -9,25 +9,27 @@
 using namespace std;
 using namespace state;
 
+/* La différence majeure entre un attribut d'une classe et les arguments dans son constructeur de base est que 
+les attributs seront à reutiliser dans d'autres méthodes que le contructeur  */
 
 Stats& Character::getStats ()
 {
-	return stats;
+	return this->stats;
 }
 
 Spells Character::getSpells ()
 {
-	return spellSet;
+	return this-> spellSet;
 }
 
 
 TypeID Character::getType ()
 {
-	return typeID;
+	return this->typeID;
 }
 
 CharacterStatusID Character::getStatus () {
-	return status;
+	return this->status;
 }
 
 void Character::setStatus(CharacterStatusID newStatus) {
@@ -46,13 +48,13 @@ bool Character::isMapCell()
 }
 
 
-Character::Character (TypeID id, std::string name, int PosX, int PosY, int p_tileCode, Spells SpellSet) {
+Character::Character (TypeID id, std::string cName, int PosX, int PosY, int p_tileCode, Spells cSpellSet) {
 
-spellSet = SpellSet;
+spellSet = cSpellSet;
 tileCode = p_tileCode;
 typeID = id;
 status = WANDERING;
-// Pour le name dans élement, change donc le "name" de ce contructeur en par exemple nom 
+name = cName;
 position.setX(PosX);
 position.setY(PosY);
 
