@@ -43,4 +43,37 @@ void State::initializeCharacters (){
    	cout << "Characters created\n";
 }
 
+int State::getCurrentTurn()
+{
+    return this->currentTurn;
+}
 
+int State::getEnd()
+{
+    return this->end;
+}
+
+void State::setCurrentTurn(int newTurn)
+{
+    this->currentTurn = newTurn;
+}
+
+void State::setEnd(bool res)
+{
+    this->end = res;
+}
+
+StateFightAction State::getFightAction () 
+{
+	return this->currentFightAction;
+}
+
+void State::setFightAction (StateFightAction newStateFightAction) 
+{
+	 this->currentFightAction=newStateFightAction;
+}
+
+void State::setWin(bool sbwon)
+{
+    this->win = sbwon;
+}

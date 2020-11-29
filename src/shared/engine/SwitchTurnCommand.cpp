@@ -5,7 +5,12 @@ using namespace engine;
 
 
 
-SwitchTurnCommand::SwitchTurnCommand (bool finishTurn){
+SwitchTurnCommand::SwitchTurnCommand (){
 
     return ;
+}
+
+
+void SwitchTurnCommand::execute (state::State& state){
+    return;
 }
