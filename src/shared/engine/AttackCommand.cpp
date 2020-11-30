@@ -8,6 +8,12 @@ using namespace std;
 AttackCommand::AttackCommand (state::Character &mainC, state::Character &targetedC): 
 mainCharacter(mainC), targetedCharacter(targetedC)
 {
+	return;
+}
+
+
+void AttackCommand::execute (state::State &state)
+{
 	int health = targetedCharacter.getStats().getHealth();
 	int damage = mainCharacter.getSpells().getDamage();
 
@@ -21,11 +27,5 @@ mainCharacter(mainC), targetedCharacter(targetedC)
 	newHealth<<"HP"<<endl;
 
 
-	return;
-}
-
-
-void AttackCommand::execute (state::State &state)
-{
 	return;
 }
