@@ -5,6 +5,7 @@
 #include <sstream>
 #include <memory>
 #include <vector>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 using namespace state;
@@ -48,15 +49,16 @@ bool Character::isMapCell()
 }
 
 
-Character::Character (TypeID id, std::string cName, int PosX, int PosY, int p_tileCode, Spells cSpellSet) {
+Character::Character (TypeID id, std::string cName, int PosX, int PosY, Spells cSpellSet) {
 
 spellSet = cSpellSet;
-tileCode = p_tileCode;
 typeID = id;
 status = WANDERING;
 name = cName;
 position.setX(PosX);
 position.setY(PosY);
+
+sf::Texture character_texture;  // creation texture personnage
 
 	if (id == PLAYER)
 		{
@@ -66,6 +68,11 @@ position.setY(PosY);
 		stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(PUNCH);
+		character_texture.loadFromFile("../res/player_textures/player.png",sf::IntRect(32,0,32,32));
+		sf::Sprite sprite_character_texture;
+		character_texture.setSmooth(true); //ameliorer la texture perso
+		sprite_character_texture.setTexture(character_texture); //associer la texture perso a son sprite
+
 		}
 
     else if (id == BOWMAN)
@@ -76,6 +83,11 @@ position.setY(PosY);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(THROW);
+		character_texture.loadFromFile("../res/player_textures/bowman.png",sf::IntRect(32,0,32,32));
+		sf::Sprite sprite_character_texture;
+		character_texture.setSmooth(true); //ameliorer la texture perso
+		sprite_character_texture.setTexture(character_texture); //associer la texture perso a son sprite
+
     }
 	else if (id == SORCERER)
     {
@@ -85,6 +97,11 @@ position.setY(PosY);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(IGNITE);
+		character_texture.loadFromFile("../res/player_textures/sorcerer.png",sf::IntRect(32,0,32,32));
+		sf::Sprite sprite_character_texture;
+		character_texture.setSmooth(true); //ameliorer la texture perso
+		sprite_character_texture.setTexture(character_texture); //associer la texture perso a son sprite
+
     }
 	else if (id == SKELETON)
     {
@@ -94,6 +111,11 @@ position.setY(PosY);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(PUNCH);
+		character_texture.loadFromFile("../res/player_textures/skeleton.png",sf::IntRect(32,0,32,32));
+		sf::Sprite sprite_character_texture;
+		character_texture.setSmooth(true); //ameliorer la texture perso
+		sprite_character_texture.setTexture(character_texture); //associer la texture perso a son sprite
+
     }
 
 }
