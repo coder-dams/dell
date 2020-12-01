@@ -8,6 +8,8 @@ using namespace engine;
 
 
 
+Engine::Engine():currentState("INIT"){}
+
 state::State &Engine::getState()
 {
     state::State &refState = currentState;
@@ -16,7 +18,19 @@ state::State &Engine::getState()
 
 void Engine::addCommand (std::unique_ptr<Command> ptr_cmd)
 {
-
+    return;
 }
 
+void Engine::setState(state::State &nState){
 
+    return;
+}
+
+/* state::State &Engine::getState(){
+    return this->currentState;
+}
+ */
+
+void Engine::init(){
+    return;
+}
