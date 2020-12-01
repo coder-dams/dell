@@ -16,9 +16,12 @@ void SwitchTurnCommand::execute (state::State& state){
     state.setCurrentTurn(state.getCurrentTurn()+1);
     state.setFightAction(F_IDLE);
 
-/* for(auto &charsplaying : state.getCharacters()){
-        if(charsplaying->getStatus() != DEAD){
-            if(charsplaying->getStatus() != DEAD){
-                charsplaying->setStats();
-    return; */
+    for(auto &charsplaying : state.getCharacters()){
+         if(charsplaying->getStatus() != DEAD){
+            charsplaying->getStats().setActPoints(6);
+            charsplaying->getStats().setMovPoints(3);
+             
+         }
+    }
+    return;
 }
