@@ -18,7 +18,7 @@ void MoveCommand::execute(state::State &state)
 	int deltaCharacter = mainCharacter.getPosition().getX()+mainCharacter.getPosition().getY();
 	int deltaPos = abs((deltaCharacter-deltaTarget));
 
-	cout<<"The character has : "<<movPoints<<endl;
+	cout<<"The character has : "<<movPoints<<"movement points"<<endl;
 	if(mainCharacter.getStatus()==FIGHTING){
 		if (movPoints>=1){
 			if (movPoints>=deltaPos){
