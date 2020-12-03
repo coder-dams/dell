@@ -32,10 +32,10 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     //Characters test
     {
     Spells mySpellSet;
-    Character c1{PLAYER, "Hamzalemsnap", 0, 0, mySpellSet};
-    Character c2{BOWMAN, "Rachidox", 5, 5, mySpellSet};
-    Character c3{SKELETON, "Lepo", 10, 10, mySpellSet};
-    Character c4{SORCERER, "Abdoulaye", 15, 15, mySpellSet};
+    Character c1{PLAYER, "Hamzalemsnap", 0, 0, mySpellSet,1};
+    Character c2{BOWMAN, "Rachidox", 5, 5, mySpellSet,1};
+    Character c3{SKELETON, "Lepo", 10, 10, mySpellSet,1};
+    Character c4{SORCERER, "Abdoulaye", 15, 15, mySpellSet,1};
 
     BOOST_CHECK_EQUAL(c1.getType(), PLAYER);
     BOOST_CHECK_EQUAL(c1.getStats().health, 150);
@@ -46,7 +46,7 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     BOOST_CHECK_EQUAL(c1.getSpells().getDamage(), 30);
     BOOST_CHECK(!c1.isMapCell());
 
-    BOOST_CHECK_EQUAL(c1.getStatus(), WANDERING);
+    BOOST_CHECK_EQUAL(c1.getStatus(), WAITING);
     c1.setStatus(FIGHTING);
     BOOST_CHECK_EQUAL(c1.getStatus(), FIGHTING);
 

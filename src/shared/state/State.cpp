@@ -35,10 +35,12 @@ std::vector<std::unique_ptr<Character>> &State::getCharacters()
 void State::initializeCharacters (){
 
 	Spells Spell1;
-	std::unique_ptr<Character> Char1(new Character(BOWMAN, "bow", 15, 15,Spell1 ));
+    Spell1.SetSpell(PUNCH);
+	std::unique_ptr<Character> Char1(new Character(BOWMAN, "bow", 15, 15,Spell1,1));
 	characters.push_back(move(Char1));
 	Spells Spell2;
-	std::unique_ptr<Character> Char2(new Character(PLAYER, "pla", 15, 14,Spell2 ));
+    Spell2.SetSpell(IGNITE);
+	std::unique_ptr<Character> Char2(new Character(PLAYER, "pla", 15, 14,Spell2,2));
 	characters.push_back(move(Char2));
    	cout << "Characters created\n";
 }
@@ -56,6 +58,16 @@ int State::getEnd()
 void State::setCurrentTurn(int newTurn)
 {
     this->currentTurn = newTurn;
+}
+
+void State::setTurnOwner(int newOwner)
+{
+    this->turnOwner = newOwner;
+}
+
+int State::getTurnOwner()
+{
+    return this->turnOwner;
 }
 
 void State::setEnd(bool res)
