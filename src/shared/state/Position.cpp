@@ -61,5 +61,6 @@ std::vector<Position> Position::nearPositions (int x, int y) {
 	nP.push_back(move(downside));
 	nP.push_back(move(rightside));
 
+
 }
 

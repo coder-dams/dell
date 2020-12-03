@@ -49,7 +49,7 @@ bool Character::isMapCell()
 }
 
 
-Character::Character (TypeID id, std::string cName, int PosX, int PosY, Spells cSpellSet) {
+Character::Character (TypeID id, std::string cName, int PosX, int PosY, Spells cSpellSet,int Owner) {
 
 spellSet = cSpellSet;
 typeID = id;
@@ -57,6 +57,7 @@ status = WANDERING;
 name = cName;
 position.setX(PosX);
 position.setY(PosY);
+playerOwner=Owner;
 
 sf::Texture character_texture;  // creation texture personnage
 
