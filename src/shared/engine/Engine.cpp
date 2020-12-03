@@ -18,18 +18,23 @@ state::State &Engine::getState()
 
 void Engine::addCommand (std::unique_ptr<Command> ptr_cmd)
 {
-    return;
+    int priority;
+    if (engineCommands.size() > 0)
+    {
+        priority = engineCommands.rbegin()->first + 1;
+    }
+    else
+    {
+        priority = 0;
+    }
+    engineCommands[priority] = move(ptr_cmd);
 }
 
 void Engine::setState(state::State &nState){
 
-    return;
+    //this->currentState = &nState;
 }
 
-/* state::State &Engine::getState(){
-    return this->currentState;
-}
- */
 
 void Engine::init(){
     return;
