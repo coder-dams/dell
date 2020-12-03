@@ -53,7 +53,7 @@ Character::Character (TypeID id, std::string cName, int PosX, int PosY, Spells c
 
 spellSet = cSpellSet;
 typeID = id;
-status = WANDERING;
+status = WAITING;
 name = cName;
 position.setX(PosX);
 position.setY(PosY);

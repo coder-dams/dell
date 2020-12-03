@@ -20,8 +20,13 @@ void SwitchTurnCommand::execute (state::State& state){
          if(charsplaying->getStatus() != DEAD){
             charsplaying->getStats().setActPoints(6);
             charsplaying->getStats().setMovPoints(3);
-             
          }
+         if(charsplaying->getPlayerOwner() == state.getTurnOwner()){
+                charsplaying->setStatus(FIGHTING);
+            }
+            // if it's not your turn, then your alive characters will wait.
+            else{
+                charsplaying->setStatus(WAITING);
+              }       
+        }
     }
-    return;
-}
