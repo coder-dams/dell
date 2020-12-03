@@ -24,3 +24,9 @@ ObstacleCellID ObstacleCell::getObstacleCellID()
 {
     return this->typeID;
 }
+
+// Ne pas oublier de mettre tous les obstacles à True et les Freecell à false au moment de l'instanciation
+
+bool ObstacleCell::isOccupied(bool occup) {
+    return occup;
+}
