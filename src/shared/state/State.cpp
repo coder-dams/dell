@@ -89,3 +89,7 @@ void State::setWin(bool sbwon)
 {
     this->win = sbwon;
 }
+
+std::string State::getMode(){
+    return mode;
+}
