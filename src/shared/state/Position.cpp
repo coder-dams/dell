@@ -48,14 +48,14 @@ int Position::distance(Position& position1, Position& position2)
 	return abs(position1.getX() - position2.getX()) + abs(position1.getY() - position2.getY());
 }
 
-std::vector<Position> Position::nearPositions (int x, int y) {
+std::vector<Position> Position::nearPositions (Position pos) {
 
 	vector<Position> nP;
 	// J'aurais pu utilisé up, down, left, right mais ils ont déjà utilisés
-	Position upside{this->getX(), this->getY() + 1};
-	Position downside{this->getX(), this->getY() - 1};
-	Position leftside{this->getX() - 1, this->getY()};
-	Position rightside{this->getX() + 1, this->getY()};
+	Position upside{pos.getX(), pos.getY() + 1};
+	Position downside{pos.getX(), pos.getY() - 1};
+	Position leftside{pos.getX() - 1, pos.getY()};
+	Position rightside{pos.getX() + 1, pos.getY()};
 	nP.push_back(move(upside));
 	nP.push_back(move(leftside));
 	nP.push_back(move(downside));

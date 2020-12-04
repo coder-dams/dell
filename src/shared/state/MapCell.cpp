@@ -11,9 +11,9 @@ using namespace std;
 using namespace state; 
 
 
-bool MapCell::isOccupied ()
+bool MapCell::isOccupied (bool occup)
 {
-	return false;
+	return occup;
 }
 
 

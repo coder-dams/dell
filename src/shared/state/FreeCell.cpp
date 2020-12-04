@@ -29,3 +29,9 @@ void FreeCell::setTypeID(FreeCellID typeID)
 	this->typeID = typeID;
 }
 
+// Ne pas oublier de mettre tous les obstacles à True et les Freecell à false au moment de l'instanciation
+// Rappel: Freecell n'est pas toujours à true(ex: quand y'a un joueur sur la case )
+bool FreeCell::isOccupied(bool occup) {
+    return occup;
+}
+
