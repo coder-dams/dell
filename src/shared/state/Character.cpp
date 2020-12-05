@@ -125,10 +125,49 @@ int Character::getPlayerOwner() const {
     return playerOwner;
 }
 
-//std::vector<Position> Character::verifMovingPosition (state::State& state) {
+std::vector<Position> Character::verifMovingPosition (state::State& state) {
+	std::vector<Position> canGoList;
+    std::vector<Position> validNears;
 
-//}
+    for (auto &nearPosition : position.nearPositions(position))
+        // if within map
+        if (nearPosition.getY() >= 0 && nearPosition.getX() >= 0 
+        && (unsigned int)nearPosition.getX() <= state.getMap()[0].size()
+        && (unsigned int)nearPosition.getY() <= state.getMap().size())
+            validNears.push_back(move(nearPosition));
 
-//std::vector<int> Character::verifAttackPosition (state::State& state) {
-	
-//}
+    for (auto &validNear : validNears)
+    {
+        for (auto &line : state.getMap())
+        {
+            if(line[0]->getPosition().getY() != validNear.getY())
+                continue;
+            for (auto &mapcell : line)
+            {
+                if(mapcell->getPosition().getX() != validNear.getX())
+                    continue;
+                if (mapcell->getPosition().equals(validNear) && mapcell->isOccupied(state) == -1)
+                    canGoList.push_back(move(mapcell->getPosition()));
+            }
+        }
+    }
+
+    return canGoList;
+}
+
+std::vector<int> Character::verifAttackPosition (state::State& state) {
+	vector<int> possibleIndexes;
+    for(unsigned int i = 0; i < state.getCharacters().size(); i++){
+        Character& charac = *state.getCharacters()[i];
+        if(charac.getPlayerOwner() != playerOwner && charac.getStatus() != DEAD){
+            // check distances
+            int maxDistance = charac.getSpells().getRange() + 1;
+            Position charapos = charac.getPosition();
+            Position& charaposref = charapos;
+            if(position.distance(position,charaposref) <= maxDistance){
+                possibleIndexes.push_back(i);
+            }
+        }
+    }
+    return possibleIndexes;	
+}
