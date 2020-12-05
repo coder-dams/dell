@@ -15,26 +15,15 @@ void testSFML() {
 
 #include "../shared/state.h"
 #include "render.h"
+#include "../shared/engine.h"
+#include "../shared/ai.h"
 
 using namespace std;
 using namespace state;
 using namespace render;
+using namespace engine;
 
-int main(int argc,char* argv[])
-{
-    
-    if (argc > 1)
-    {
-        if (strcmp(argv[1], "hello") == 0)
-        {
-            cout << "Bonjour " << ((argv[2]) ? argv[2] : "tout le monde") << endl;
-        }
-        else if (strcmp(argv[1], "render") == 0)
-        {
-            state::State state("Playing");
-            sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
-            // on définit le niveau à l'aide de numéro de tuiles
-            const int level_1[] =
+const int level_1[] =
             {
                 238,238,238,238,238,238,239,238,239,238,239,238,239,238,239,238,239,238,239,238,239,238,239,238,239,238,239,238,239,238,
                 238,238,238,239,238,215,216,216,217,216,217,216,217,216,217,216,217,216,217,216,217,216,217,216,217,216,217,216,217,216,
@@ -101,6 +90,21 @@ int main(int argc,char* argv[])
                 138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,
                 138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138,138
             };
+
+int main(int argc,char* argv[])
+{
+    
+    if (argc > 1)
+    {
+        if (strcmp(argv[1], "hello") == 0)
+        {
+            cout << "Bonjour " << ((argv[2]) ? argv[2] : "tout le monde") << endl;
+        }
+        else if (strcmp(argv[1], "render") == 0)
+        {
+            state::State state("Playing");
+            sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
+            // on définit le niveau à l'aide de numéro de tuiles
             
             LoadLayer layer_1, layer_2;
             layer_1.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),level_1, 30, 30);
@@ -129,9 +133,62 @@ int main(int argc,char* argv[])
         {
 	        return 0;
 	    }
+        else if (strcmp(argv[1], "random_ai") == 0)
+        {
+            srand(time(0));
+            engine::Engine ngine{};
+
+            ngine.getState().initializeMapCell();
+
+            ngine.getState().initializeCharacters();
+            ai::RandomAI rai1;
+            ai::RandomAI rai2;
+
+            rai1.setPlayerNumber(1);
+            rai2.setPlayerNumber(2);
+            //-----------------------------
+
+            sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
+            render::LoadLayer layer_1, layer_2;
+            layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),level_1, 30, 30);
+            layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),level_2, 30, 30);
+
+            //StateLayer layer(ngine.getState(), window);
+            //layer.initLayer(ngine.getState());
+
+            //StateLayer stateLayer(ngine.getState(), window);
+            //stateLayer.initLayer(ngine.getState());
+            // Registering observer
+            //StateLayer *ptr_stateLayer = &stateLayer;
+            //ngine.getState().registerObserver(ptr_stateLayer);
+            bool once = true;
+
+            while (window.isOpen())
+            {
+                sf::Event event;
+                if(once){
+                    window.draw(layer_1);
+                    window.draw(layer_2);
+                    once = false;
+                }
+                while (window.pollEvent(event))
+                {
+                    if (event.type == sf::Event::Closed)
+                        window.close();
+                    else if (event.type == sf::Event::KeyPressed)
+                    {
+                        while(ngine.getState().getEnd() == false){
+                            rai1.run(ngine);
+                            if(ngine.getState().getEnd() == false)
+                                rai2.run(ngine);
+                        }
+                    }
+                }
+            }
+        }
 	    else
 	    {
-	        cout << "Usage : ./client hello or ./client render" << endl;
+	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
 	    }
     }
 }

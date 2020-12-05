@@ -121,6 +121,10 @@ sf::Texture character_texture;  // creation texture personnage
 
 }
 
+int Character::getPlayerOwner() const {
+    return playerOwner;
+}
+
 //std::vector<Position> Character::verifMovingPosition (state::State& state) {
 
 //}
