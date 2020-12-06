@@ -23,6 +23,11 @@ std::vector<std::unique_ptr<Character>> &State::getCharacters()
     return charac;
 }
 
+std::vector<std::vector<unique_ptr<MapCell>>> &State::getMap ()
+{
+    vector<vector<unique_ptr<MapCell>>> &refMapCell = map;
+    return refMapCell;
+}
 
 
   Cursor &State::getCursor()
@@ -88,4 +93,8 @@ void State::setFightAction (StateFightAction newStateFightAction)
 void State::setWin(bool sbwon)
 {
     this->win = sbwon;
+}
+
+std::string State::getMode(){
+    return mode;
 }

@@ -11,9 +11,19 @@ using namespace std;
 using namespace state; 
 
 
-bool MapCell::isOccupied (bool occup)
-{
-	return occup;
+int MapCell::isOccupied(State& state){
+    int res = -1;
+    
+    vector<std::unique_ptr<Character>> & charactersList = state.getCharacters();
+    for (size_t i = 0; i < charactersList.size(); i++)
+    {
+        Position charapos = charactersList[i]->getPosition();
+        Position& charaposref = charapos;
+        res = (position.equals(charaposref)) ? i : -1;
+
+        if (res != -1) break;
+    }
+    return res;
 }
 
 

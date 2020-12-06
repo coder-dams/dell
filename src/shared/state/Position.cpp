@@ -64,3 +64,8 @@ std::vector<Position> Position::nearPositions (Position pos) {
 
 }
 
+bool Position::equals(Position& other){
+	return (this->x == other.getX() && this->y == other.getY()); 
+}
+
+
