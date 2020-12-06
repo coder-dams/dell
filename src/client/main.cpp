@@ -138,9 +138,9 @@ int main(int argc,char* argv[])
             srand(time(0));
             engine::Engine ngine{};
 
-            ngine.getState().initializeMapCell();
+            //TO DO : ngine.getState().initializeMapCell();
 
-            ngine.getState().initializeCharacters();
+            //TO DO : ngine.getState().initializeCharacters();
             ai::RandomAI rai1;
             ai::RandomAI rai2;
 

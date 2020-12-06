@@ -23,6 +23,11 @@ std::vector<std::unique_ptr<Character>> &State::getCharacters()
     return charac;
 }
 
+std::vector<std::vector<unique_ptr<MapCell>>> &State::getMap ()
+{
+    vector<vector<unique_ptr<MapCell>>> &refMapCell = map;
+    return refMapCell;
+}
 
 
   Cursor &State::getCursor()
