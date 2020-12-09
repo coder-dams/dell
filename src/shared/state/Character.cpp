@@ -59,7 +59,7 @@ position.setX(PosX);
 position.setY(PosY);
 playerOwner=Owner;
 
-sf::Texture character_texture;  // creation texture personnage
+
 
 	if (id == PLAYER)
 		{
@@ -69,10 +69,7 @@ sf::Texture character_texture;  // creation texture personnage
 		stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(PUNCH);
-		character_texture.loadFromFile("../res/player_textures/player.png",sf::IntRect(32,0,32,32));
-		sf::Sprite sprite_character_texture;
-		character_texture.setSmooth(true); //ameliorer la texture perso
-		sprite_character_texture.setTexture(character_texture); //associer la texture perso a son sprite
+
 
 		}
 
@@ -84,10 +81,6 @@ sf::Texture character_texture;  // creation texture personnage
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(THROW);
-		character_texture.loadFromFile("../res/player_textures/bowman.png",sf::IntRect(32,0,32,32));
-		sf::Sprite sprite_character_texture;
-		character_texture.setSmooth(true); //ameliorer la texture perso
-		sprite_character_texture.setTexture(character_texture); //associer la texture perso a son sprite
 
     }
 	else if (id == SORCERER)
@@ -98,10 +91,7 @@ sf::Texture character_texture;  // creation texture personnage
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(IGNITE);
-		character_texture.loadFromFile("../res/player_textures/sorcerer.png",sf::IntRect(32,0,32,32));
-		sf::Sprite sprite_character_texture;
-		character_texture.setSmooth(true); //ameliorer la texture perso
-		sprite_character_texture.setTexture(character_texture); //associer la texture perso a son sprite
+
 
     }
 	else if (id == SKELETON)
@@ -112,10 +102,7 @@ sf::Texture character_texture;  // creation texture personnage
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(PUNCH);
-		character_texture.loadFromFile("../res/player_textures/skeleton.png",sf::IntRect(32,0,32,32));
-		sf::Sprite sprite_character_texture;
-		character_texture.setSmooth(true); //ameliorer la texture perso
-		sprite_character_texture.setTexture(character_texture); //associer la texture perso a son sprite
+
 
     }
 
