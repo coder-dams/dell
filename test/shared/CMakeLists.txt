@@ -7,6 +7,7 @@ add_custom_test(shared_Cursor)
 add_custom_test(shared_Element)
 add_custom_test(shared_FreeCell)
 add_custom_test(shared_ObstacleCell)
+add_custom_test(shared_Random_AI)
 
 # vim: set sw=2 sts=2 et:
 
