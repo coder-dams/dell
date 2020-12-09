@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     ObstacleCell cell(TREE,0,0);
     BOOST_CHECK_EQUAL(cell.getObstacleCellID(),TREE);
     ObstacleCell cell2(WALLS,0,0);
-    BOOST_CHECK_EQUAL(cell.getObstacleCellID(),WALLS);
+    BOOST_CHECK_EQUAL(cell2.getObstacleCellID(),WALLS);
     BOOST_CHECK_EQUAL(cell.isOccupied(true),true);
 
 }
