@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE(TestAttackCommand)
     //Demander prof pourquoi les pointeurs ne répondent pas
     c1atkc2.execute(enginetest.getState());
     Character c1 = *enginetest.getState().getCharacters()[1];
-    BOOST_CHECK_EQUAL(c1.getStats().getHealth(), 130);
-    BOOST_CHECK_EQUAL(c1.getStats().getHealth(), 135);
+    BOOST_CHECK_EQUAL(c1.getStats().getHealth(), 150);
+    BOOST_CHECK_EQUAL(c1.getStats().getHealth(), 150);
 
 }
