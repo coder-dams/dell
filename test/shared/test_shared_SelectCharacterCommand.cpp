@@ -1,6 +1,6 @@
 #include <boost/test/unit_test.hpp>
 #include <vector>
-#include "../../src/shared/engine/Engine.h"
+#include "../../src/shared/engine.h"
 
 using namespace ::engine;
 using namespace std;
