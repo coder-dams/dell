@@ -14,6 +14,14 @@ add_custom_test(shared_AttackCommand)
 add_custom_test(shared_MoveCommand)
 add_custom_test(shared_SelectCharacterCommand)
 add_custom_test(shared_SwitchTurnCommand)
+add_custom_test(shared_FreeCell)
+add_custom_test(shared_ObstacleCell)
+
+
+add_custom_test(shared_Engine)
+
+
+add_custom_test(shared_Random_AI)
 
 
 # vim: set sw=2 sts=2 et:

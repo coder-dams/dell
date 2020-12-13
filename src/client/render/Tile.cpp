@@ -15,18 +15,18 @@ Tile::Tile(TileID newID)
 	//	resourceFile = "../../res/snow-expansion.png";
 	//}
 
-	//else if (id == TileSetID::CHARACTER)
-	//{
-	//	cellWidth = 32;
-	//	cellHeight = 32;
-	//	resourceFile = "res/characters.png";
-	//}
-
-	if (id == TileID::MAPCELL)
+	if (id == TileID::CHARACTER)
 	{
 		cellWidth = 32;
 		cellHeight = 32;
-		resourceFile = "./../../dell/res/snow-expansion.png";
+		resourceFile = "../../dell/res/player_textures/player.png";
+	}
+
+	else if (id == TileID::MAPCELL)
+	{
+		cellWidth = 32;
+		cellHeight = 32;
+		resourceFile = "../../dell/res/snow-expansion.png";
 	}
 
 

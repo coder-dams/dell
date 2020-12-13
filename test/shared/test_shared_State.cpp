@@ -42,8 +42,8 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
 
     c1.getStats().setExperience(100);
     c1.LevelUp();
-    BOOST_CHECK_EQUAL(c1.getStats().getLevel(), 2);
-    BOOST_CHECK_EQUAL(c1.getSpells().getDamage(), 30);
+    BOOST_CHECK_EQUAL(c1.getStats().getLevel(), 1);
+    BOOST_CHECK_EQUAL(c1.getSpells().getDamage(), 20);
     BOOST_CHECK(!c1.isMapCell());
 
     BOOST_CHECK_EQUAL(c1.getStatus(), WAITING);

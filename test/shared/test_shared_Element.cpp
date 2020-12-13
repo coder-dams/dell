@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     //Element test
     {
     Element myElement ;
-
+    
     BOOST_CHECK_EQUAL(myElement.isMapCell(),true);
 
     }
