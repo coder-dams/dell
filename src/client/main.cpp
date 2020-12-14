@@ -140,7 +140,7 @@ int main(int argc,char* argv[])
 
             //TO DO : ngine.getState().initializeMapCell();
 
-            //TO DO : ngine.getState().initializeCharacters();
+            ngine.getState().initializeCharacters();
             ai::RandomAI rai1;
             ai::RandomAI rai2;
 
@@ -186,9 +186,14 @@ int main(int argc,char* argv[])
                 }
             }
         }
-	    else
+        else
 	    {
 	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
 	    }
     }
+	else
+	{
+	    cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
+	}
+    
 }
