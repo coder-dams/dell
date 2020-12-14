@@ -23,7 +23,7 @@ void MoveCommand::execute(state::State &state)
 		if (movPoints>=1){
 			if (movPoints>=deltaPos){
 				mainCharacter.getPosition().setX(positionTarget.getX());
-                mainCharacter.getPosition().setY(positionTarget.getY());
+                		mainCharacter.getPosition().setY(positionTarget.getY());
 				mainCharacter.getStats().setMovPoints(movPoints-deltaPos);
 				cout<<"The character was moved"<<endl;
 			}

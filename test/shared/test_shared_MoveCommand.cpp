@@ -25,3 +25,4 @@ movec1.execute(enginetest.getState());
 BOOST_CHECK_EQUAL(c1.getPosition().getX(), 10);
 
 }
+
