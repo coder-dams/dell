@@ -3,6 +3,10 @@
 
 ## Release History
 
+* 2.2
+    * Report 2.2
+    * Engine diagram and implementation
+
 * 2.1
     * Report 2.1
     * Render diagram
