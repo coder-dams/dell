@@ -4,6 +4,7 @@
 #add_custom_test(shared_dummy)
 add_custom_test(shared_Stats)
 add_custom_test(shared_State)
+add_custom_test(shared_Character)
 add_custom_test(shared_Position)
 add_custom_test(shared_Cursor)
 add_custom_test(shared_Element)

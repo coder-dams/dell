@@ -20,6 +20,7 @@ void MoveCommand::execute(state::State &state)
 
 	cout<<"The character has : "<<movPoints<<"movement points"<<endl;
 	if(mainCharacter.getStatus()==FIGHTING){
+		cout<<"The character is fighting"<<endl;
 		if (movPoints>=1){
 			if (movPoints>=deltaPos){
 				mainCharacter.getPosition().setX(positionTarget.getX());
