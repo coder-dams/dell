@@ -28,6 +28,7 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
 		s.setCurrentTurn(2);
 		BOOST_CHECK_EQUAL(s.getCurrentTurn(), 2);
 		BOOST_CHECK_EQUAL(s.getCursor().isMapCell(), false);
+
 		
 		s.setFightAction(F_IDLE);
 		BOOST_CHECK_EQUAL(s.getFightAction(),F_IDLE);
