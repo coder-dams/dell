@@ -162,6 +162,8 @@ int main(int argc,char* argv[])
             //StateLayer *ptr_stateLayer = &stateLayer;
             //ngine.getState().registerObserver(ptr_stateLayer);
             bool once = true;
+            ngine.currentState.end = false;
+
 
             while (window.isOpen())
             {
@@ -169,6 +171,7 @@ int main(int argc,char* argv[])
                 if(once){
                     window.draw(layer_1);
                     window.draw(layer_2);
+                    window.display();
                     once = false;
                 }
                 while (window.pollEvent(event))
@@ -177,16 +180,23 @@ int main(int argc,char* argv[])
                         window.close();
                     else if (event.type == sf::Event::KeyPressed)
                     {
-                        while(ngine.getState().getEnd() == false){
-                            rai1.run(ngine);
-                            if(ngine.getState().getEnd() == false)
-                                rai2.run(ngine);
+                        cout<<"Key pressed"<<endl;
+                        if (event.key.code == sf::Keyboard::RShift){
+                            cout<<"LShift pressed"<<endl;
+                            while(ngine.currentState.end == false){
+                                cout<<"Player1 playing"<<endl;
+                                rai1.run(ngine);
+                                if(ngine.currentState.end == false){
+                                    cout<<"Player2 playing"<<endl;
+                                    rai2.run(ngine);
+                                }
+                            }
                         }
                     }
                 }
             }
         }
-        else
+    else
 	    {
 	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
 	    }
