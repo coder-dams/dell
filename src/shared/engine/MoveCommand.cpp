@@ -24,14 +24,20 @@ void MoveCommand::execute(state::State &state)
 		cout<<"The character is fighting"<<endl;
 		if (movPoints>=1){
 			if (movPoints>=deltaPos){
+				// mainCharacter.getPosition().setX(positionTarget.getX()); mauvaise méthode(trop de getter), règle: pas 2 "." de get de suite
 				mainCharacter.position.x = positionTarget.getX();
-                		mainCharacter.position.y = positionTarget.getY();
-				mainCharacter.getStats().setMovPoints(movPoints-deltaPos);
+                mainCharacter.position.y = positionTarget.getY();
+				mainCharacter.stats.setMovPoints(movPoints-deltaPos);
 				cout<<"The character was moved"<<endl;
+				cout<<"The character has now "<<mainCharacter.stats.getMovPoints()<<" points left"<<endl;
 			}
+			else{
 			cout<<"The character doesn't have enough movements points"<<endl;
+			}
 		}
+		else {
 		cout<<"The character don't have any movements points"<<endl;
+		}
 	}
 	cout<<"\n"<<endl;
 }

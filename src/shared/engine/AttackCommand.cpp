@@ -5,8 +5,8 @@ using namespace engine;
 using namespace state;
 using namespace std;
 
-AttackCommand::AttackCommand (state::Character &mainC, state::Character &targetedC): 
-mainCharacter(mainC), targetedCharacter(targetedC)
+AttackCommand::AttackCommand (state::Character &mainCharacter, state::Character &targetedCharacter): 
+mainCharacter(mainCharacter), targetedCharacter(targetedCharacter)
 {
 	return;
 }
@@ -21,10 +21,10 @@ void AttackCommand::execute (state::State &state)
 	health<<"HP"<<endl;
 
 	int newHealth=health-damage;
-	targetedCharacter.getStats().setHealth(newHealth);
+	targetedCharacter.stats.setHealth(newHealth);
 
 	cout<<targetedCharacter.name <<" now has "<<
-	newHealth<<"HP"<<endl;
+	targetedCharacter.stats.getHealth()<<"HP"<<endl;
 
 
 	return;
