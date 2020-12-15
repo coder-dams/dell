@@ -30,6 +30,22 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
 
     }
 
+	// State
+	{
+		State s{"render"};
+		s.initializeCharacters();
+		//s.initializeMapCell();
+
+		s.setEnd(false);
+		BOOST_CHECK_EQUAL(s.getEnd(), false);
+
+		BOOST_CHECK_GT(s.getCharacters().size(), 0); // Greater than equl
+
+		s.setCurrentTurn(2);
+		BOOST_CHECK_EQUAL(s.getCurrentTurn(), 2);
+		BOOST_CHECK_EQUAL(s.getCursor().isMapCell(), false);
+	}
+
 
 }
 
