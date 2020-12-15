@@ -38,7 +38,7 @@ void RandomAI::run(engine::Engine &engine)
                     // attack
                     unique_ptr<Command> atkCmd(new AttackCommand(selectedChar, targetToAttack));
                     engine.addCommand(move(atkCmd));
-                    //engine.update();
+                    engine.init();
                     pa--;
 
                     unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
