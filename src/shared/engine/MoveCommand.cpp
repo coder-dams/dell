@@ -5,8 +5,8 @@ using namespace engine;
 using namespace state;
 using namespace std;
 
-MoveCommand::MoveCommand(state::Character &mainCharacter, state::Position &positionTarget) :
- mainCharacter(mainCharacter), positionTarget(positionTarget)
+MoveCommand::MoveCommand(state::Character &mainC, state::Position &positionT) :
+ mainCharacter(mainC), positionTarget(positionT)
 {
 	return;
 }

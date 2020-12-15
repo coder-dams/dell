@@ -31,11 +31,14 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     }
     //Characters test
     {
+    State st{"gameTest"};
     Spells mySpellSet;
     Character c1{PLAYER, "Hamzalemsnap", 0, 0, mySpellSet,1};
     Character c2{BOWMAN, "Rachidox", 5, 5, mySpellSet,1};
     Character c3{SKELETON, "Lepo", 10, 10, mySpellSet,1};
     Character c4{SORCERER, "Abdoulaye", 15, 15, mySpellSet,1};
+
+    BOOST_CHECK_EQUAL(c1.getPlayerOwner(), 1);
 
     BOOST_CHECK_EQUAL(c1.getType(), PLAYER);
     BOOST_CHECK_EQUAL(c1.getStats().health, 150);
@@ -50,6 +53,10 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     c1.setStatus(FIGHTING);
     BOOST_CHECK_EQUAL(c1.getStatus(), FIGHTING);
 
+
+    c1.verifMovingPosition(st);
+    st.initializeCharacters();
+    c1.verifAttackPosition(st);
 
     }
 

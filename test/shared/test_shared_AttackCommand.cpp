@@ -16,15 +16,15 @@ BOOST_AUTO_TEST_CASE(TestStaticAssert)
 
 BOOST_AUTO_TEST_CASE(TestAttackCommand)
 {
-    Engine enginetest;
+    Engine enginetest{};
     enginetest.getState().initializeCharacters();
 
     AttackCommand c1atkc2{*enginetest.getState().getCharacters()[0], *enginetest.getState().getCharacters()[1]};
     
     //Demander prof pourquoi les pointeurs ne répondent pas
+    BOOST_CHECK_EQUAL(enginetest.getState().getCharacters()[0].get()->getStats().getHealth(), 130);
     c1atkc2.execute(enginetest.getState());
-    Character c1 = *enginetest.getState().getCharacters()[1];
-    BOOST_CHECK_EQUAL(c1.getStats().getHealth(), 130);
-    BOOST_CHECK_EQUAL(c1.getStats().getHealth(), 135);
+    BOOST_CHECK_EQUAL(enginetest.getState().getCharacters()[0].get()->getStats().getHealth(), 130);
+    BOOST_CHECK_EQUAL(enginetest.getState().getCharacters()[0].get()->getStats().getHealth(), 135);
 
 }
