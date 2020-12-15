@@ -158,3 +158,6 @@ std::vector<int> Character::verifAttackPosition (state::State& state) {
     }
     return possibleIndexes;	
 }
+
+
+

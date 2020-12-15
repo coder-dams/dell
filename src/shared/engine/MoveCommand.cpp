@@ -5,6 +5,7 @@ using namespace engine;
 using namespace state;
 using namespace std;
 
+
 MoveCommand::MoveCommand(state::Character &mainC, state::Position &positionT) :
  mainCharacter(mainC), positionTarget(positionT)
 {
@@ -20,10 +21,11 @@ void MoveCommand::execute(state::State &state)
 
 	cout<<"The character has : "<<movPoints<<"movement points"<<endl;
 	if(mainCharacter.getStatus()==FIGHTING){
+		cout<<"The character is fighting"<<endl;
 		if (movPoints>=1){
 			if (movPoints>=deltaPos){
-				mainCharacter.getPosition().setX(positionTarget.getX());
-                mainCharacter.getPosition().setY(positionTarget.getY());
+				mainCharacter.position.x = positionTarget.getX();
+                		mainCharacter.position.y = positionTarget.getY();
 				mainCharacter.getStats().setMovPoints(movPoints-deltaPos);
 				cout<<"The character was moved"<<endl;
 			}
