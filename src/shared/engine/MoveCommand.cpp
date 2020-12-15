@@ -5,7 +5,7 @@ using namespace engine;
 using namespace state;
 using namespace std;
 
-MoveCommand::MoveCommand(state::Character &mainCharacter, state::Position &positionTarget) :
+MoveCommand::MoveCommand(state::Character mainCharacter, state::Position positionTarget) :
  mainCharacter(mainCharacter), positionTarget(positionTarget)
 {
 	return;
