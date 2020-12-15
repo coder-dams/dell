@@ -26,5 +26,9 @@ BOOST_AUTO_TEST_CASE(TestAttackCommand)
     c1atkc2.execute(enginetest.getState());
     BOOST_CHECK_EQUAL(enginetest.getState().getCharacters()[0].get()->getStats().getHealth(), 130);
     BOOST_CHECK_EQUAL(enginetest.getState().getCharacters()[0].get()->getStats().getHealth(), 135);
+    
+    Character c1 = *enginetest.getState().getCharacters()[1];
+    BOOST_CHECK_EQUAL(c1.getStats().getHealth(), 150);
+    BOOST_CHECK_EQUAL(c1.getStats().getHealth(), 150);
 
 }
