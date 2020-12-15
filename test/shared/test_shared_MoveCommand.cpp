@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE(TestMoveCommand)
 
 Engine enginetest;
 enginetest.getState().initializeCharacters();
-Position targetedP {10, 10};
+Position targetedP(10, 10);
 
 MoveCommand movec1(*enginetest.getState().getCharacters()[1], targetedP);
 
