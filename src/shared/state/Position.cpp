@@ -60,6 +60,7 @@ std::vector<Position> Position::nearPositions (Position pos) {
 	nP.push_back(move(leftside));
 	nP.push_back(move(downside));
 	nP.push_back(move(rightside));
+	return(nP);
 
 
 }

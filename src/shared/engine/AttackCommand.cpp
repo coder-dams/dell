@@ -17,13 +17,13 @@ void AttackCommand::execute (state::State &state)
 	int health = targetedCharacter.getStats().getHealth();
 	int damage = mainCharacter.getSpells().getDamage();
 
-	cout<<targetedCharacter.name <<"has"<<
+	cout<<targetedCharacter.name <<" has "<<
 	health<<"HP"<<endl;
 
 	int newHealth=health-damage;
 	targetedCharacter.getStats().setHealth(newHealth);
 
-	cout<<targetedCharacter.name <<"now has"<<
+	cout<<targetedCharacter.name <<" now has "<<
 	newHealth<<"HP"<<endl;
 
 

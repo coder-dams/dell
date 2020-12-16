@@ -110,6 +110,26 @@ int main(int argc,char* argv[])
             layer_1.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),level_1, 30, 30);
             layer_2.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),level_2, 30, 30);
             
+
+            // creation affichage personnage 
+
+            Spells Spell2;
+            Spell2.SetSpell(IGNITE);
+            
+	       Character perso1(PLAYER, "pla", 15, 14,Spell2,2);
+
+           sf::Sprite Sprite_Character;
+           sf::Texture Texture_Character;
+
+           Load_Sprite test(perso1,Sprite_Character,Texture_Character);
+
+           sf::Sprite test2 = test.getSprite();
+
+           
+
+
+
+
             // on fait tourner la boucle principale
             while (window.isOpen())
             {
@@ -125,6 +145,7 @@ int main(int argc,char* argv[])
                 
                 window.draw(layer_1);
                 window.draw(layer_2);
+                window.draw(test2);
                 window.display();
                 
             }
@@ -140,7 +161,7 @@ int main(int argc,char* argv[])
 
             //TO DO : ngine.getState().initializeMapCell();
 
-            //TO DO : ngine.getState().initializeCharacters();
+            ngine.getState().initializeCharacters();
             ai::RandomAI rai1;
             ai::RandomAI rai2;
 
@@ -162,6 +183,7 @@ int main(int argc,char* argv[])
             //StateLayer *ptr_stateLayer = &stateLayer;
             //ngine.getState().registerObserver(ptr_stateLayer);
             bool once = true;
+
 
             while (window.isOpen())
             {
@@ -186,9 +208,14 @@ int main(int argc,char* argv[])
                 }
             }
         }
-	    else
+        else
 	    {
 	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
 	    }
     }
+	else
+	{
+	    cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
+	}
+    
 }
