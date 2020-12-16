@@ -9,7 +9,7 @@ using namespace render;
 
 
 
-bool LoadLayer::loadTextures(state::State& state, const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
+bool LoadLayer::loadTextures(state::State& state, const std::string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height)
 {
     
 

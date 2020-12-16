@@ -111,9 +111,10 @@ playerOwner=Owner;
 int Character::getPlayerOwner() const {
     return playerOwner;
 }
-
+/*
 std::vector<Position> Character::verifMovingPosition (state::State& state) {
-	std::vector<Position> canGoList;
+	
+    std::vector<Position> canGoList;
     std::vector<Position> validNears;
 
     for (auto &nearPosition : position.nearPositions(position))
@@ -140,7 +141,7 @@ std::vector<Position> Character::verifMovingPosition (state::State& state) {
     }
 
     return canGoList;
-}
+}*/
 
 std::vector<int> Character::verifAttackPosition (state::State& state) {
 	vector<int> possibleIndexes;
