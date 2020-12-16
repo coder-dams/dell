@@ -21,9 +21,7 @@ enginetest.getState().initializeCharacters(); // getState -> currentState marche
 Position targetedP {10, 10};
 MoveCommand movec1(*enginetest.getState().getCharacters()[1], targetedP);
 
-
 Character c1 = *enginetest.getState().getCharacters()[1];
-
 
 enginetest.getState().getCharacters()[1].get()->setStatus(FIGHTING);
 movec1.execute(enginetest.getState());
