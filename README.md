@@ -47,6 +47,10 @@ make -j
 * 2.2
     * Report 2.2
     * Engine diagram and implementation
+    * Engine
+```bash
+./bin/client engine
+```
 
 * 2.1
     * Report 2.1
