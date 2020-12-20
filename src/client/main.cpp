@@ -100,10 +100,17 @@ int main(int argc,char* argv[])
         {
             cout << "Bonjour " << ((argv[2]) ? argv[2] : "tout le monde") << endl;
         }
+
+/*****************************************************/
+/*________________PARTIE RENDER______________________*/
+/*****************************************************/
+
+
         else if (strcmp(argv[1], "render") == 0)
         {
             state::State state("Playing");
             sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
+            window.setFramerateLimit(60);
             // on définit le niveau à l'aide de numéro de tuiles
             
             LoadLayer layer_1, layer_2;
@@ -113,20 +120,42 @@ int main(int argc,char* argv[])
 
             // creation affichage personnage 
 
-            Spells Spell2;
-            Spell2.SetSpell(IGNITE);
+            Spells Spell1;
+            Spell1.SetSpell(PUNCH);
+	        Character Char1(BOWMAN, "bow", 32, 32*10,Spell1,1);
+            sf::Sprite Sprite_Char1;
+            TypeID id1 = Char1.getType();
+            sf::Texture Texture_Character1; 
+            Load_Sprite(id1,Sprite_Char1,Texture_Character1);
+            Sprite_Char1.setPosition(Char1.position.x,Char1.position.y);
             
-	       Character perso1(PLAYER, "pla", 15, 14,Spell2,2);
+            
 
-           sf::Sprite Sprite_Character;
-           sf::Texture Texture_Character;
 
-           Load_Sprite test(perso1,Sprite_Character,Texture_Character);
+            
+	        Spells Spell2;
+            Spell2.SetSpell(IGNITE);
+	        Character Char2(PLAYER, "pla", 32*12, 32*6,Spell2,2);
+            sf::Sprite Sprite_Char2;
+            TypeID id2 = Char2.getType();
+            sf::Texture Texture_Character2; 
+            Load_Sprite(id2,Sprite_Char2,Texture_Character2);
+            Sprite_Char2.setPosition(Char2.position.x,Char2.position.y);
 
-           sf::Sprite test2 = test.getSprite();
+           bool onKeyHold = false; //create a variable that will hold if user press or release a key
+           int k=1;
+            int a=Char2.position.y/32;
+           int b=Char2.position.x/32;
 
-           
+           int i=5;
+           int c=Char1.position.y/32;
+           int d=Char1.position.x/32;
 
+
+        
+
+
+         Char2.setStatus(FIGHTING);
 
 
 
@@ -140,16 +169,214 @@ int main(int argc,char* argv[])
                     if(event.type == sf::Event::Closed)
                         window.close();
                 }
+               
+               if(k==5){
+                   Char2.setStatus(WAITING);
+                   
+               }
+               if(i==5){
+                   Char2.setStatus(FIGHTING);
+                   
+               }
+
+/*****************CHAR 2 MOVING******************************/
+
+           
+            
+        if(Char2.getStatus()==1){
+
+            
+
+                if(k<=4){
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+
+                        if ( !onKeyHold ) // check if onKeyHold is false
+                            { //if so
+                            a--; // increment
+                             k++;
+                             i--;
+                            }
+                        onKeyHold = true; // make onKeyHold true
+                                }
+                        else if ( event.type == sf::Event::KeyReleased ) // check if user released a key
+                            { // if so
+                             onKeyHold = false; // make onKeyHold false
+                            
+                            }
+                     
+
+
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+
+                        if ( !onKeyHold ) // check if onKeyHold is false
+                            { //if so
+                            a++; // increment
+                             k++;
+                             i--;
+                            }
+                        onKeyHold = true; // make onKeyHold true
+                                }
+                        else if ( event.type == sf::Event::KeyReleased ) // check if user released a key
+                            { // if so
+                             onKeyHold = false; // make onKeyHold false
+                            
+                            } 
+
+
+
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+
+                        if ( !onKeyHold ) // check if onKeyHold is false
+                            { //if so
+                            b++; // increment
+                             k++;
+                             i--;
+                            }
+                        onKeyHold = true; // make onKeyHold true
+                                }
+                        else if ( event.type == sf::Event::KeyReleased ) // check if user released a key
+                            { // if so
+                             onKeyHold = false; // make onKeyHold false
+                            
+                            }     
+
+
+
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+
+                        if ( !onKeyHold ) // check if onKeyHold is false
+                            { //if so
+                            b--; // increment
+                             k++;
+                             i--;
+                            }
+                        onKeyHold = true; // make onKeyHold true
+                                }
+                        else if ( event.type == sf::Event::KeyReleased ) // check if user released a key
+                            { // if so
+                             onKeyHold = false; // make onKeyHold false
+                            
+                            }                                                     
+                
+                }
+
+                    
+                
+                Char2.position.y = 32*a;
+                Char2.position.x = 32*b;
+                Sprite_Char2.setPosition(Char2.position.x,Char2.position.y);}
+               
+
+        else if(Char2.getStatus()==2){
+            
+
+
+/*****************CHAR 1 MOVING******************************/
+                 if(i<=4){
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+
+                        if ( !onKeyHold ) // check if onKeyHold is false
+                            { //if so
+                            c--; // increment
+                            i++;
+                            k--;
+                            }
+                        onKeyHold = true; // make onKeyHold true
+                                }
+                        else if ( event.type == sf::Event::KeyReleased ) // check if user released a key
+                            { // if so
+                             onKeyHold = false; // make onKeyHold false
+                            
+                            }
+                     
+
+
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+
+                        if ( !onKeyHold ) // check if onKeyHold is false
+                            { //if so
+                            c++; // increment
+                            i++;
+                            k--;
+                            }
+                        onKeyHold = true; // make onKeyHold true
+                                }
+                        else if ( event.type == sf::Event::KeyReleased ) // check if user released a key
+                            { // if so
+                             onKeyHold = false; // make onKeyHold false
+                            
+                            } 
+
+
+
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+
+                        if ( !onKeyHold ) // check if onKeyHold is false
+                            { //if so
+                            d++; // increment
+                            i++;
+                            k--;
+                            }
+                        onKeyHold = true; // make onKeyHold true
+                                }
+                        else if ( event.type == sf::Event::KeyReleased ) // check if user released a key
+                            { // if so
+                             onKeyHold = false; // make onKeyHold false
+                            
+                            }     
+
+
+
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+
+                        if ( !onKeyHold ) // check if onKeyHold is false
+                            { //if so
+                            d--; // increment
+                            i++;
+                            k--;
+                            }
+                        onKeyHold = true; // make onKeyHold true
+                                }
+                        else if ( event.type == sf::Event::KeyReleased ) // check if user released a key
+                            { // if so
+                             onKeyHold = false; // make onKeyHold false
+                            
+                            }                                                     
+                
+                }
+
+            
+            
+                
+                Char1.position.y = 32*c;
+                Char1.position.x = 32*d;
+                Sprite_Char1.setPosition(Char1.position.x,Char1.position.y); }              
+
+
+
+
+
+
+
+
+
+
 
                 // on dessine le niveau
-                
+                window.clear();
                 window.draw(layer_1);
                 window.draw(layer_2);
-                window.draw(test2);
+                window.draw(Sprite_Char2);
+                window.draw(Sprite_Char1);
                 window.display();
                 
             }
 	    }
+
+
+
+
+
 	    else if (strcmp(argv[1], "engine") == 0)
         {
 	        return 0;
