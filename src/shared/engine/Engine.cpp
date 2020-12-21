@@ -19,7 +19,7 @@ state::State &Engine::getState()
     return refState;
 }
 
-void Engine::addCommand (std::unique_ptr<Command> ptr_cmd)
+void Engine::addCommand (std::unique_ptr<Command> cmdPtr)
 {
     int priority;
     if (engineCommands.size() > 0)
@@ -30,7 +30,10 @@ void Engine::addCommand (std::unique_ptr<Command> ptr_cmd)
     {
         priority = 0;
     }
-    engineCommands[priority] = move(ptr_cmd);
+    Json::Value nCommand = cmdPtr->toRegist();
+	regist["CommandRange"][regist["Size"].asUInt()] = nCommand;
+	regist["Size"] = regist["Size"].asUInt() + 1;
+    engineCommands[priority] = move(cmdPtr);
 }
 
 void Engine::setState(state::State &nState){
