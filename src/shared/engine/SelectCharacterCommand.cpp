@@ -7,9 +7,19 @@ using namespace std;
 
 SelectCharacterCommand::SelectCharacterCommand (state::Character &pselectedCharacter): selectedCharacter(pselectedCharacter)
 {
+    cID=SELECT_CHARACTER;
 	return;
 }
 
+Json::Value SelectCharacterCommand::toRegist (){
+    Json::Value nCommand;
+	nCommand["id"] = cID;
+	nCommand["player"] = selectedCharacter.getPlayerOwner();
+
+    
+	
+	return nCommand;
+}
 
 
 void SelectCharacterCommand::execute(state::State &state)

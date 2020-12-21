@@ -7,6 +7,7 @@ using namespace std;
 
 
 SwitchTurnCommand::SwitchTurnCommand (){
+    cID=TURN_SWITCH;
     return ;
 }
 

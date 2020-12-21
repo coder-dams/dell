@@ -9,8 +9,24 @@ using namespace std;
 MoveCommand::MoveCommand(state::Character &mainC, state::Position &positionT) :
  mainCharacter(mainC), positionTarget(positionT)
 {
+	cID=MOVE;
 	return;
 }
+
+Json::Value MoveCommand::toRegist (){
+    Json::Value nCommand;
+
+	nCommand["id"] = cID;
+	nCommand["player"] = mainCharacter.getPlayerOwner();
+    nCommand["xTargeted"] = mainCharacter.getPosition().getX();
+    nCommand["yTargeted"] = mainCharacter.getPosition().getY();
+
+
+	return nCommand;
+    
+}
+
+
 
 void MoveCommand::execute(state::State &state)
 {	

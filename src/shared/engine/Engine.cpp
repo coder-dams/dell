@@ -8,7 +8,10 @@ using namespace engine;
 
 
 
-Engine::Engine():currentState("INIT"){}
+Engine::Engine():currentState("INIT"){
+    regist["commands"][0] = "";
+    regist["leng"] = 0;
+}
 
 state::State &Engine::getState()
 {
@@ -35,6 +38,9 @@ void Engine::setState(state::State &nState){
     //this->currentState = &nState;
 }
 
+Json::Value Engine::getRegist(){
+    return regist;
+}
 
 void Engine::init(){
     if (!currentState.getEnd())

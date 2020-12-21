@@ -5,10 +5,22 @@ using namespace engine;
 using namespace state;
 using namespace std;
 
-AttackCommand::AttackCommand (state::Character &mainCharacter, state::Character &targetedCharacter): 
-mainCharacter(mainCharacter), targetedCharacter(targetedCharacter)
+AttackCommand::AttackCommand (state::Character &mChar, state::Character &tCharacter): 
+mainCharacter(mChar), targetedCharacter(tCharacter)
 {
-	return;
+	cID=ATTACK;
+}
+
+Json::Value AttackCommand::toRegist (){
+    Json::Value nCommand;
+	nCommand["id"] = cID;
+	nCommand["player"] = mainCharacter.getPlayerOwner();
+	nCommand["attacker"] = mainCharacter.name;
+	nCommand["target"] = targetedCharacter.name;
+
+	
+	return nCommand;
+    
 }
 
 
