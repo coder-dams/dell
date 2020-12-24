@@ -174,6 +174,47 @@ int main(int argc,char* argv[])
             }
 	        return 0;
 	    }
+        else if (strcmp(argv[1], "test") == 0)
+        {/*
+            state::State state("Engine");
+            sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
+            // on définit le niveau à l'aide de numéro de tuiles
+            engine::Engine ngine{};
+            state.initializeCharacters();
+            
+            LoadLayer layer_1, layer_2,layer_3;
+            
+            layer_1.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),level_1, 30, 30);
+            layer_2.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),level_2, 30, 30);
+            
+            // on fait tourner la boucle principale
+            while (window.isOpen())
+            {
+                int i=0;
+                
+                layer_3.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),state.cMap, 30, 30);
+
+                // on gère les évènements
+                sf::Event event;
+                while (window.pollEvent(event))
+                {
+                    if(event.type == sf::Event::Closed)
+                        window.close();
+                }
+
+                // on dessine le niveau
+                
+                window.draw(layer_1);
+                window.draw(layer_2);
+                window.draw(layer_3);
+                window.display();
+                window.clear();
+                if(i<29){i++;};
+                
+            }
+	        return 0;
+            */
+        }
         else if (strcmp(argv[1], "random_ai") == 0)
         {
             /*srand(time(0));

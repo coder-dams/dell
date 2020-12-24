@@ -31,3 +31,11 @@ void SwitchTurnCommand::execute (state::State& state){
               }       
         }
     }
+
+Json::Value SwitchTurnCommand::toRegist (){
+    Json::Value nCommand;
+	nCommand["id"] = cID;
+	
+	return nCommand;
+    
+}
