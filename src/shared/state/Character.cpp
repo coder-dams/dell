@@ -49,12 +49,13 @@ bool Character::isMapCell()
 }
 
 
-Character::Character (TypeID id, std::string cName, int PosX, int PosY, Spells cSpellSet,int Owner) {
+Character::Character (TypeID id, std::string cName, int PosX, int PosY, Spells cSpellSet,int Owner,int ctileID) {
 
 spellSet = cSpellSet;
 typeID = id;
 status = WAITING;
 name = cName;
+tileID=ctileID;
 position.setX(PosX);
 position.setY(PosY);
 playerOwner=Owner;
@@ -111,6 +112,11 @@ playerOwner=Owner;
 int Character::getPlayerOwner() const {
     return playerOwner;
 }
+
+int Character::getTileID() {
+    return tileID;
+}
+
 /*
 std::vector<Position> Character::verifMovingPosition (state::State& state) {
 	
