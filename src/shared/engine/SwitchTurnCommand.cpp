@@ -25,8 +25,8 @@ void SwitchTurnCommand::execute (state::State& state){
                 charsplaying->setStatus(FIGHTING);
             }
             // if it's not your turn, then your alive characters will wait.
-            else{
-                charsplaying->setStatus(WAITING);
-              }       
-        }
+        else{
+            charsplaying->setStatus(WAITING);
+        }       
     }
+}
