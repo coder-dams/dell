@@ -36,16 +36,15 @@ void MoveCommand::execute(state::State &state)
 	int deltaPos = abs((deltaCharacter-deltaTarget));
 
 	cout<<"The character has : "<<movPoints<<"movement points"<<endl;
-	if(mainCharacter.getStatus()==FIGHTING){
 		cout<<"The character is fighting"<<endl;
 		if (movPoints>=1){
 			if (movPoints>=deltaPos){
 				// mainCharacter.getPosition().setX(positionTarget.getX()); mauvaise méthode(trop de getter), règle: pas 2 "." de get de suite
-				state.modifyMap(mainCharacter.position.y*30+mainCharacter.position.x,138);
+				state.cMap[mainCharacter.position.y*30+mainCharacter.position.x]=138;
 				mainCharacter.position.x = positionTarget.getX();
                 mainCharacter.position.y = positionTarget.getY();
 				mainCharacter.stats.setMovPoints(movPoints-deltaPos);
-				state.modifyMap(mainCharacter.position.y*30+mainCharacter.position.x,mainCharacter.getTileID());
+				state.cMap[positionTarget.getY()*30+positionTarget.getX()]=mainCharacter.getTileID();
 				cout<<"The character was moved"<<endl;
 				cout<<"The character has now "<<mainCharacter.stats.getMovPoints()<<" points left"<<endl;
 			}
@@ -56,7 +55,8 @@ void MoveCommand::execute(state::State &state)
 		else {
 		cout<<"The character don't have any movements points"<<endl;
 		}
-	}
+
 	cout<<"\n"<<endl;
+
 }
 

@@ -36,24 +36,20 @@ void Engine::addCommand (std::unique_ptr<Command> cmdPtr)
     engineCommands[priority] = move(cmdPtr);
 }
 
-void Engine::setState(state::State &nState){
-
-    //this->currentState = &nState;
-}
 
 Json::Value Engine::getRegist(){
     return regist;
 }
 
 void Engine::init(){
-    if (!currentState.getEnd())
-    {
         cout << "Executing commands from turn " << currentState.getCurrentTurn() << endl;
+        cout<<"ok0"<<endl;
         //default event
         //StateEvent stateEvent(ALLCHANGED);
         bool endTurn = false;
         for (size_t i = 0; i < engineCommands.size(); i++)
         {
+            cout<<"ok1"<<endl;
             //stateEvent.setFightAction(ATTACKING);
             engineCommands[i]->execute(currentState);
             //currentState.notifyObservers(stateEvent, currentState);
@@ -62,14 +58,7 @@ void Engine::init(){
             }
         }
         // clean using iterator
-        map<int, std::unique_ptr<Command>>::iterator iterator;
-        for (iterator = engineCommands.begin(); iterator != engineCommands.end(); iterator++)
-        {
-            engineCommands.erase(iterator);
-        }
-    }
-    else
-    {
-        cout << "The game is ended, we have a winner" << endl;
-    }
+        engineCommands.clear();
+
+       
 }
