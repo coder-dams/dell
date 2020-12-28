@@ -29,15 +29,15 @@ void AttackCommand::execute (state::State &state)
 	int health = targetedCharacter.getStats().getHealth();
 	int damage = mainCharacter.getSpells().getDamage();
 
+	cout<<" \n"<< mainCharacter.name<<" is attacking "<<targetedCharacter.name<<endl;
 	cout<<targetedCharacter.name <<" has "<<
 	health<<"HP"<<endl;
 
 	int newHealth=health-damage;
 	targetedCharacter.stats.setHealth(newHealth);
+	
 
 	cout<<targetedCharacter.name <<" now has "<<
-	targetedCharacter.stats.getHealth()<<"HP"<<endl;
+	targetedCharacter.stats.getHealth()<<"HP \n"<<endl;
 
-
-	return;
 }
