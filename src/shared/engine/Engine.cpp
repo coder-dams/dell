@@ -43,13 +43,13 @@ Json::Value Engine::getRegist(){
 
 void Engine::init(){
         cout << "Executing commands from turn " << currentState.getCurrentTurn() << endl;
-        cout<<"ok0"<<endl;
+
         //default event
         //StateEvent stateEvent(ALLCHANGED);
         bool endTurn = false;
         for (size_t i = 0; i < engineCommands.size(); i++)
         {
-            cout<<"ok1"<<endl;
+
             //stateEvent.setFightAction(ATTACKING);
             engineCommands[i]->execute(currentState);
             //currentState.notifyObservers(stateEvent, currentState);

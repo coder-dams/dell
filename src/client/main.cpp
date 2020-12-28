@@ -212,7 +212,7 @@ int main(int argc,char* argv[])
                     if(event.type == sf::Event::Closed)
                         window.close();
                 }
-                
+                usleep(1000000);
                 Character& charac0 = *ngine.getState().getCharacters()[0];
                 Character& charac1 = *ngine.getState().getCharacters()[1];
                 
@@ -244,9 +244,8 @@ int main(int argc,char* argv[])
                 */
                 ngine.init();
                 usleep(100000);
-
+                
                 i++;
-        
                 
                 }
                 
