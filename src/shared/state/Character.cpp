@@ -65,8 +65,8 @@ playerOwner=Owner;
 	if (id == PLAYER)
 		{
 		stats.setHealth(150);
-		stats.setMovPoints(30);
-		stats.setActPoints(15);
+		stats.setMovPoints(5);
+		stats.setActPoints(3);
 		stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(PUNCH);
@@ -76,9 +76,9 @@ playerOwner=Owner;
 
     else if (id == BOWMAN)
     {
-        stats.setHealth(80);
-        stats.setMovPoints(30);
-        stats.setActPoints(15);
+        stats.setHealth(50);
+        stats.setMovPoints(3);
+        stats.setActPoints(5);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(THROW);
@@ -86,9 +86,9 @@ playerOwner=Owner;
     }
 	else if (id == SORCERER)
     {
-        stats.setHealth(80);
-        stats.setMovPoints(30);
-        stats.setActPoints(15);
+        stats.setHealth(50);
+        stats.setMovPoints(2);
+        stats.setActPoints(6);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(IGNITE);
@@ -98,8 +98,8 @@ playerOwner=Owner;
 	else if (id == SKELETON)
     {
         stats.setHealth(100);
-        stats.setMovPoints(30);
-        stats.setActPoints(15);
+        stats.setMovPoints(4);
+        stats.setActPoints(6);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(PUNCH);

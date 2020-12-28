@@ -229,19 +229,19 @@ int main(int argc,char* argv[])
                 Position pos1{initialXP1, ++initialYP1};
                 unique_ptr<engine::Command> ptr_mc1(new engine::MoveCommand(charac0, pos1));
                 ngine.addCommand(move(ptr_mc1));
-                /*
-                Position pos2{initialXP1, ++initialYP1};
-                unique_ptr<engine::Command> ptr_mc2(new engine::MoveCommand(*ngine.getState().getCharacters()[0], pos2));
+                
+                Position pos2{++initialXP1, ++initialYP1};
+                unique_ptr<engine::Command> ptr_mc2(new engine::MoveCommand(charac0, pos2));
                 ngine.addCommand(move(ptr_mc2));
 
-                Position pos3{initialXP1, ++initialYP1};
-                unique_ptr<engine::Command> ptr_mc3(new engine::MoveCommand(*ngine.getState().getCharacters()[0], pos3));
+                Position pos3{++initialXP1, initialYP1+2};
+                unique_ptr<engine::Command> ptr_mc3(new engine::MoveCommand(charac0, pos3));
                 ngine.addCommand(move(ptr_mc3));
 
                 unique_ptr<engine::Command> ptr_fc(new engine::SwitchTurnCommand());
                 ngine.addCommand(move(ptr_fc));
-                cout << "Adding commands for this turn FINISHED. Executing..." << endl;
-                */
+                cout << "Executing commands" << endl;
+                
                 ngine.init();
                 usleep(100000);
                 
