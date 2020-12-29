@@ -49,12 +49,13 @@ bool Character::isMapCell()
 }
 
 
-Character::Character (TypeID id, std::string cName, int PosX, int PosY, Spells cSpellSet,int Owner) {
+Character::Character (TypeID id, std::string cName, int PosX, int PosY, Spells cSpellSet,int Owner,int ctileID) {
 
 spellSet = cSpellSet;
 typeID = id;
-status = WAITING;
+status = FIGHTING;
 name = cName;
+tileID=ctileID;
 position.setX(PosX);
 position.setY(PosY);
 playerOwner=Owner;
@@ -64,8 +65,8 @@ playerOwner=Owner;
 	if (id == PLAYER)
 		{
 		stats.setHealth(150);
-		stats.setMovPoints(30);
-		stats.setActPoints(15);
+		stats.setMovPoints(5);
+		stats.setActPoints(3);
 		stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(PUNCH);
@@ -75,9 +76,9 @@ playerOwner=Owner;
 
     else if (id == BOWMAN)
     {
-        stats.setHealth(80);
-        stats.setMovPoints(30);
-        stats.setActPoints(15);
+        stats.setHealth(50);
+        stats.setMovPoints(3);
+        stats.setActPoints(5);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(THROW);
@@ -85,9 +86,9 @@ playerOwner=Owner;
     }
 	else if (id == SORCERER)
     {
-        stats.setHealth(80);
-        stats.setMovPoints(30);
-        stats.setActPoints(15);
+        stats.setHealth(50);
+        stats.setMovPoints(2);
+        stats.setActPoints(6);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(IGNITE);
@@ -97,8 +98,8 @@ playerOwner=Owner;
 	else if (id == SKELETON)
     {
         stats.setHealth(100);
-        stats.setMovPoints(30);
-        stats.setActPoints(15);
+        stats.setMovPoints(4);
+        stats.setActPoints(6);
         stats.setExperience(0);
 		stats.setLevel(1);
 		spellSet.SetSpell(PUNCH);
@@ -112,8 +113,14 @@ int Character::getPlayerOwner() const {
     return playerOwner;
 }
 
+int Character::getTileID() {
+    return tileID;
+}
+
+/*
 std::vector<Position> Character::verifMovingPosition (state::State& state) {
-	std::vector<Position> canGoList;
+	
+    std::vector<Position> canGoList;
     std::vector<Position> validNears;
 
     for (auto &nearPosition : position.nearPositions(position))
@@ -140,7 +147,7 @@ std::vector<Position> Character::verifMovingPosition (state::State& state) {
     }
 
     return canGoList;
-}
+}*/
 
 std::vector<int> Character::verifAttackPosition (state::State& state) {
 	vector<int> possibleIndexes;
