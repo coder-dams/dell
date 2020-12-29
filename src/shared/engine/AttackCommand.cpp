@@ -17,7 +17,6 @@ Json::Value AttackCommand::toRegist (){
 	nCommand["player"] = mainCharacter.getPlayerOwner();
 	nCommand["attacker"] = mainCharacter.name;
 	nCommand["target"] = targetedCharacter.name;
-
 	
 	return nCommand;
     
@@ -26,7 +25,7 @@ Json::Value AttackCommand::toRegist (){
 
 void AttackCommand::execute (state::State &state)
 {
-	int health = targetedCharacter.getStats().getHealth();
+	int health = targetedCharacter.stats.getHealth();
 	int damage = mainCharacter.getSpells().getDamage();
 
 	cout<<" \n"<< mainCharacter.name<<" is attacking "<<targetedCharacter.name<<endl;
@@ -35,7 +34,7 @@ void AttackCommand::execute (state::State &state)
 
 	int newHealth=health-damage;
 	targetedCharacter.stats.setHealth(newHealth);
-	
+
 
 	cout<<targetedCharacter.name <<" now has "<<
 	targetedCharacter.stats.getHealth()<<"HP \n"<<endl;

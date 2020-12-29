@@ -285,11 +285,11 @@ int main(int argc,char* argv[])
                 
                 ngine.init();
                 usleep(100000);
-                
+                cout<<charac1.stats.getHealth()<<endl;
                 i++;
                 
                 }
-                cout<<charac1.getStats().getHealth()<<endl;
+                
                 
             }
 	        
