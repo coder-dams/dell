@@ -7,6 +7,7 @@ using namespace std;
 
 
 SwitchTurnCommand::SwitchTurnCommand (){
+    cID=TURN_SWITCH;
     return ;
 }
 
@@ -30,3 +31,11 @@ void SwitchTurnCommand::execute (state::State& state){
               }       
         }
     }
+
+Json::Value SwitchTurnCommand::toRegist (){
+    Json::Value nCommand;
+	nCommand["id"] = cID;
+	
+	return nCommand;
+    
+}
