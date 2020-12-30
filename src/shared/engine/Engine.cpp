@@ -8,7 +8,10 @@ using namespace engine;
 
 
 
-Engine::Engine():currentState("INIT"){}
+Engine::Engine():currentState("INIT"){
+    regist["commands"][0] = "";
+    regist["leng"] = 0;
+}
 
 state::State &Engine::getState()
 {
@@ -16,7 +19,7 @@ state::State &Engine::getState()
     return refState;
 }
 
-void Engine::addCommand (std::unique_ptr<Command> ptr_cmd)
+void Engine::addCommand (std::unique_ptr<Command> cmdPtr)
 {
     int priority;
     if (engineCommands.size() > 0)
@@ -27,24 +30,26 @@ void Engine::addCommand (std::unique_ptr<Command> ptr_cmd)
     {
         priority = 0;
     }
-    engineCommands[priority] = move(ptr_cmd);
+    Json::Value nCommand = cmdPtr->toRegist();
+	regist["CommandRange"][regist["Size"].asUInt()] = nCommand;
+	regist["Size"] = regist["Size"].asUInt() + 1;
+    engineCommands[priority] = move(cmdPtr);
 }
 
-void Engine::setState(state::State &nState){
 
-    //this->currentState = &nState;
+Json::Value Engine::getRegist(){
+    return regist;
 }
-
 
 void Engine::init(){
-    if (!currentState.getEnd())
-    {
         cout << "Executing commands from turn " << currentState.getCurrentTurn() << endl;
+
         //default event
         //StateEvent stateEvent(ALLCHANGED);
         bool endTurn = false;
         for (size_t i = 0; i < engineCommands.size(); i++)
         {
+
             //stateEvent.setFightAction(ATTACKING);
             engineCommands[i]->execute(currentState);
             //currentState.notifyObservers(stateEvent, currentState);
@@ -53,14 +58,7 @@ void Engine::init(){
             }
         }
         // clean using iterator
-        map<int, std::unique_ptr<Command>>::iterator iterator;
-        for (iterator = engineCommands.begin(); iterator != engineCommands.end(); iterator++)
-        {
-            engineCommands.erase(iterator);
-        }
-    }
-    else
-    {
-        cout << "The game is ended, we have a winner" << endl;
-    }
+        engineCommands.clear();
+
+       
 }

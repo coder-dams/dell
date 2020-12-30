@@ -8,7 +8,7 @@ using namespace std;
 
 CommandTypeId Command::getCommandTypeId (){
 
-    return commandTypeId;
+    return cID;
 }
 
 void Command::execute (state::State& state){

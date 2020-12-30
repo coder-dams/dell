@@ -18,6 +18,7 @@ BOOST_AUTO_TEST_CASE(TestEngineNamespace)
 {
     
     {
+        /*
         //srand(time(0));
         engine::Engine ngine;
 
@@ -25,7 +26,7 @@ BOOST_AUTO_TEST_CASE(TestEngineNamespace)
         
         rai.setPlayerNumber(1);
 	BOOST_CHECK_EQUAL(1, rai.getPlayerNumber());
-
+*/
         //rai.run(ngine);
     }
 }
