@@ -27,6 +27,7 @@ void AttackCommand::execute (state::State &state)
 {
 	int health = targetedCharacter.stats.getHealth();
 	int damage = mainCharacter.getSpells().getDamage();
+	int attackP = mainCharacter.stats.getActPoints();
 
 	cout<<" \n"<< mainCharacter.name<<" is attacking "<<targetedCharacter.name<<endl;
 	cout<<targetedCharacter.name <<" has "<<
@@ -34,9 +35,24 @@ void AttackCommand::execute (state::State &state)
 
 	int newHealth=health-damage;
 	targetedCharacter.stats.setHealth(newHealth);
+	mainCharacter.stats.setActPoints(attackP-mainCharacter.getSpells().getCost());
+	/*switch(damage) {
+      case 20:
+        mainCharacter.stats.setActPoints(attackP-mainCharacter.getSpells().getCost());
+        break;
+      case 10:
+        mainCharacter.stats.setActPoints(attackP-mainCharacter.getSpells().getCost());
+        break;
+      case 15:
+        mainCharacter.stats.setActPoints(attackP-mainCharacter.getSpells().getCost());
+        break;
+	}*/
 
 
 	cout<<targetedCharacter.name <<" now has "<<
 	targetedCharacter.stats.getHealth()<<"HP \n"<<endl;
+
+	cout<<mainCharacter.name <<" has now "<<
+	mainCharacter.stats.getActPoints()<<" attack points remaining \n"<<endl;
 
 }

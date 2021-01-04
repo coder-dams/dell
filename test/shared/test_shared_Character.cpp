@@ -28,9 +28,9 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     BOOST_CHECK_EQUAL(c1.getSpells().getDamage(), 20);
     BOOST_CHECK(!c1.isMapCell());
 
-    BOOST_CHECK_EQUAL(c1.getStatus(), WAITING);
-    c1.setStatus(FIGHTING);
     BOOST_CHECK_EQUAL(c1.getStatus(), FIGHTING);
+    c1.setStatus(WAITING);
+    BOOST_CHECK_EQUAL(c1.getStatus(), WAITING);
 
 }
 
