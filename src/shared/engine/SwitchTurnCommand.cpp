@@ -17,10 +17,10 @@ void SwitchTurnCommand::execute (state::State& state){
     state.setCurrentTurn(state.getCurrentTurn()+1);
     state.setFightAction(F_IDLE);
 
-    for(auto &charsplaying : state.getCharacters()){
+    for(auto &charsplaying : state.characters) {
          if(charsplaying->getStatus() != DEAD){
-            charsplaying->getStats().setActPoints(6);
-            charsplaying->getStats().setMovPoints(3);
+            charsplaying->stats.setActPoints(6);
+            charsplaying->stats.setMovPoints(3); // charsplaying->getStats().setMovPoints(3); ne marcherait pas car le get fait toujours des copies
          }
          if(charsplaying->getPlayerOwner() == state.getTurnOwner()){
                 charsplaying->setStatus(FIGHTING);
