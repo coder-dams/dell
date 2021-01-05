@@ -111,9 +111,6 @@ int main(int argc,char* argv[])
                 
                 int initialXP1 = charac0.getPosition().getX();
                 int initialYP1 = charac0.getPosition().getY();
-
-                int initialXP2 = charac1.getPosition().getX();
-                int initialYP2 = charac1.getPosition().getY();
                 
                 
                 if(i==0){
@@ -187,8 +184,6 @@ int main(int argc,char* argv[])
                 int initialXP1 = charac0.getPosition().getX();
                 int initialYP1 = charac0.getPosition().getY();
 
-                int initialXP2 = charac1.getPosition().getX();
-                int initialYP2 = charac1.getPosition().getY();
                 
                 
                 if(i==0){
