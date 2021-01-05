@@ -225,13 +225,8 @@ int main(int argc,char* argv[])
         }
         else if (strcmp(argv[1], "random_ai") == 0)
         {
-            std::vector<Position> posi;
-            State s{"ok"};
-            s.initializeCharacters();
-            posi=s.getCharacters()[0]->verifMovingPosition(s);
-            for(auto k: posi){cout<<k.getX()<<k.getY()<<endl;}
-            
-            /*srand(time(0));
+
+            srand(time(0));
             engine::Engine ngine{};
 
             //TO DO : ngine.getState().initializeMapCell();
@@ -245,9 +240,9 @@ int main(int argc,char* argv[])
             //-----------------------------
 
             sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
-            render::LoadLayer layer_1, layer_2;
-            layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),level_1, 30, 30);
-            layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),level_2, 30, 30);
+            render::LoadLayer layer_1, layer_2,layer_3;
+            layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().First_Layer, 30, 30);
+            layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().Second_Layer, 30, 30);
 
             //StateLayer layer(ngine.getState(), window);
             //layer.initLayer(ngine.getState());
@@ -263,13 +258,15 @@ int main(int argc,char* argv[])
 
             while (window.isOpen())
             {
+                layer_3.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().cMap, 30, 30);
+
                 sf::Event event;
-                if(once){
-                    window.draw(layer_1);
-                    window.draw(layer_2);
-                    window.display();
-                    once = false;
-                }
+                
+                window.draw(layer_1);
+                window.draw(layer_2);
+                window.draw(layer_3);
+                window.display();
+                
                 while (window.pollEvent(event))
                 {
                     if (event.type == sf::Event::Closed)
@@ -290,7 +287,7 @@ int main(int argc,char* argv[])
                         }
                     }
                 }
-            }*/
+            }
         }
     else
 	    {

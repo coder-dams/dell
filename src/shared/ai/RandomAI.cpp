@@ -13,7 +13,7 @@ using namespace std;
 
 void RandomAI::run(engine::Engine &engine)
 {
-    /*int randomCharSelected = selectCharacter(engine.getState());
+    int randomCharSelected = selectCharacter(engine.getState());
     cout << randomCharSelected << endl;
     // always select someone
     Character &selectedChar = *engine.getState().getCharacters()[randomCharSelected];
@@ -92,7 +92,7 @@ void RandomAI::run(engine::Engine &engine)
             engine.addCommand(move(finTurnCmd));
             engine.init();
             return;
-        }*/
+        }
     return;
 }
 
