@@ -19,6 +19,7 @@ void SwitchTurnCommand::execute (state::State& state){
 
     for(auto &charsplaying : state.characters) {
          if(charsplaying->getStatus() != DEAD){
+            // faire un switch case pour adapter la réinitialisation des points mov et atc selon les joueurs(PLAYER, etc...)
             charsplaying->stats.setActPoints(6);
             charsplaying->stats.setMovPoints(3); // charsplaying->getStats().setMovPoints(3); ne marcherait pas car le get fait toujours des copies
          }

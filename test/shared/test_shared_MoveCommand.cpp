@@ -13,22 +13,30 @@ BOOST_AUTO_TEST_CASE(TestStaticAssert)
 
 BOOST_AUTO_TEST_CASE(TestMoveCommand)
 {
-/*
+
 Engine enginetest;
 
 enginetest.getState().initializeCharacters(); // getState -> currentState marche aussi
 
-Position targetedP {10, 10};
+Position targetedP2 {20,20}; // cas "doesn't have enough points"
+MoveCommand movec2(*enginetest.getState().getCharacters()[1], targetedP2);
+movec2.execute(enginetest.currentState);
+
+Position targetedP {10, 14}; // cas qui marche mais movPoints sera à 0 après
 MoveCommand movec1(*enginetest.getState().getCharacters()[1], targetedP);
+movec1.toRegist();
+
+BOOST_CHECK_EQUAL(enginetest.currentState.getCharacters()[1].get()->getPosition().getX(), 15);
+BOOST_CHECK_EQUAL(enginetest.currentState.getCharacters()[1].get()->getPosition().getY(), 14);
+BOOST_CHECK_EQUAL(enginetest.currentState.getCharacters()[1].get()->stats.getMovPoints(), 5);
+
+movec1.execute(enginetest.currentState);
+BOOST_CHECK_EQUAL(enginetest.currentState.getCharacters()[1].get()->getPosition().getX(), 10);
+BOOST_CHECK_EQUAL(enginetest.currentState.getCharacters()[1].get()->getPosition().getY(), 14);
+BOOST_CHECK_LT(enginetest.currentState.getCharacters()[1].get()->stats.getMovPoints(), 5);
+movec1.execute(enginetest.currentState); //exécution après que movPoints=0 => cas doesn't have any points 
 
 
-Character c1 = *enginetest.getState().getCharacters()[1];
 
-
-enginetest.getState().getCharacters()[1].get()->setStatus(FIGHTING);
-movec1.execute(enginetest.getState());
-BOOST_CHECK_EQUAL(enginetest.getState().getCharacters()[1].get()->getPosition().getX(), 10);
-BOOST_CHECK_LT(enginetest.getState().getCharacters()[1].get()->getStats().getMovPoints(), 30); // remplace getStats()->stats marche aussi
-*/
 }
 
