@@ -117,37 +117,37 @@ int Character::getTileID() {
     return tileID;
 }
 
-/*
+
 std::vector<Position> Character::verifMovingPosition (state::State& state) {
 	
-    std::vector<Position> canGoList;
+    vector<int> map=state.getMap();
+    vector<int> invalidMap2 ={16,38,18,19,173,174,175};
+    vector<int> invalidMap1 ={268,223,222,177,178,199,200,181,182,203,204,176,196,194,197,238,239,215,216,217,195,237};
+    std::vector<Position> validPos;
     std::vector<Position> validNears;
 
     for (auto &nearPosition : position.nearPositions(position))
-        // if within map
         if (nearPosition.getY() >= 0 && nearPosition.getX() >= 0 
-        && (unsigned int)nearPosition.getX() <= state.getMap()[0].size()
-        && (unsigned int)nearPosition.getY() <= state.getMap().size())
+        && (unsigned int)nearPosition.getX() <= 30
+        && (unsigned int)nearPosition.getY() <= 30)
             validNears.push_back(move(nearPosition));
-
     for (auto &validNear : validNears)
     {
-        for (auto &line : state.getMap())
-        {
-            if(line[0]->getPosition().getY() != validNear.getY())
-                continue;
-            for (auto &mapcell : line)
-            {
-                if(mapcell->getPosition().getX() != validNear.getX())
-                    continue;
-                if (mapcell->getPosition().equals(validNear) && mapcell->isOccupied(state) == -1)
-                    canGoList.push_back(move(mapcell->getPosition()));
-            }
-        }
+        int posForMap=validNear.getX()*30+validNear.getY();
+        
+        if(std::count(invalidMap2.begin(), invalidMap2.end(), state.Second_Layer[posForMap])){continue;} //Verif no obstacles on the position
+
+        if(std::count(invalidMap1.begin(), invalidMap1.end(), state.First_Layer[posForMap])){continue;} //Verif no obstacles on the position
+
+        else if(map[posForMap!=138]){continue;} //Verif no characters on the position
+
+        else{validPos.push_back(move(validNear));}
+        
     }
 
-    return canGoList;
-}*/
+    return validPos;
+}
+
 
 std::vector<int> Character::verifAttackPosition (state::State& state) {
 	vector<int> possibleIndexes;
