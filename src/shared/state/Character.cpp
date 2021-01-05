@@ -134,17 +134,17 @@ std::vector<Position> Character::verifMovingPosition (state::State& state) {
     for (auto &validNear : validNears)
     {
         int posForMap=validNear.getX()*30+validNear.getY();
-        
-        if(std::count(invalidMap2.begin(), invalidMap2.end(), state.Second_Layer[posForMap])){continue;} //Verif no obstacles on the position
+        if(std::count(invalidMap2.begin(), invalidMap2.end(), state.Second_Layer[posForMap])>0){continue;} //Verif no obstacles on the position
 
-        if(std::count(invalidMap1.begin(), invalidMap1.end(), state.First_Layer[posForMap])){continue;} //Verif no obstacles on the position
+        else if(std::count(invalidMap1.begin(), invalidMap1.end(), state.First_Layer[posForMap])>0){continue;} //Verif no obstacles on the position
 
-        else if(map[posForMap!=138]){continue;} //Verif no characters on the position
+        else if(map[posForMap]!=138){continue;} //Verif no characters on the position
 
         else{validPos.push_back(move(validNear));}
         
+        
     }
-
+    
     return validPos;
 }
 

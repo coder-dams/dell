@@ -225,6 +225,12 @@ int main(int argc,char* argv[])
         }
         else if (strcmp(argv[1], "random_ai") == 0)
         {
+            std::vector<Position> posi;
+            State s{"ok"};
+            s.initializeCharacters();
+            posi=s.getCharacters()[0]->verifMovingPosition(s);
+            for(auto k: posi){cout<<k.getX()<<k.getY()<<endl;}
+            
             /*srand(time(0));
             engine::Engine ngine{};
 

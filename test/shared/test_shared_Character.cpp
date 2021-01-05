@@ -1,6 +1,7 @@
 #include <boost/test/unit_test.hpp>
-
+#include <iostream>
 #include "../../src/shared/state/Character.h"
+#include "../../src/shared/state/State.h"
 
 using namespace ::state;
 using namespace ::std;
@@ -31,6 +32,14 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     BOOST_CHECK_EQUAL(c1.getStatus(), FIGHTING);
     c1.setStatus(WAITING);
     BOOST_CHECK_EQUAL(c1.getStatus(), WAITING);
+
+    std::vector<Position> posi;
+    State s{"ok"};
+    s.initializeCharacters();
+    posi=s.getCharacters()[0]->verifMovingPosition(s);
+    for(auto k: posi){cout<<k.getX()<<k.getY()<<endl;}
+    //BOOST_CHECK_EQUAL(pos, FIGHTING);
+
 
 }
 
