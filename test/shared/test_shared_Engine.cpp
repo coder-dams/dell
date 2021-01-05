@@ -25,7 +25,9 @@ BOOST_AUTO_TEST_CASE(TestEngineNamespace)
         unique_ptr<engine::Command> ptr_ac1(new engine::AttackCommand(*enginetest.getState().getCharacters()[0], *enginetest.getState().getCharacters()[1]));
         enginetest.addCommand(move(ptr_ac1));
 
+        enginetest.currentState.mode = "engine";
         enginetest.init();
+        enginetest.getRegist();
         
     }
 }

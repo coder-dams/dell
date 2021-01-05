@@ -33,10 +33,10 @@ void MoveCommand::execute(state::State &state)
 	int movPoints = mainCharacter.getStats().getMovPoints();
 	int deltaTarget =positionTarget.getX()+positionTarget.getY();
 	int deltaCharacter = mainCharacter.getPosition().getX()+mainCharacter.getPosition().getY();
-	int deltaPos = abs((deltaCharacter-deltaTarget));
+	int deltaPos = abs((deltaCharacter-deltaTarget)); //cas particulier à coder, ex: deltaPos=0 pour currentPos(15,14) et positionTargeted(14,15) alors que le joueur bouge quand meme
 
 	cout<<"The character has : "<<movPoints<<"movement points"<<endl;
-		cout<<"The character is fighting"<<endl;
+		cout<<"The character is moving"<<endl;
 		if (movPoints>=1){
 			if (movPoints>=deltaPos){
 				// mainCharacter.getPosition().setX(positionTarget.getX()); mauvaise méthode(trop de getter), règle: pas 2 "." de get de suite
