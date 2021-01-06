@@ -14,6 +14,7 @@ BOOST_AUTO_TEST_CASE(TestStaticAssert)
 BOOST_AUTO_TEST_CASE(TestStateClasses)
 
 {
+  
     Spells mySpellSet;
     Character c1{PLAYER, "Hamzalemsnap", 0, 0, mySpellSet,1,302};
     Character c2{BOWMAN, "Rachidox", 5, 5, mySpellSet,1,303};
@@ -23,9 +24,9 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     BOOST_CHECK_EQUAL(c1.getType(), PLAYER);
     BOOST_CHECK_EQUAL(c1.getStats().health, 150);
 
-    c1.getStats().setExperience(100);
+    c1.stats.setExperience(100);
     c1.LevelUp();
-    BOOST_CHECK_EQUAL(c1.getStats().getLevel(), 1);
+    BOOST_CHECK_EQUAL(c1.getStats().getLevel(), 2);
     BOOST_CHECK_EQUAL(c1.getSpells().getDamage(), 20);
     BOOST_CHECK(!c1.isMapCell());
 
@@ -36,8 +37,9 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     std::vector<Position> posi;
     State s{"ok"};
     s.initializeCharacters();
-    posi=s.getCharacters()[0]->verifMovingPosition(s);
-    for(auto k: posi){cout<<k.getX()<<k.getY()<<endl;}
+    
+    posi=s.characters[0].get()->verifMovingPosition(s);/*
+    for(auto k: posi){cout<<k.getX()<<k.getY()<<endl;}*/
     //BOOST_CHECK_EQUAL(pos, FIGHTING);
 
 

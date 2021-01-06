@@ -120,9 +120,9 @@ int Character::getTileID() {
 
 std::vector<Position> Character::verifMovingPosition (state::State& state) {
 	
-    vector<int> map=state.getMap();
-    vector<int> invalidMap2 ={16,38,18,19,173,174,175};
-    vector<int> invalidMap1 ={268,223,222,177,178,199,200,181,182,203,204,176,196,194,197,238,239,215,216,217,195,237};
+    std::vector<int> map=state.getMap();
+    std::vector<int> invalidMap2 ={16,38,18,19,173,174,175};
+    std::vector<int> invalidMap1 ={268,223,222,177,178,199,200,181,182,203,204,176,196,194,197,238,239,215,216,217,195,237};
     std::vector<Position> validPos;
     std::vector<Position> validNears;
 
