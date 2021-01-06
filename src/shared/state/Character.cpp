@@ -126,11 +126,13 @@ std::vector<Position> Character::verifMovingPosition (state::State& state) {
     std::vector<Position> validPos;
     std::vector<Position> validNears;
 
-    for (auto &nearPosition : position.nearPositions(position))
-        if (nearPosition.getY() >= 0 && nearPosition.getX() >= 0 
+    for (auto &nearPosition : position.nearPositions(position)) {
+        if ((nearPosition.getY() >= 0 && nearPosition.getX() >= 0 
         && (unsigned int)nearPosition.getX() <= 30
-        && (unsigned int)nearPosition.getY() <= 30)
+        && (unsigned int)nearPosition.getY() <= 30)){
             validNears.push_back(move(nearPosition));
+        }
+    }
     for (auto &validNear : validNears)
     {
         int posForMap=validNear.getX()*30+validNear.getY();
@@ -141,7 +143,6 @@ std::vector<Position> Character::verifMovingPosition (state::State& state) {
         else if(map[posForMap]!=138){continue;} //Verif no characters on the position
 
         else{validPos.push_back(move(validNear));}
-        
         
     }
     

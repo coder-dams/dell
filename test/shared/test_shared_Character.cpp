@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../../src/shared/state/Character.h"
 #include "../../src/shared/state/State.h"
+#include "../../src/client/render.h"
 
 using namespace ::state;
 using namespace ::std;
@@ -35,12 +36,12 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     BOOST_CHECK_EQUAL(c1.getStatus(), WAITING);
 
     std::vector<Position> posi;
+    std::vector<int> vec;
     State s{"ok"};
     s.initializeCharacters();
     
-    posi=s.characters[0].get()->verifMovingPosition(s);/*
-    for(auto k: posi){cout<<k.getX()<<k.getY()<<endl;}*/
-    //BOOST_CHECK_EQUAL(pos, FIGHTING);
+    vec=s.characters[0].get()->verifAttackPosition(s);
+    BOOST_CHECK_EQUAL(vec[0], 1);
 
 
 }
