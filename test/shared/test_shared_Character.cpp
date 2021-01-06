@@ -12,7 +12,7 @@ BOOST_AUTO_TEST_CASE(TestStaticAssert)
   BOOST_CHECK(1);
 }
 
-BOOST_AUTO_TEST_CASE(TestStateClasses)
+BOOST_AUTO_TEST_CASE(TestCharacter)
 
 {
   
