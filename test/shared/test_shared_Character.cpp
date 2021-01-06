@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE(TestStaticAssert)
   BOOST_CHECK(1);
 }
 
-BOOST_AUTO_TEST_CASE(TestStateClasses)
+BOOST_AUTO_TEST_CASE(TestCharacter)
 
 {
     Spells mySpellSet;
@@ -33,11 +33,11 @@ BOOST_AUTO_TEST_CASE(TestStateClasses)
     c1.setStatus(WAITING);
     BOOST_CHECK_EQUAL(c1.getStatus(), WAITING);
 
-    std::vector<Position> posi;
-    State s{"ok"};
-    s.initializeCharacters();
-    posi=s.getCharacters()[0]->verifMovingPosition(s);
-    for(auto k: posi){cout<<k.getX()<<k.getY()<<endl;}
+    //std::vector<Position> posi;
+    //State s{"ok"};
+    //s.initializeCharacters();
+    //posi=s.getCharacters()[0]->verifMovingPosition(s);
+    //for(auto k: posi){cout<<k.getX()<<k.getY()<<endl;}
     //BOOST_CHECK_EQUAL(pos, FIGHTING);
 
 
