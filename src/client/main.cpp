@@ -153,7 +153,6 @@ int main(int argc,char* argv[])
             ngine.getState().notifyObservers(se, ngine.getState());
 
             
-            
 
             layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_1(), 30, 30);
             layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_2(), 30, 30);
@@ -233,6 +232,14 @@ int main(int argc,char* argv[])
             ngine.getState().First_Layer=LoadLayer::MakeLayer_1();
             ngine.getState().Second_Layer=LoadLayer::MakeLayer_2();
 
+            /*std::vector<Position> validPos;
+            validPos=ngine.getState().getCharacters()[1]->verifMovingPosition(ngine.getState());
+            */
+            std::vector<int> validPos;
+            validPos=ngine.getState().getCharacters()[1]->verifAttackPosition(ngine.getState());
+            for(int k=0;k<validPos.size();k++){cout<<validPos.size()<<endl;;}
+            
+
             ai::RandomAI rai1;
             ai::RandomAI rai2;
             
@@ -277,11 +284,12 @@ int main(int argc,char* argv[])
                     else if (event.type == sf::Event::KeyPressed)
                     {
                         cout<<"Key pressed"<<endl;
-                        if (event.key.code == sf::Keyboard::RShift){
+                        if (event.key.code == sf::Keyboard::LShift){
                             cout<<"LShift pressed"<<endl;
                             while(ngine.currentState.end == false){
                                 cout<<"Player1 playing"<<endl;
                                 rai1.run(ngine);
+                                
                                 if(ngine.currentState.end == false){
                                     cout<<"Player2 playing"<<endl;
                                     rai2.run(ngine);
