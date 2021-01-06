@@ -147,8 +147,6 @@ int main(int argc,char* argv[])
             engine::Engine ngine{};
             ngine.getState().initializeCharacters();
             
-            StateLayer stateLayer(ngine.getState(), window,"engine");
-            StateLayer *ptr_stateLayer = &stateLayer;
             LoadLayer layer_1, layer_2,layer_3;
 
             StateEvent se{StateEventID::TURNCHANGED};
@@ -215,7 +213,6 @@ int main(int argc,char* argv[])
                 
                 ngine.init();
                 usleep(100000);
-                cout<<charac1.stats.getHealth()<<endl;
                 i++;
                 
                 }
@@ -231,23 +228,26 @@ int main(int argc,char* argv[])
             srand(time(0));
             engine::Engine ngine{};
 
-            //TO DO : ngine.getState().initializeMapCell();
 
             ngine.getState().initializeCharacters();
+            ngine.getState().First_Layer=LoadLayer::MakeLayer_1();
+            ngine.getState().Second_Layer=LoadLayer::MakeLayer_2();
+
             ai::RandomAI rai1;
             ai::RandomAI rai2;
+            
 
             rai1.setPlayerNumber(1);
             rai2.setPlayerNumber(2);
             //-----------------------------
+            
 
             sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
             render::LoadLayer layer_1, layer_2,layer_3;
             layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().First_Layer, 30, 30);
             layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().Second_Layer, 30, 30);
 
-            //StateLayer layer(ngine.getState(), window);
-            //layer.initLayer(ngine.getState());
+            
 
             //StateLayer stateLayer(ngine.getState(), window);
             //stateLayer.initLayer(ngine.getState());
@@ -268,7 +268,8 @@ int main(int argc,char* argv[])
                 window.draw(layer_2);
                 window.draw(layer_3);
                 window.display();
-                
+               
+
                 while (window.pollEvent(event))
                 {
                     if (event.type == sf::Event::Closed)
