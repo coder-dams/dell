@@ -153,10 +153,12 @@ int main(int argc,char* argv[])
 
             StateEvent se{StateEventID::TURNCHANGED};
             ngine.getState().notifyObservers(se, ngine.getState());
+
+            
             
 
-            layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().First_Layer, 30, 30);
-            layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().Second_Layer, 30, 30);
+            layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_1(), 30, 30);
+            layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_2(), 30, 30);
             int i=0;
             // on fait tourner la boucle principale
             while (window.isOpen())

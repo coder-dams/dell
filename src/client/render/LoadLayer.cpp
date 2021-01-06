@@ -1,5 +1,7 @@
 #include "../render.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 #include <cstdlib>
 using namespace std;
@@ -65,3 +67,43 @@ void LoadLayer::draw(sf::RenderTarget& target, sf::RenderStates states) const
     
 }
 
+std::vector<int> LoadLayer::MakeLayer_1 (){
+
+    int a;
+    std::vector<int> layer_1;
+    ifstream monFlux("../res/map1.txt");  //Ouverture d'un fichier en lecture
+
+    if(monFlux)
+    {
+        for(int i=0;i<900;i++) {
+        monFlux >> a;
+        layer_1.push_back(a);
+    }
+    }
+
+    monFlux.close();
+
+
+    return layer_1;
+
+}
+
+std::vector<int> LoadLayer::MakeLayer_2 (){
+
+    int a;
+    std::vector<int> layer_2;
+    ifstream monFlux("../res/map2.txt");  //Ouverture d'un fichier en lecture
+
+    if(monFlux)
+    {
+        for(int i=0;i<900;i++) {
+        monFlux >> a;
+        layer_2.push_back(a);
+    }
+    }
+    monFlux.close();
+
+
+    return layer_2;
+
+}
