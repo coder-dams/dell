@@ -277,6 +277,7 @@ int main(int argc,char* argv[])
                 window.draw(layer_1);
                 window.draw(layer_2);
                 window.draw(layer_3);
+                window.draw(layer_ui);
                 window.display();
                
 
