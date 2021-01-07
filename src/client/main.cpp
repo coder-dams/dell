@@ -147,7 +147,7 @@ int main(int argc,char* argv[])
             engine::Engine ngine{};
             ngine.getState().initializeCharacters();
             
-            LoadLayer layer_1, layer_2,layer_3;
+            LoadLayer layer_1, layer_2,layer_3, layer_ui;
 
             StateEvent se{StateEventID::TURNCHANGED};
             ngine.getState().notifyObservers(se, ngine.getState());
@@ -156,6 +156,7 @@ int main(int argc,char* argv[])
 
             layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_1(), 30, 30);
             layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_2(), 30, 30);
+            layer_ui.loadTextures(ngine.getState(),"../res/ui_textures/ui.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_UI(), 30, 30);
             int i=0;
             // on fait tourner la boucle principale
             while (window.isOpen())
@@ -167,6 +168,7 @@ int main(int argc,char* argv[])
                 window.draw(layer_1);
                 window.draw(layer_2);
                 window.draw(layer_3);
+                window.draw(layer_ui);
                 window.display();    
                 window.clear(); 
 
@@ -231,6 +233,7 @@ int main(int argc,char* argv[])
             ngine.getState().initializeCharacters();
             ngine.getState().First_Layer=LoadLayer::MakeLayer_1();
             ngine.getState().Second_Layer=LoadLayer::MakeLayer_2();
+            ngine.getState().UI_Layer=LoadLayer::MakeLayer_UI();
 
             /*std::vector<Position> validPos;
             validPos=ngine.getState().getCharacters()[1]->verifMovingPosition(ngine.getState());
@@ -250,10 +253,10 @@ int main(int argc,char* argv[])
             
 
             sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
-            render::LoadLayer layer_1, layer_2,layer_3;
+            render::LoadLayer layer_1, layer_2,layer_3,layer_ui;
             layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().First_Layer, 30, 30);
             layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().Second_Layer, 30, 30);
-
+            layer_ui.loadTextures(ngine.getState(),"../res/ui_textures/ui.png", sf::Vector2u(16, 16),ngine.getState().UI_Layer, 30, 30);
             
 
             //StateLayer stateLayer(ngine.getState(), window);

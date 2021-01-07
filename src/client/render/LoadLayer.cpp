@@ -107,3 +107,23 @@ std::vector<int> LoadLayer::MakeLayer_2 (){
     return layer_2;
 
 }
+
+std::vector<int> LoadLayer::MakeLayer_UI (){
+
+    int a;
+    std::vector<int> layer_ui;
+    ifstream monFlux("../res/ui.txt");  //Ouverture d'un fichier en lecture
+
+    if(monFlux)
+    {
+        for(int i=0;i<900;i++) {
+        monFlux >> a;
+        layer_ui.push_back(a);
+    }
+    }
+    monFlux.close();
+
+
+    return layer_ui;
+
+}

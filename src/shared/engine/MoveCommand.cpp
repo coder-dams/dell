@@ -54,7 +54,7 @@ void MoveCommand::execute(state::State &state)
 			}
 		}
 		else {
-		cout<<"The character don't have any movements points"<<endl;
+		cout<<"The character doesn't have any movements points"<<endl;
 		}
 
 	cout<<"\n"<<endl;
