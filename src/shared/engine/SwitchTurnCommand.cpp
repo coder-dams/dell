@@ -14,7 +14,7 @@ SwitchTurnCommand::SwitchTurnCommand (){
 //Réinitialiser toutes les caractéristiques des joueurs
 void SwitchTurnCommand::execute (state::State& state){
     
-    state.setCurrentTurn(state.getCurrentTurn()+1);
+    state.setCurrentTurn(state.currentTurn+1);
     state.setFightAction(F_IDLE);
 
     for(auto &charsplaying : state.characters) {
