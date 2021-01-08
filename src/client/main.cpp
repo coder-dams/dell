@@ -39,15 +39,16 @@ int main(int argc,char* argv[])
         else if (strcmp(argv[1], "render") == 0)
         {
             state::State state("Playing");
-            sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
+            sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
             // on définit le niveau à l'aide de numéro de tuiles
             
             state.modifyMap(456,302);
             
-            LoadLayer layer_1, layer_2,layer_3;
+            LoadLayer layer_1, layer_2,layer_3, layer_ui;
             layer_3.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),state.cMap, 30, 30);
             layer_1.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_1(), 30, 30);
             layer_2.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_2(), 30, 30);
+            layer_ui.loadTextures(state,"../res/ui_textures/ui.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_UI(), 30, 30);
             
             // on fait tourner la boucle principale
             while (window.isOpen())
@@ -65,13 +66,14 @@ int main(int argc,char* argv[])
                 window.draw(layer_1);
                 window.draw(layer_2);
                 window.draw(layer_3);
+                window.draw(layer_ui);
                 window.display();
                 
             }
 	    }
 	    else if (strcmp(argv[1], "test") == 0)
         {
-            sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
+            sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
             engine::Engine ngine{};
             ngine.getState().initializeCharacters();
             
@@ -143,7 +145,7 @@ int main(int argc,char* argv[])
 	    }
         else if (strcmp(argv[1], "engine") == 0)
         {
-            sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
+            sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
             engine::Engine ngine{};
             ngine.getState().initializeCharacters();
             
