@@ -28,21 +28,21 @@ void RandomAI::run(engine::Engine &engine)
     usleep(100000);
 
     
+    
+    
     if (selectedChar.verifAttackPosition(engine.getState()).size() > 0)
     {
         // can attack
         cout << "first if can attack ? true " << endl;
         int pa = selectedChar.getStats().getActPoints();
         int pm = selectedChar.getStats().getMovPoints();
-        cout<<"ok1"<<endl;
-        if(rand()%2)
-        {
+
             if (pa > 0)
             {
                 int random = selectedChar.verifAttackPosition(engine.getState())[(rand() % (selectedChar.verifAttackPosition(engine.getState()).size()))];
                 Character &targetToAttack = *engine.getState().getCharacters()[rand()%2];
                 // choose to attack or to move (0 move, 1 attack)
-                cout<<"ok2"<<endl;
+
                     // attack
                     unique_ptr<Command> atkCmd(new AttackCommand(selectedChar, targetToAttack));
                     engine.addCommand(move(atkCmd));
@@ -53,8 +53,8 @@ void RandomAI::run(engine::Engine &engine)
                     engine.addCommand(move(finTurnCmd));
                     engine.init();
                     return;
-              
-                
+                }
+            else {
                     // move
                     int randomMove = (rand() % selectedChar.verifMovingPosition(engine.getState()).size());
                     Position& p = selectedChar.verifMovingPosition(engine.getState())[randomMove];
@@ -62,17 +62,16 @@ void RandomAI::run(engine::Engine &engine)
                     engine.addCommand(move(mvCmd));
                     engine.init();
                     pm--;
-                    cout<<p.getX()<<p.getY()<<endl;
-                    cout<<engine.getState().cMap[p.getX()*30+p.getY()]<<endl;
-            }
+              }
+            
             unique_ptr<Command> endTurnCmd(new SwitchTurnCommand());
             engine.addCommand(move(endTurnCmd));
             engine.init();
             
-        }
-        else
+    }
+    else
         {
-            
+            int pm = selectedChar.getStats().getMovPoints();
             while ( pm > 0)
             {
                 
@@ -105,9 +104,7 @@ void RandomAI::run(engine::Engine &engine)
             engine.addCommand(move(finTurnCmd));
             engine.init();
             return;
-            
-        }
-    return;
+        
 }
 
 int RandomAI::selectCharacter (state::State& state){

@@ -291,6 +291,9 @@ int main(int argc,char* argv[])
                         if (event.key.code == sf::Keyboard::LShift){
                             cout<<"LShift pressed"<<endl;
                             while(ngine.currentState.end == false){
+                                for(int k=0;k<ngine.getState().getCharacters().size();k++){
+                                    if(ngine.getState().getCharacters()[k]->getStatus()==DEAD){break;}
+                                }
                                 cout<<"Player1 playing"<<endl;
                                 rai1.run(ngine);
                                 

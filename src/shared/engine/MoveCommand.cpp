@@ -41,7 +41,6 @@ void MoveCommand::execute(state::State &state)
 			if (movPoints>=deltaPos){
 				// mainCharacter.getPosition().setX(positionTarget.getX()); mauvaise méthode(trop de getter), règle: pas 2 "." de get de suite
 				state.cMap[mainCharacter.position.y+mainCharacter.position.x*30]=138;
-				cout<<mainCharacter.position.y<<endl;
 				mainCharacter.position.x = positionTarget.getX();
                 mainCharacter.position.y = positionTarget.getY();
 				mainCharacter.stats.setMovPoints(movPoints-deltaPos);
