@@ -69,7 +69,7 @@ int main(int argc,char* argv[])
                 
             }
 	    }
-	    else if (strcmp(argv[1], "engine") == 0)
+	    else if (strcmp(argv[1], "test") == 0)
         {
             sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
             engine::Engine ngine{};
@@ -141,7 +141,7 @@ int main(int argc,char* argv[])
                 
             }
 	    }
-        else if (strcmp(argv[1], "test") == 0)
+        else if (strcmp(argv[1], "engine") == 0)
         {
             sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
             engine::Engine ngine{};
