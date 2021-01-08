@@ -42,12 +42,12 @@ int main(int argc,char* argv[])
             sf::RenderWindow window(sf::VideoMode(512, 512), "Lotus Map");
             // on définit le niveau à l'aide de numéro de tuiles
             
-            state.modifyMap(0,302);
+            state.modifyMap(456,302);
             
             LoadLayer layer_1, layer_2,layer_3;
             layer_3.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),state.cMap, 30, 30);
-            layer_1.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),state.First_Layer, 30, 30);
-            layer_2.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),state.Second_Layer, 30, 30);
+            layer_1.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_1(), 30, 30);
+            layer_2.loadTextures(state,"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_2(), 30, 30);
             
             // on fait tourner la boucle principale
             while (window.isOpen())
