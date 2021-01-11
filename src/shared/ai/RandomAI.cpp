@@ -52,7 +52,7 @@ void RandomAI::run(engine::Engine &engine)
                     unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
                     engine.addCommand(move(finTurnCmd));
                     engine.init();
-                    return;
+                   // return;
                 }
             else {
                     // move
@@ -97,13 +97,13 @@ void RandomAI::run(engine::Engine &engine)
                     unique_ptr<Command> endTurnCmd(new SwitchTurnCommand());
                     engine.addCommand(move(endTurnCmd));
                     engine.init();
-                    return;
-                }
+                    //return;
             }
-            unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
-            engine.addCommand(move(finTurnCmd));
-            engine.init();
-            return;
+        }
+    unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
+    engine.addCommand(move(finTurnCmd));
+    engine.init();
+    //return;
         
 }
 
