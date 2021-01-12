@@ -281,6 +281,7 @@ int main(int argc,char* argv[])
                 window.draw(layer_3);
                 window.draw(layer_ui);
                 window.display();
+		
                
 
                 while (window.pollEvent(event))

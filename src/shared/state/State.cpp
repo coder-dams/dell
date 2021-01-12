@@ -66,6 +66,7 @@ void State::initializeCharacters (){
     State::modifyMap(15*30+14,303);
 
    	cout << "Characters created\n";
+	cout << "Press LShift to start" << endl;
 }
 
 void State::modifyMap(int tile,int newTile)
