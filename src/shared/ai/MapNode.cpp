@@ -30,8 +30,8 @@ bool MapNode::getOccupied (){
     return occupied;
 }
 
-void MapNode::setOcuppied (bool newOccup){
-    this->occupied = newOccup;
+void MapNode::setOccuppied (bool newOccupied){
+    this->occupied = newOccupied;
 }
 
 int MapNode::getY(){
