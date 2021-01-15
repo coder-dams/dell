@@ -238,11 +238,11 @@ int main(int argc,char* argv[])
 
             srand(time(0));
             engine::Engine ngine{};
+            ngine.getState().initializeCharacters();
 
-            std::vector<int> validPos;
-            validPos=ngine.getState().getCharacters()[1]->verifAttackPosition(ngine.getState());
-            for(int k=0;k<validPos.size();k++){cout<<validPos.size()<<endl;;}
-            
+            ngine.getState().First_Layer=LoadLayer::MakeLayer_1();
+            ngine.getState().Second_Layer=LoadLayer::MakeLayer_2();
+            ngine.getState().UI_Layer=LoadLayer::MakeLayer_UI();
 
             ai::RandomAI rai1;
             ai::RandomAI rai2;
@@ -259,7 +259,7 @@ int main(int argc,char* argv[])
             //StateLayer *ptr_stateLayer = &stateLayer;
             //ngine.getState().registerObserver(ptr_stateLayer);
 
-            ngine.currentState.end = false;
+            ngine.currentState.end  = false;
 
 
             while (window.isOpen())
