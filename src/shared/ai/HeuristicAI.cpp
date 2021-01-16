@@ -17,10 +17,13 @@ void HeuristicAI::run(engine::Engine &engine){
 }
 
 void HeuristicAI::setPlayerNumber(int np){
+     if(np == 1 || np == 2){
+        playerNumber = np;
+    }
 }
 
 int HeuristicAI::getPlayerNumber(){
-return 0;
+    return playerNumber;
 }
 
 int HeuristicAI::selectCharacter(state::State &state){
