@@ -6,9 +6,8 @@
 using namespace ai;
 using namespace std;
 
-MapNode::MapNode(int x, int y, int newId, bool isObstacle){
-    this->x = x;
-    this->y = y;
+MapNode::MapNode(int tileID, int newId, bool isObstacle){
+    this->tileID = tileID;
     this->id = newId;
     this->isObstacle = isObstacle;
 }
@@ -22,8 +21,8 @@ bool MapNode::addNear (MapNode* near){
     return true;
 }
 
-int MapNode::getX(){
-    return x;
+int MapNode::getTileID(){
+    return tileID;
 }
 
 bool MapNode::getOccupied (){
@@ -34,14 +33,8 @@ void MapNode::setOccuppied (bool newOccupied){
     this->occupied = newOccupied;
 }
 
-int MapNode::getY(){
-    return y;
+void MapNode::setTileID(int newTileID){
+    this->tileID= newTileID;
 }
 
-void MapNode::setX(int newX){
-    this->x = newX;
-}
 
-void MapNode::setY(int newY){
-    this->y = newY;
-}
