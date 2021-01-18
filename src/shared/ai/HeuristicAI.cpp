@@ -32,7 +32,14 @@ return 0;
 
 
 bool HeuristicAI::initMapNodes(state::State &state){
-    
+    int k = 0;
+    /*MapNode tmp {state.getMap()[i][j]->getPosition().getX(), 
+    state.getMap()[i][j]->getPosition().getY(), k, !state.getMap()[i][j]->isSpace()};
+    for(unsigned int i = 0; i<state.getMap().size(); i++){
+        for(unsigned int j = 0; j<state.getMap().size(); j++){
+            map
+        }
+    }*/
     return true;
 }
 
