@@ -38,11 +38,19 @@ mkdir build (first use only)
 cd build
 clean
 cmake .. 
-make -j
+make
 ```
 
 
 ## Release History
+
+* 2.final
+    * Report 2.final
+    * AI (random) diagram and implementation
+    * Random_AI playing against one another
+```bash
+./bin/client random_ai
+```
 
 * 2.2
     * Report 2.2

@@ -11,6 +11,7 @@ add_custom_test(shared_Cursor)
 add_custom_test(shared_Element)
 
 #engine functions 
+add_custom_test(shared_Engine)
 add_custom_test(shared_Command)
 add_custom_test(shared_AttackCommand)
 add_custom_test(shared_MoveCommand)
@@ -19,10 +20,7 @@ add_custom_test(shared_SwitchTurnCommand)
 add_custom_test(shared_FreeCell)
 add_custom_test(shared_ObstacleCell)
 
-
-add_custom_test(shared_Engine)
-
-
+#ia functions
 add_custom_test(shared_Random_AI)
 
 

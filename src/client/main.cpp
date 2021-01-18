@@ -78,28 +78,15 @@ int main(int argc,char* argv[])
             ngine.getState().initializeCharacters();
             
             StateLayer stateLayer(ngine.getState(), window,"engine");
-            StateLayer *ptr_stateLayer = &stateLayer;
-            LoadLayer layer_1, layer_2,layer_3;
 
-            StateEvent se{StateEventID::TURNCHANGED};
-            ngine.getState().notifyObservers(se, ngine.getState());
-            
-
-            layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().First_Layer, 30, 30);
-            layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().Second_Layer, 30, 30);
             int i=0;
             // on fait tourner la boucle principale
             while (window.isOpen())
             {
-                layer_3.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().cMap, 30, 30);
-
                 // on gère les évènements
                 sf::Event event;
-                window.draw(layer_1);
-                window.draw(layer_2);
-                window.draw(layer_3);
-                window.display();    
-                window.clear(); 
+                stateLayer.initLayer(ngine.getState());
+                stateLayer.draw(window);
 
 
                 while (window.pollEvent(event))
@@ -109,7 +96,7 @@ int main(int argc,char* argv[])
                 }
                 usleep(1000000);
                 Character& charac0 = *ngine.getState().getCharacters()[0];
-                Character& charac1 = *ngine.getState().getCharacters()[1];
+
                 
                 int initialXP1 = charac0.getPosition().getX();
                 int initialYP1 = charac0.getPosition().getY();
@@ -148,31 +135,22 @@ int main(int argc,char* argv[])
             sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
             engine::Engine ngine{};
             ngine.getState().initializeCharacters();
-            
-            LoadLayer layer_1, layer_2,layer_3, layer_ui;
 
             StateEvent se{StateEventID::TURNCHANGED};
             ngine.getState().notifyObservers(se, ngine.getState());
-
+            
+            StateLayer stateLayer(ngine.getState(), window,"engine");
             
 
-            layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_1(), 30, 30);
-            layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_2(), 30, 30);
-            layer_ui.loadTextures(ngine.getState(),"../res/ui_textures/ui.png", sf::Vector2u(16, 16),LoadLayer::MakeLayer_UI(), 30, 30);
             int i=0;
             // on fait tourner la boucle principale
             while (window.isOpen())
             {
-                layer_3.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().cMap, 30, 30);
 
                 // on gère les évènements
                 sf::Event event;
-                window.draw(layer_1);
-                window.draw(layer_2);
-                window.draw(layer_3);
-                window.draw(layer_ui);
-                window.display();    
-                window.clear(); 
+                stateLayer.initLayer(ngine.getState());
+                stateLayer.draw(window);
 
 
                 while (window.pollEvent(event))
@@ -187,16 +165,16 @@ int main(int argc,char* argv[])
                 int initialXP1 = charac0.getPosition().getX();
                 int initialYP1 = charac0.getPosition().getY();
 
-                
+                int initialXP2 = charac1.getPosition().getX();
+                int initialYP2 = charac1.getPosition().getY();
+        
                 
                 if(i==0){
                 unique_ptr<engine::Command> ptr_sc(new engine::SelectCharacterCommand(charac0));
                 ngine.addCommand(move(ptr_sc));
-
                 
                 unique_ptr<engine::Command> ptr_ac1(new engine::AttackCommand(charac0, charac1));
                 ngine.addCommand(move(ptr_ac1));
-                
 
                 Position pos1{initialXP1, ++initialYP1};
                 unique_ptr<engine::Command> ptr_mc1(new engine::MoveCommand(charac0, pos1));
@@ -219,6 +197,36 @@ int main(int argc,char* argv[])
                 i++;
                 
                 }
+                else if(i==1){
+                cout<<"PLAYER 2 PLAYING"<<endl;
+                unique_ptr<engine::Command> ptr_sc(new engine::SelectCharacterCommand(charac1));
+                ngine.addCommand(move(ptr_sc));
+
+                Position pos1{initialXP2, ++initialYP2};
+                unique_ptr<engine::Command> ptr_mc11(new engine::MoveCommand(charac1, pos1));
+                ngine.addCommand(move(ptr_mc11));
+                
+                Position pos2{++initialXP2, ++initialYP2};
+                unique_ptr<engine::Command> ptr_mc22(new engine::MoveCommand(charac1, pos2));
+                ngine.addCommand(move(ptr_mc22));
+
+                Position pos3{++initialXP2, initialYP2+2};
+                unique_ptr<engine::Command> ptr_mc33(new engine::MoveCommand(charac1, pos3));
+                ngine.addCommand(move(ptr_mc33));
+                                
+                unique_ptr<engine::Command> ptr_ac11(new engine::AttackCommand(charac1, charac0));
+                ngine.addCommand(move(ptr_ac11));
+
+                unique_ptr<engine::Command> ptr_ac12(new engine::AttackCommand(charac1, charac0));
+                ngine.addCommand(move(ptr_ac12));
+
+                unique_ptr<engine::Command> ptr_fcc(new engine::SwitchTurnCommand());
+                ngine.addCommand(move(ptr_fcc));
+                cout << "Executing commands" << endl;
+                
+                ngine.init();
+                i++;
+                }
                 
                 
             }
@@ -230,20 +238,11 @@ int main(int argc,char* argv[])
 
             srand(time(0));
             engine::Engine ngine{};
-
-
             ngine.getState().initializeCharacters();
+
             ngine.getState().First_Layer=LoadLayer::MakeLayer_1();
             ngine.getState().Second_Layer=LoadLayer::MakeLayer_2();
             ngine.getState().UI_Layer=LoadLayer::MakeLayer_UI();
-
-            /*std::vector<Position> validPos;
-            validPos=ngine.getState().getCharacters()[1]->verifMovingPosition(ngine.getState());
-            */
-            std::vector<int> validPos;
-            validPos=ngine.getState().getCharacters()[1]->verifAttackPosition(ngine.getState());
-            for(int k=0;k<validPos.size();k++){cout<<validPos.size()<<endl;;}
-            
 
             ai::RandomAI rai1;
             ai::RandomAI rai2;
@@ -255,33 +254,20 @@ int main(int argc,char* argv[])
             
 
             sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
-            render::LoadLayer layer_1, layer_2,layer_3,layer_ui;
-            layer_1.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().First_Layer, 30, 30);
-            layer_2.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().Second_Layer, 30, 30);
-            layer_ui.loadTextures(ngine.getState(),"../res/ui_textures/ui.png", sf::Vector2u(16, 16),ngine.getState().UI_Layer, 30, 30);
-            
-
-            //StateLayer stateLayer(ngine.getState(), window);
-            //stateLayer.initLayer(ngine.getState());
-            // Registering observer
+            StateLayer stateLayer(ngine.getState(), window,"random_ai");
+     
             //StateLayer *ptr_stateLayer = &stateLayer;
             //ngine.getState().registerObserver(ptr_stateLayer);
-            bool once = true;
-            ngine.currentState.end = false;
+
+            ngine.currentState.end  = false;
 
 
             while (window.isOpen())
             {
-                layer_3.loadTextures(ngine.getState(),"../res/snow-expansion.png", sf::Vector2u(16, 16),ngine.getState().cMap, 30, 30);
-
+                stateLayer.initLayer(ngine.getState());
+                stateLayer.draw(window);
                 sf::Event event;
-                
-                window.draw(layer_1);
-                window.draw(layer_2);
-                window.draw(layer_3);
-                window.draw(layer_ui);
-                window.display();
-               
+
 
                 while (window.pollEvent(event))
                 {
@@ -293,12 +279,19 @@ int main(int argc,char* argv[])
                         if (event.key.code == sf::Keyboard::LShift){
                             cout<<"LShift pressed"<<endl;
                             while(ngine.currentState.end == false){
+                                for(int k=0;k<ngine.getState().getCharacters().size();k++){
+                                    if(ngine.getState().getCharacters()[k]->getStatus()==DEAD){break;}
+                                }
                                 cout<<"Player1 playing"<<endl;
                                 rai1.run(ngine);
+                                stateLayer.initLayer(ngine.getState());
+                                stateLayer.draw(window);
                                 
                                 if(ngine.currentState.end == false){
                                     cout<<"Player2 playing"<<endl;
                                     rai2.run(ngine);
+                                    stateLayer.initLayer(ngine.getState());
+                                    stateLayer.draw(window);
                                 }
                             }
                         }

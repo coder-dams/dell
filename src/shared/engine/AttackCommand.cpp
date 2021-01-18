@@ -47,7 +47,9 @@ void AttackCommand::execute (state::State &state)
         mainCharacter.stats.setActPoints(attackP-mainCharacter.getSpells().getCost());
         break;
 	}*/
-
+	if(newHealth<=0){
+		targetedCharacter.setStatus(DEAD);
+	}
 
 	cout<<targetedCharacter.name <<" now has "<<
 	targetedCharacter.stats.getHealth()<<"HP \n"<<endl;
