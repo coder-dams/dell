@@ -36,7 +36,14 @@ void SwitchTurnCommand::execute (state::State& state){
                 charsplaying->setStatus(WAITING);
               }       
         }
-        if(nb_nodead<state.characters.size()){while(1){if(print_status){cout<<"END OF THE GAME"<<endl;print_status=false;}};}//QUITTE LE JEU
+        if(nb_nodead<state.characters.size()){
+            while(1){
+                if(print_status){
+                    cout<<"END OF THE GAME"<<endl;  //QUITTE LE JEU
+                    print_status=false;
+                }
+            };
+        }
         
     }
 

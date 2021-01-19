@@ -154,7 +154,7 @@ std::vector<int> Character::verifAttackPosition (state::State& state) {
 	vector<int> possibleIndexes;
     for(unsigned int i = 0; i < state.getCharacters().size(); i++){
         Character& charac = *state.getCharacters()[i];
-        if(charac.getPlayerOwner() != playerOwner && charac.getStatus() != DEAD){
+        if(charac.getPlayerOwner() != state.turnOwner && charac.getStatus() != DEAD){
             // check distances
             int maxDistance = charac.getSpells().getRange() + 1;
             Position charapos = charac.getPosition();
