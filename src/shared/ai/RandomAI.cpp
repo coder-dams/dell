@@ -24,7 +24,7 @@ void RandomAI::run(engine::Engine &engine)
     // can attack?
     vector<int> ValidPos;
     ValidPos=engine.getState().getCharacters()[1]->verifAttackPosition(engine.getState());
-    
+    bool moving=false;
     
 
 
@@ -37,7 +37,7 @@ void RandomAI::run(engine::Engine &engine)
         int pa = selectedChar.getStats().getActPoints();
         int pm = selectedChar.getStats().getMovPoints();
 
-            if (pa > 0)
+            if (moving==false)
             {
                 //int random = selectedChar.verifAttackPosition(engine.getState())[(rand() % (selectedChar.verifAttackPosition(engine.getState()).size()))];
                 Character &targetToAttack = *engine.getState().getCharacters()[rand()%2];
@@ -46,8 +46,9 @@ void RandomAI::run(engine::Engine &engine)
                     // attack
                     unique_ptr<Command> atkCmd(new AttackCommand(selectedChar, targetToAttack));
                     engine.addCommand(move(atkCmd));
-                    engine.init();
+                    //engine.init();
                     pa=pa-3;
+                    moving=true;
 
                     //unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
                     //engine.addCommand(move(finTurnCmd));
@@ -61,7 +62,7 @@ void RandomAI::run(engine::Engine &engine)
                     Position& p = selectedChar.verifMovingPosition(engine.getState())[randomMove];
                     unique_ptr<Command> mvCmd(new MoveCommand(selectedChar, p));
                     engine.addCommand(move(mvCmd));
-                    engine.init();
+                    //engine.init();
                     pm--;
               }
             
@@ -72,6 +73,7 @@ void RandomAI::run(engine::Engine &engine)
             engine.init();
             
     }
+    /*
     else
         {
             int pa = selectedChar.getStats().getActPoints();
@@ -110,7 +112,7 @@ void RandomAI::run(engine::Engine &engine)
     engine.addCommand(move(finTurnCmd));
     engine.init();
     //return;
-    }     
+    }     */
 }
 
 int RandomAI::selectCharacter (state::State& state){

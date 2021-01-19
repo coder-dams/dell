@@ -22,5 +22,5 @@ SelectCharacterCommand selectPlayer(*enginetest.currentState.getCharacters()[1])
 enginetest.currentState.setCurrentTurn(1);
 selectPlayer.execute(enginetest.currentState);
 BOOST_CHECK_EQUAL(enginetest.currentState.getCharacters()[1].get()->getStatus(), SELECTED);
-BOOST_CHECK_EQUAL(enginetest.currentState.getCharacters()[0].get()->getStatus(), WAITING);
+BOOST_CHECK_EQUAL(enginetest.currentState.getCharacters()[0].get()->getStatus(), FIGHTING);
 }
