@@ -167,5 +167,16 @@ std::vector<int> Character::verifAttackPosition (state::State& state) {
     return possibleIndexes;	
 }
 
+int Character::fetchCharacPos (std::vector<int> map) {
+    for(int i = 0; i<map.size(); i++) {
+        if(tileID==map[i]) {
+            return i;
+        }
+    }
+}
+
+int Character::convPosToTile () {
+    return position.getY()*30 + position.getX();
+}
 
 
