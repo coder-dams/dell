@@ -267,7 +267,7 @@ int main(int argc,char* argv[])
                 stateLayer.initLayer(ngine.getState());
                 stateLayer.draw(window);
                 sf::Event event;
-
+                ngine.currentState.end==false;
 
                 while (window.pollEvent(event))
                 {
@@ -293,6 +293,7 @@ int main(int argc,char* argv[])
                                     stateLayer.initLayer(ngine.getState());
                                     stateLayer.draw(window);
                                 }
+                                ngine.currentState.end==true;
                             }
                         }
                     }
