@@ -24,9 +24,6 @@ void RandomAI::run(engine::Engine &engine)
     // can attack?
     vector<int> ValidPos;
     ValidPos=engine.getState().getCharacters()[1]->verifAttackPosition(engine.getState());
-    bool moving=false;
-    
-
 
 
     
@@ -47,7 +44,7 @@ void RandomAI::run(engine::Engine &engine)
                     unique_ptr<Command> atkCmd(new AttackCommand(selectedChar, targetToAttack));
                     engine.addCommand(move(atkCmd));
                     pa=pa-3;
-                    moving=true;
+                    
             
             
                 if(pm>0){
@@ -96,9 +93,11 @@ void RandomAI::run(engine::Engine &engine)
                 
             }
         
-    unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
-    engine.addCommand(move(finTurnCmd));
-    engine.init();
+            unique_ptr<Command> endTurnCmd(new SwitchTurnCommand());
+            engine.addCommand(move(endTurnCmd));
+            if(engine.getState().turnOwner==0){engine.getState().setTurnOwner(1);}
+            else{engine.getState().setTurnOwner(0);}
+            engine.init();
     //return;
     }     
 }
