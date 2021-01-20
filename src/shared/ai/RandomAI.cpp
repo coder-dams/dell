@@ -93,7 +93,6 @@ void RandomAI::run(engine::Engine &engine)
                     engine.addCommand(move(atkCmd));
                     pa--;
                 }
-
                 
             }
         
