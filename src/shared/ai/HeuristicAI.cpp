@@ -120,7 +120,15 @@ int HeuristicAI::getPlayerNumber(){
 }
 
 int HeuristicAI::selectCharacter(state::State &state){
-return 0;
+    std::vector<int> posibleIndex;
+
+    for( unsigned i = 0; i < state.getCharacters().size(); i++){
+        Character &charac = *state.getCharacters()[i];
+        if(state.getTurnOwner() == playerNumber && charac.getStatus() != DEAD)
+            posibleIndex.push_back(i);
+    }
+        
+    return 0;
 }
 
 
