@@ -22,6 +22,7 @@ add_custom_test(shared_ObstacleCell)
 
 #ia functions
 add_custom_test(shared_Random_AI)
+add_custom_test(shared_Heuristic_AI)
 
 
 # vim: set sw=2 sts=2 et:
