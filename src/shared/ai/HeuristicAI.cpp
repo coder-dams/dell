@@ -164,11 +164,11 @@ int HeuristicAI::selectTarget(State& state, int selectedCharacIndex){
     int index = -1;
     int minimalDist = INT32_MAX;
     for(unsigned int i = 0; i < state.characters.size(); i++){
-        if(state.turnOwner() != playerNumber 
-        && state.characters[i]->status != DEAD
-        && selectedChar.position.distance(state.characters[i]->position) < minimalDist){
+        if(state.turnOwner != playerNumber 
+        && state.characters[i]->getStatus() != DEAD
+        && distance(&selectedChar.position, &state.characters[i]->position) < minimalDist){
             index = i;
-            minimalDist = selectedChar.position.distance(state.characters[i]->position;
+            minimalDist = distance(&selectedChar.position, &state.characters[i]->position);
         }
     }
     return index;
@@ -178,7 +178,7 @@ int HeuristicAI::findMapNodeIndex(State& state, int characterIndex){
     Character &selectedChar = *state.getCharacters()[characterIndex];
 
     for(unsigned int i = 0; i < mapNodes.size(); i++){
-        if(selectedChar.position.x == mapNodes[i].x && selectedChar.position.y == mapNodes[i].y){
+        if(selectedChar.position.x == mapNodes[i].getX() && selectedChar.position.y == mapNodes[i].getY()){
             return i;
         }
     }
@@ -187,10 +187,10 @@ int HeuristicAI::findMapNodeIndex(State& state, int characterIndex){
 
 
 list<MapNode> HeuristicAI::shortestPath(MapNode &source, MapNode &target){
-   
+
 }
 
 
 std::vector<MapNode> HeuristicAI::callShortestPath(MapNode &source, MapNode &target){
-    
+
 }

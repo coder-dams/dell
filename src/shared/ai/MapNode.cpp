@@ -51,4 +51,20 @@ bool MapNode::isOccupied(int tile) {
 
 }
 
+int MapNode::getX(){
+    return x;
+}
+
+int MapNode::getY(){
+    return y;
+}
+
+void MapNode::setX(int nX){
+    this->x = nX;
+}
+
+void MapNode::setY(int nY){
+    this->y = nY;
+}
+
 
