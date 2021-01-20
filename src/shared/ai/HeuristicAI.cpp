@@ -136,14 +136,20 @@ even if a cell its occuped, isnt added to this vector.*/
         }
         k++;
     // to complete
-    return true;
     }
+    return true;
 } 
 
 
 void HeuristicAI::updateMapNodes(State &state){
-    
-}
+    for(auto &mapNode : mapNodes){
+        mapNode.setOccupied(false);
+        for(auto &charac : state.getCharacters()) {
+            //if(charac->){
+
+            }
+        }
+    }
 
 int HeuristicAI::selectTarget(State& state, int selectedCharacIndex){
 return 0;

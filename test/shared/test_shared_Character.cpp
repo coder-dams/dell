@@ -18,9 +18,9 @@ BOOST_AUTO_TEST_CASE(TestCharacter)
   
     Spells mySpellSet;
     Character c1{PLAYER, "Hamzalemsnap", 0, 0, mySpellSet,1,302};
-    Character c2{BOWMAN, "Rachidox", 5, 5, mySpellSet,1,303};
-    Character c3{SKELETON, "Lepo", 10, 10, mySpellSet,1,302};
-    Character c4{SORCERER, "Abdoulaye", 15, 15, mySpellSet,1,302};
+    Character c2{BOWMAN, "Rachidox+30", 5, 5, mySpellSet,1,303};
+    Character c3{SKELETON, "Lepo la clavicule", 10, 10, mySpellSet,1,302};
+    Character c4{SORCERER, "AbdoulayeDoubleWay", 15, 15, mySpellSet,1,302};
 
     BOOST_CHECK_EQUAL(c1.getType(), PLAYER);
     BOOST_CHECK_EQUAL(c1.getStats().health, 150);
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(TestCharacter)
     s.initializeCharacters();
     
     vec=s.characters[0].get()->verifAttackPosition(s);
-    BOOST_CHECK_EQUAL(vec[0], 1);
+    BOOST_CHECK_EQUAL(vec[0], 0);
 
 
 }
