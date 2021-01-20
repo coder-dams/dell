@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(TestCharacter)
     s.initializeCharacters();
     
     vec=s.characters[0].get()->verifAttackPosition(s);
-    BOOST_CHECK_EQUAL(vec[0], 1);
+    BOOST_CHECK_EQUAL(vec[0], 0);
 
 
 }
