@@ -164,8 +164,14 @@ return 0;
 }
 
 int HeuristicAI::findMapNodeIndex(State& state, int characterIndex){
-    
-    return 0;
+    Character &selectedChar = *state.getCharacters()[characterIndex];
+
+    for(unsigned int i = 0; i < mapNodes.size(); i++){
+        if(selectedChar.position.x == mapNodes[i].x && selectedChar.position.y == mapNodes[i].y){
+            return i;
+        }
+    }
+    return -1;
 }
 
 
