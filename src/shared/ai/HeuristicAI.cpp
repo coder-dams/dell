@@ -160,7 +160,18 @@ void HeuristicAI::updateMapNodes(State &state){
     }
 
 int HeuristicAI::selectTarget(State& state, int selectedCharacIndex){
-return 0;
+    Character &selectedChar = *state.getCharacters()[selectedCharacIndex];
+    int index = -1;
+    int minimalDist = INT32_MAX;
+    for(unsigned int i = 0; i < state.characters.size(); i++){
+        if(state.turnOwner() != playerNumber 
+        && state.characters[i]->status != DEAD
+        && selectedChar.position.distance(state.characters[i]->position) < minimalDist){
+            index = i;
+            minimalDist = selectedChar.position.distance(state.characters[i]->position;
+        }
+    }
+    return index;
 }
 
 int HeuristicAI::findMapNodeIndex(State& state, int characterIndex){
