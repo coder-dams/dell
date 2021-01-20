@@ -36,9 +36,9 @@ void RandomAI::run(engine::Engine &engine)
         cout << "first if can attack ? true " << endl;
         int pa = selectedChar.getStats().getActPoints();
         int pm = selectedChar.getStats().getMovPoints();
+        
 
-            if (moving==false)
-            {
+            
                 //int random = selectedChar.verifAttackPosition(engine.getState())[(rand() % (selectedChar.verifAttackPosition(engine.getState()).size()))];
                 Character &targetToAttack = *engine.getState().getCharacters()[rand()%2];
                 // choose to attack or to move (0 move, 1 attack)
@@ -46,25 +46,19 @@ void RandomAI::run(engine::Engine &engine)
                     // attack
                     unique_ptr<Command> atkCmd(new AttackCommand(selectedChar, targetToAttack));
                     engine.addCommand(move(atkCmd));
-                    //engine.init();
                     pa=pa-3;
                     moving=true;
-
-                    //unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
-                    //engine.addCommand(move(finTurnCmd));
-                    //engine.init();
-                   
-                }
-            else {
+            
+            
+                if(pm>0){
                     // move
-                    int randomMove = (rand() % selectedChar.verifMovingPosition(engine.getState()).size());
-                    
-                    Position& p = selectedChar.verifMovingPosition(engine.getState())[randomMove];
+                    std::vector<Position> pos = selectedChar.verifMovingPosition(engine.getState());
+                    int randomMove = (rand() % pos.size());
+                    Position p =pos[randomMove] ;
                     unique_ptr<Command> mvCmd(new MoveCommand(selectedChar, p));
                     engine.addCommand(move(mvCmd));
-                    //engine.init();
                     pm--;
-              }
+                 }
             
             unique_ptr<Command> endTurnCmd(new SwitchTurnCommand());
             engine.addCommand(move(endTurnCmd));
@@ -73,7 +67,7 @@ void RandomAI::run(engine::Engine &engine)
             engine.init();
             
     }
-    /*
+    
     else
         {
             int pa = selectedChar.getStats().getActPoints();
@@ -82,13 +76,12 @@ void RandomAI::run(engine::Engine &engine)
             {
                 
                 // can NOT attack, JUST MOVE.
-                int randomMove = (rand() % selectedChar.verifMovingPosition(engine.getState()).size());
-                Position p{selectedChar.verifMovingPosition(engine.getState())[randomMove].getX(), selectedChar.verifMovingPosition(engine.getState())[randomMove].getY()};
-                unique_ptr<Command> mvCmd(new MoveCommand(selectedChar, p));
-                engine.addCommand(move(mvCmd));
-                engine.init();
-                pm--;
-                cout << " move executed " << endl;
+                    std::vector<Position> pos = selectedChar.verifMovingPosition(engine.getState());
+                    int randomMove = (rand() % pos.size());
+                    Position p =pos[randomMove] ;
+                    unique_ptr<Command> mvCmd(new MoveCommand(selectedChar, p));
+                    engine.addCommand(move(mvCmd));
+                    pm--;
 
                 // now i was deplaced, can attack?
                 if (selectedChar.verifAttackPosition(engine.getState()).size())
@@ -98,13 +91,9 @@ void RandomAI::run(engine::Engine &engine)
                     Character &targetToAttack = *engine.getState().getCharacters()[rand()%2];                
                     unique_ptr<Command> atkCmd(new AttackCommand(selectedChar, targetToAttack));
                     engine.addCommand(move(atkCmd));
-                    engine.init();
                     pa--;
                 }
-                    //unique_ptr<Command> endTurnCmd(new SwitchTurnCommand());
-                    //engine.addCommand(move(endTurnCmd));
-                    //engine.init();
-                    //return;
+
                 
             }
         
@@ -112,7 +101,7 @@ void RandomAI::run(engine::Engine &engine)
     engine.addCommand(move(finTurnCmd));
     engine.init();
     //return;
-    }     */
+    }     
 }
 
 int RandomAI::selectCharacter (state::State& state){

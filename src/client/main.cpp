@@ -280,20 +280,20 @@ int main(int argc,char* argv[])
                             cout<<"LShift pressed"<<endl;
                             while(ngine.currentState.end == false){
                                 for(int k=0;k<ngine.getState().getCharacters().size();k++){
-                                    if(ngine.getState().getCharacters()[k]->getStatus()==DEAD){break;}
+                                if(ngine.getState().getCharacters()[k]->getStatus()==DEAD){break;}
                                 }
                                 cout<<"Player1 playing"<<endl;
                                 rai1.run(ngine);
                                 stateLayer.initLayer(ngine.getState());
                                 stateLayer.draw(window);
                                 
-                                if(ngine.currentState.end == false){
+                                
                                     cout<<"Player2 playing"<<endl;
                                     rai2.run(ngine);
                                     stateLayer.initLayer(ngine.getState());
                                     stateLayer.draw(window);
-                                }
-                                ngine.currentState.end==true;
+                                
+                                
                             }
                         }
                     }
