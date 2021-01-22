@@ -13,17 +13,21 @@ using namespace std;
 
 void RandomAI::run(engine::Engine &engine)
 {
-    
+   
     //int randomCharSelected = ((double) rand() / (RAND_MAX));
 
     // always select someone
     Character& selectedChar = *engine.getState().getCharacters()[engine.getState().turnOwner];
     unique_ptr<Command> selectCommand(new SelectCharacterCommand(selectedChar));
     engine.addCommand(move(selectCommand));
+                           	cout<<selectedChar.getPosition().getX()<<endl;
    
     // can attack?
     vector<int> ValidPos;
     ValidPos=engine.getState().getCharacters()[1]->verifAttackPosition(engine.getState());
+
+    int pa = selectedChar.getStats().getActPoints();
+        int pm = selectedChar.getStats().getMovPoints();
 
 
     
@@ -31,11 +35,9 @@ void RandomAI::run(engine::Engine &engine)
     {
         // can attack
         cout << "first if can attack ? true " << endl;
-        int pa = selectedChar.getStats().getActPoints();
-        int pm = selectedChar.getStats().getMovPoints();
         
+ cout<<"test"<<endl;
 
-            
                 //int random = selectedChar.verifAttackPosition(engine.getState())[(rand() % (selectedChar.verifAttackPosition(engine.getState()).size()))];
                 Character &targetToAttack = *engine.getState().getCharacters()[rand()%2];
                 // choose to attack or to move (0 move, 1 attack)
@@ -43,11 +45,17 @@ void RandomAI::run(engine::Engine &engine)
                     // attack
                     unique_ptr<Command> atkCmd(new AttackCommand(selectedChar, targetToAttack));
                     engine.addCommand(move(atkCmd));
+                    //engine.init();
                     pa=pa-3;
-                    
-            
-            
-                if(pm>0){
+
+
+                    //unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
+                    //engine.addCommand(move(finTurnCmd));
+                    //engine.init();
+                   
+                
+             
+
                     // move
                     std::vector<Position> pos = selectedChar.verifMovingPosition(engine.getState());
                     int randomMove = (rand() % pos.size());
@@ -55,7 +63,8 @@ void RandomAI::run(engine::Engine &engine)
                     unique_ptr<Command> mvCmd(new MoveCommand(selectedChar, p));
                     engine.addCommand(move(mvCmd));
                     pm--;
-                 }
+
+              
             
             unique_ptr<Command> endTurnCmd(new SwitchTurnCommand());
             engine.addCommand(move(endTurnCmd));
@@ -67,18 +76,25 @@ void RandomAI::run(engine::Engine &engine)
     
     else
         {
+ 
             int pa = selectedChar.getStats().getActPoints();
             int pm = selectedChar.getStats().getMovPoints();
             while ( pm > 0)
             {
                 
                 // can NOT attack, JUST MOVE.
-                    std::vector<Position> pos = selectedChar.verifMovingPosition(engine.getState());
+                    std::vector<Position> pos = 		selectedChar.verifMovingPosition(engine.getState());
+
+                             cout<<pos.size()<<endl;
+                       	cout<<selectedChar.getPosition().getX()<<endl;
                     int randomMove = (rand() % pos.size());
+                    
                     Position p =pos[randomMove] ;
                     unique_ptr<Command> mvCmd(new MoveCommand(selectedChar, p));
                     engine.addCommand(move(mvCmd));
                     pm--;
+ 
+                cout << " move executed " << endl;
 
                 // now i was deplaced, can attack?
                 if (selectedChar.verifAttackPosition(engine.getState()).size())
@@ -88,16 +104,19 @@ void RandomAI::run(engine::Engine &engine)
                     Character &targetToAttack = *engine.getState().getCharacters()[rand()%2];                
                     unique_ptr<Command> atkCmd(new AttackCommand(selectedChar, targetToAttack));
                     engine.addCommand(move(atkCmd));
+                    engine.init();
                     pa--;
                 }
+                    //unique_ptr<Command> endTurnCmd(new SwitchTurnCommand());
+                    //engine.addCommand(move(endTurnCmd));
+                    //engine.init();
+                    //return;
                 
             }
         
-            unique_ptr<Command> endTurnCmd(new SwitchTurnCommand());
-            engine.addCommand(move(endTurnCmd));
-            if(engine.getState().turnOwner==0){engine.getState().setTurnOwner(1);}
-            else{engine.getState().setTurnOwner(0);}
-            engine.init();
+    unique_ptr<Command> finTurnCmd(new SwitchTurnCommand());
+    engine.addCommand(move(finTurnCmd));
+    engine.init();
     //return;
     }     
 }
