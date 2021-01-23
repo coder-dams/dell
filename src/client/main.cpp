@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
@@ -19,11 +21,15 @@ void testSFML() {
 #include "render.h"
 #include "../shared/engine.h"
 #include "../shared/ai.h"
+#include "client.h"
+
 
 using namespace std;
 using namespace state;
 using namespace render;
 using namespace engine;
+using namespace client;
+using namespace ai;
 
 
 
@@ -243,7 +249,7 @@ int main(int argc,char* argv[])
             ngine.getState().First_Layer=LoadLayer::MakeLayer_1();
             ngine.getState().Second_Layer=LoadLayer::MakeLayer_2();
             ngine.getState().UI_Layer=LoadLayer::MakeLayer_UI();
-ngine.getState().setTurnOwner(0);
+            ngine.getState().setTurnOwner(0);
 
             ai::RandomAI rai1;
             ai::RandomAI rai2;
@@ -268,7 +274,7 @@ ngine.getState().setTurnOwner(0);
                 stateLayer.initLayer(ngine.getState());
                 stateLayer.draw(window);
                 sf::Event event;
-                ngine.currentState.end==false;
+                
 
                 while (window.pollEvent(event))
                 {
@@ -281,13 +287,13 @@ ngine.getState().setTurnOwner(0);
                             cout<<"LShift pressed"<<endl;
                             while(ngine.currentState.end == false){
                                 for(int k=0;k<ngine.getState().getCharacters().size();k++){
-ngine.getState().setTurnOwner(0);
+                                ngine.getState().setTurnOwner(0);
                                 cout<<"Player1 playing"<<endl;
                                 rai1.run(ngine);
                                 stateLayer.initLayer(ngine.getState());
                                 stateLayer.draw(window);
                                 
-			 ngine.getState().setTurnOwner(1);
+			                        ngine.getState().setTurnOwner(1);
                                     cout<<"Player2 playing"<<endl;
                                     rai2.run(ngine);
                                     stateLayer.initLayer(ngine.getState());
@@ -299,6 +305,19 @@ ngine.getState().setTurnOwner(0);
                 }
             }
         }
+        }
+
+        else if (strcmp(argv[1], "thread") == 0)
+        {
+            sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
+
+            Client client(window);
+
+            
+            while (window.isOpen())
+            {
+                client.run();
+            }
         }
     else
 	    {

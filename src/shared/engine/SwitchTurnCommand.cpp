@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <unistd.h>
+#include <thread>
+#include <pthread.h>
 
 using namespace engine;
 using namespace state;
@@ -13,15 +15,19 @@ SwitchTurnCommand::SwitchTurnCommand (){
     return ;
 }
 
+
+
 //Réinitialiser toutes les caractéristiques des joueurs
 void SwitchTurnCommand::execute (state::State& state){
     int nb_nodead=0;
-    bool print_status = true;
+    bool End_game = true;
+
+    
     state.setCurrentTurn(state.currentTurn+1);
     state.setFightAction(F_IDLE);
 
     for(auto &charsplaying : state.characters) {
-         if(charsplaying->getStatus() != DEAD){
+         if(charsplaying->getStatus() != DEAD ){
             nb_nodead=nb_nodead+1;
             // faire un switch case pour adapter la réinitialisation des points mov et atc selon les joueurs(PLAYER, etc...)
             charsplaying->stats.setActPoints(6);
@@ -32,18 +38,27 @@ void SwitchTurnCommand::execute (state::State& state){
                 charsplaying->setStatus(FIGHTING);
             }
             // if it's not your turn, then your alive characters will wait.
-            else{
+            else {
                 charsplaying->setStatus(WAITING);
               }       
         }
         if(nb_nodead<state.characters.size()){
-            while(1){
-                if(print_status){
+
+            while (1)
+            {
+                if(End_game){
                     cout<<"END OF THE GAME"<<endl;  //QUITTE LE JEU
-                    print_status=false;
+                    End_game=false;  
                 }
-            };
+                
+            }
+            
+            
+
+            
+            
         }
+    
         
     }
 
