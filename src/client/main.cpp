@@ -321,12 +321,12 @@ int main(int argc,char* argv[])
         }
     else
 	    {
-	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
+	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai or ./client thread" << endl;
 	    }
     }
 	else
 	{
-	    cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
+	    cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai or ./client thread"" << endl;
 	}
     
 }
