@@ -64,7 +64,7 @@ playerOwner=Owner;
 
 	if (id == PLAYER)
 		{
-		stats.setHealth(150);
+		stats.setHealth(500);
 		stats.setMovPoints(5);
 		stats.setActPoints(3);
 		stats.setExperience(0);
@@ -76,7 +76,7 @@ playerOwner=Owner;
 
     else if (id == BOWMAN)
     {
-        stats.setHealth(50);
+        stats.setHealth(250);
         stats.setMovPoints(3);
         stats.setActPoints(5);
         stats.setExperience(0);
@@ -147,7 +147,7 @@ std::vector<Position> Character::verifMovingPosition (state::State& state) {
     }
     
     return validPos;
-}
+    }
 
 
 std::vector<int> Character::verifAttackPosition (state::State& state) {
@@ -167,16 +167,5 @@ std::vector<int> Character::verifAttackPosition (state::State& state) {
     return possibleIndexes;	
 }
 
-int Character::fetchCharacPos (std::vector<int> map) {
-    for(int i = 0; i<map.size(); i++) {
-        if(tileID==map[i]) {
-            return i;
-        }
-    }
-}
-
-int Character::convPosToTile () {
-    return position.getY()*30 + position.getX();
-}
 
 

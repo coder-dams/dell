@@ -41,18 +41,15 @@ void MoveCommand::execute(state::State &state)
 			if (movPoints>=deltaPos){
 				// mainCharacter.getPosition().setX(positionTarget.getX()); mauvaise méthode(trop de getter), règle: pas 2 "." de get de suite
 				state.cMap[mainCharacter.position.y+mainCharacter.position.x*30]=138;
-				cout<<"Old Position : "<<mainCharacter.position.x<<":"<<mainCharacter.position.y<<endl;
 				mainCharacter.position.x = positionTarget.getX();
                 mainCharacter.position.y = positionTarget.getY();
 				mainCharacter.stats.setMovPoints(movPoints-deltaPos);
 				state.cMap[positionTarget.getY()+positionTarget.getX()*30]=mainCharacter.getTileID();
 				cout<<"The character was moved"<<endl;
 				cout<<"The character has now "<<mainCharacter.stats.getMovPoints()<<" points left"<<endl;
-				cout<<"New Position : "<<mainCharacter.getPosition().getX()<<":"<<mainCharacter.getPosition().getY()<<endl;
 			}
 			else{
-			cout<<"The character doesn't have enough movements points to move"<<endl;
-
+			cout<<"The character doesn't have enough movements points"<<endl;
 			}
 		}
 		else {

@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
@@ -19,11 +21,15 @@ void testSFML() {
 #include "render.h"
 #include "../shared/engine.h"
 #include "../shared/ai.h"
+#include "client.h"
+
 
 using namespace std;
 using namespace state;
 using namespace render;
 using namespace engine;
+using namespace client;
+using namespace ai;
 
 
 
@@ -243,6 +249,7 @@ int main(int argc,char* argv[])
             ngine.getState().First_Layer=LoadLayer::MakeLayer_1();
             ngine.getState().Second_Layer=LoadLayer::MakeLayer_2();
             ngine.getState().UI_Layer=LoadLayer::MakeLayer_UI();
+            ngine.getState().setTurnOwner(0);
 
             ai::RandomAI rai1;
             ai::RandomAI rai2;
@@ -267,7 +274,7 @@ int main(int argc,char* argv[])
                 stateLayer.initLayer(ngine.getState());
                 stateLayer.draw(window);
                 sf::Event event;
-                ngine.currentState.end==false;
+                
 
                 while (window.pollEvent(event))
                 {
@@ -279,33 +286,47 @@ int main(int argc,char* argv[])
                         if (event.key.code == sf::Keyboard::LShift){
                             cout<<"LShift pressed"<<endl;
                             while(ngine.currentState.end == false){
-
+                                for(int k=0;k<ngine.getState().getCharacters().size();k++){
+                                ngine.getState().setTurnOwner(0);
                                 cout<<"Player1 playing"<<endl;
                                 rai1.run(ngine);
                                 stateLayer.initLayer(ngine.getState());
                                 stateLayer.draw(window);
                                 
-                                
-                                cout<<"Player2 playing"<<endl;
-                                rai2.run(ngine);
-                                stateLayer.initLayer(ngine.getState());
-                                stateLayer.draw(window);
-                                
-                                
+			                        ngine.getState().setTurnOwner(1);
+                                    cout<<"Player2 playing"<<endl;
+                                    rai2.run(ngine);
+                                    stateLayer.initLayer(ngine.getState());
+                                    stateLayer.draw(window);
+
                             }
                         }
                     }
                 }
             }
         }
+        }
+
+        else if (strcmp(argv[1], "thread") == 0)
+        {
+            sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
+
+            Client client(window);
+
+            
+            while (window.isOpen())
+            {
+                client.run();
+            }
+        }
     else
 	    {
-	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
+	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai or ./client thread" << endl;
 	    }
     }
 	else
 	{
-	    cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai" << endl;
+	    cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai or ./client thread"" << endl;
 	}
     
 }
