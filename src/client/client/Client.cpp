@@ -70,14 +70,7 @@ void Client::run()
    
 
    
-    /*sf::Music backMusic;
-    std::string music ="../../../res/sound.wav";
-    if (backMusic.openFromFile(music))
-    {
-        backMusic.setVolume(40);
-        backMusic.setLoop(true);
-        backMusic.play();
-    }*/
+
 
 
     std::thread thread (threadEngine, &engine);

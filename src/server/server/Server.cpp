@@ -1,0 +1,125 @@
+
+#include "render.h"
+#include "state.h"
+#include "server.h"
+#include "Player.h"
+#include <iostream>
+#include <unistd.h>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <thread>
+#include <pthread.h>
+using namespace state;
+using namespace engine;
+using namespace render;
+using namespace std;
+using namespace server;
+
+
+bool canRunEngine = false;
+bool runFunctionCalled = true;
+
+
+
+void threadEngine(Engine *ptr)
+{
+    while (runFunctionCalled) // will be changed by the thread
+    {
+        usleep(1000);
+        if (canRunEngine)
+        {
+            ptr->init();
+            canRunEngine = false;
+        }
+    }
+}
+
+Server::Server(sf::RenderWindow &window) : window(window)
+{
+    
+
+    engine.getState().initializeCharacters();
+    engine.getState().First_Layer=LoadLayer::MakeLayer_1();
+    engine.getState().Second_Layer=LoadLayer::MakeLayer_2();
+    engine.getState().UI_Layer=LoadLayer::MakeLayer_UI();
+    engine.getState().setTurnOwner(0);
+
+
+    server::Player Player1;
+    server::Player Player2;
+
+    Player1.setPlayerNumber(1);
+    Player2.setPlayerNumber(2);
+
+}
+
+void Server::engineUpdating()
+{
+    canRunEngine = true;
+    usleep(150000);
+}
+
+void Server::engineUpdated()
+{
+}
+bool once = true;
+
+void Server::run()
+{
+    StateLayer stateLayer(engine.getState(), window,"thread");
+   
+
+   
+    /*sf::Music backMusic;
+    std::string music ="../../../res/sound.wav";
+    if (backMusic.openFromFile(music))
+    {
+        backMusic.setVolume(40);
+        backMusic.setLoop(true);
+        backMusic.play();
+    }*/
+
+
+    std::thread thread (threadEngine, &engine);
+
+
+
+    stateLayer.initLayer(engine.getState());
+    stateLayer.draw(window);
+    sf::Event event;
+    
+
+    while (window.pollEvent(event))
+    {
+        
+        if (event.type == sf::Event::KeyPressed)
+        {
+            cout<<"Key pressed"<<endl;
+            if (event.key.code == sf::Keyboard::LShift){
+                cout<<"LShift pressed"<<endl;
+                while(true){
+                    
+                    for(int k=0;k<engine.getState().getCharacters().size();k++){
+                        engine.getState().setTurnOwner(0);
+                        cout<<"Player1 playing"<<endl;
+                        Player1.run(engine);
+                        stateLayer.initLayer(engine.getState());
+                        stateLayer.draw(window);
+                                
+			            engine.getState().setTurnOwner(1);
+                        cout<<"Player2 playing"<<endl;
+                        Player2.run(engine);
+                        stateLayer.initLayer(engine.getState());
+                        stateLayer.draw(window);
+                        if (event.type == sf::Event::Closed ) window.close();
+
+                    }
+                }
+            }
+        }
+    }
+    runFunctionCalled = false;
+    thread.join();
+}
+
+

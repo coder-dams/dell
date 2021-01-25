@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
 
 #include <iostream>
 #include <stdio.h>
@@ -22,6 +23,7 @@ void testSFML() {
 #include "../shared/engine.h"
 #include "../shared/ai.h"
 #include "client.h"
+#include "../server/server.h"
 
 
 using namespace std;
@@ -30,6 +32,8 @@ using namespace render;
 using namespace engine;
 using namespace client;
 using namespace ai;
+using namespace sf;
+using namespace server;
 
 
 
@@ -311,7 +315,15 @@ int main(int argc,char* argv[])
         {
             sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
 
-            Client client(window);
+           Client client(window);
+           sf::Music backMusic;
+            std::string music ="../res/sound.wav";
+        if (backMusic.openFromFile(music))
+        {
+            backMusic.setVolume(40);
+            backMusic.setLoop(true);
+            backMusic.play();
+        }
 
             
             while (window.isOpen())
@@ -319,6 +331,28 @@ int main(int argc,char* argv[])
                 client.run();
             }
         }
+
+        else if (strcmp(argv[1], "server_network") == 0)
+        {
+            sf::RenderWindow window(sf::VideoMode(480, 480), "Lotus Map");
+
+            //Server server(window);
+
+            
+            while (window.isOpen())
+            {
+               //server.run();
+            }
+
+
+
+        }
+
+        else if (strcmp(argv[1], "client_network") == 0)
+        {
+
+        }
+
     else
 	    {
 	        cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai or ./client thread" << endl;
@@ -326,7 +360,7 @@ int main(int argc,char* argv[])
     }
 	else
 	{
-	    cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai or ./client thread"" << endl;
+	    cout << "Usage : ./client hello or ./client render or ./client engine or ./client random_ai or ./client thread" << endl;
 	}
     
 }
