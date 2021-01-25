@@ -1,5 +1,6 @@
 #include "Server.h"
 #include "state.h"
+#include "engine.h"
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
