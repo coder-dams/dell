@@ -44,6 +44,12 @@ make
 
 ## Release History
 
+* 4.1
+    * Client (thread) diagram and implementation
+```bash
+./bin/client thread
+```
+
 * 2.final
     * Report 2.final
     * AI (random) diagram and implementation
